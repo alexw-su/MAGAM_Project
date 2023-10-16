@@ -13,20 +13,21 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
     public Transform orientation;
-    float horizontalInput;
-    float verticalInput;
-
+    Vector2 input;
     Vector3 moveDirection;
     Rigidbody rb;
+    InputManager inputManager;
     void Start()
     {
+        // Initialize Input Manager
+        inputManager = InputManager.Instance;
+
         Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -53,9 +54,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void GetInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        input = inputManager.GetPlayerMovement();
+        if (inputManager.GetPlayerJumped() && readyToJump && grounded)
         {
             readyToJump = false;
 
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = new Vector3(input.x, 0.0f, input.y);
         // on ground
         if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
