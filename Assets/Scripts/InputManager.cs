@@ -12,8 +12,17 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance != null && _instance != this) Destroy(this.gameObject);
-        else _instance = this;
+        // Destroys multiple instances of Input Manager
+        if (_instance != null && _instance != this) 
+        {
+            Destroy(this.gameObject);
+        }
+        else 
+        {
+            _instance = this;
+        }
+        
+        // Instantiates the Input System
         playerInput = new PlayerInput();
     }
 
