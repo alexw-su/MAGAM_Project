@@ -23,10 +23,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
     Rigidbody rb;
     InputManager inputManager;
+    Transform cameraTransform;
     void Start()
     {
-        // Initialize Input Manager
+        // Gets Input Manager from scene
         inputManager = InputManager.Instance;
+
+        // Gets Main Camera's Transform
+        cameraTransform = Camera.main.transform;
 
         Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
@@ -67,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         moveDirection = new Vector3(input.x, 0.0f, input.y);
+        
+        // Changes/Rotates directional movement based on Camera's direction
+        moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
+        moveDirection.y = 0f;
+
         // on ground
         if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);

@@ -15,11 +15,17 @@ public class PlayerController : MonoBehaviour
     CharacterController controller;
     Vector3 playerVelocity;
     Vector3 moveDirection;
+    Transform cameraTransform;
     void Start()
     {
-        // Initializes CharacterController and InputManager
+        // Initializes CharacterController
         controller = gameObject.GetComponent<CharacterController>();
+
+        // Gets InputManager from scene
         inputManager = InputManager.Instance;
+
+        // Gets Main Camera's Transform
+        cameraTransform = Camera.main.transform;
         
         // Setting Attributes
         gravityValue = -9.81f;
@@ -27,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
         // Hides Cursor
         Cursor.visible = false;
+
+        // Fixes jump registering
+        controller.minMoveDistance = 0;
     }
     void Update()
     {
@@ -47,11 +56,17 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
+
+    // Gets player inputs from InputManager and updates variables.
     private void GetInput()
     {
-        // Gets movement direction from inputManager
+        // Gets directional input from inputManager
         Vector2 movement = inputManager.GetPlayerMovement();
         moveDirection = new Vector3(movement.x, 0f, movement.y);
+
+        // Changes/Rotates directional movement based on Camera's direction
+        moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
+        moveDirection.y = 0f;
 
         // Checks if jump input was triggered during grounded
         if (inputManager.GetPlayerJumped() && grounded)
@@ -59,6 +74,8 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
     }
+
+    // Uses variables based on input to move player.
     private void MovePlayer()
     {
         // Gives CharacterController movement input
@@ -72,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    // Applies jump
     private void Jump()
     {   
         // Adds jump to player's velocity
