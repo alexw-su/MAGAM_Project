@@ -1,13 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    private static InputManager _instance;
+    public static InputManager Instance {
+        get {
+            return _instance;
+        }
+    }
     private PlayerInput playerInput;
 
     private void Awake()
     {
+        if (_instance != null && _instance != this) Destroy(this.gameObject);
+        else _instance = this;
         playerInput = new PlayerInput();
     }
 
@@ -24,6 +30,11 @@ public class InputManager : MonoBehaviour
     public Vector2 GetPlayerLook()
     {
         return playerInput.Player.Look.ReadValue<Vector2>();
+    }
+
+    public bool GetPlayerJumped()
+    {
+        return playerInput.Player.Jump.triggered;
     }
     
 }
