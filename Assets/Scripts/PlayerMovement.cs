@@ -13,20 +13,25 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
     public Transform orientation;
-    float horizontalInput;
-    float verticalInput;
-
+    Vector2 input;
     Vector3 moveDirection;
     Rigidbody rb;
+    InputManager inputManager;
+    Transform cameraTransform;
     void Start()
     {
+        // Gets Input Manager from scene
+        inputManager = InputManager.Instance;
+
+        // Gets Main Camera's Transform
+        cameraTransform = Camera.main.transform;
+
         Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -53,9 +58,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void GetInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        input = inputManager.GetPlayerMovement();
+        if (inputManager.GetPlayerJumped() && readyToJump && grounded)
         {
             readyToJump = false;
 
@@ -66,7 +70,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = new Vector3(input.x, 0.0f, input.y);
+        
+        // Changes/Rotates directional movement based on Camera's direction
+        moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
+        moveDirection.y = 0f;
+
         // on ground
         if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
