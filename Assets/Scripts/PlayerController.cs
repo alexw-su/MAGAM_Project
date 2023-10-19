@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour
         gravityValue = -9.81f;
         jumpHeight = 1.0f;
 
-        // Hides Cursor
-        Cursor.visible = false;
-
         // Fixes jump registering
         controller.minMoveDistance = 0;
     }
