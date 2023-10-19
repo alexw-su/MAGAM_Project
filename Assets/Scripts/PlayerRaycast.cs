@@ -13,8 +13,14 @@ public class PlayerRaycast : MonoBehaviour
     public Material greyMaterial;
     public Material yellowMaterial;
 
-    private GameObject _lastLookedAt;
-    private Vector3? teleportTo = null;
+    GameObject _lastLookedAt;
+    Vector3? teleportTo = null;
+    InputManager inputManager;
+
+    void Start() {
+        // Gets Input Manager from scene
+        inputManager = InputManager.Instance;
+    }
 
     private void FixedUpdate()
     {
@@ -66,7 +72,7 @@ public class PlayerRaycast : MonoBehaviour
         {
             renderer.material = yellowMaterial;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (inputManager.GetPlayerInteracted())
         {
             string objectName = hitInfo.collider.gameObject.name;
             Debug.Log("Moucse Pressed on:" + objectName);
