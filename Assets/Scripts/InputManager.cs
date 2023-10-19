@@ -24,6 +24,12 @@ public class InputManager : MonoBehaviour
         
         // Instantiates the Input System
         playerInput = new PlayerInput();
+
+        // Hides Cursor
+        Cursor.visible = false;
+
+        // Locks Cursor to center of view
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnEnable() 
@@ -44,6 +50,11 @@ public class InputManager : MonoBehaviour
     public bool GetPlayerJumped()
     {
         return playerInput.Player.Jump.triggered;
+    }
+
+    public bool GetPlayerInteracted()
+    {
+        return playerInput.Player.Interact.triggered;
     }
     
 }
