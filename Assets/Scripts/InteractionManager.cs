@@ -12,24 +12,13 @@ public class InteractionManager : MonoBehaviour
     public Material yellowMaterial;
 
     GameObject _lastLookedAt;
-    Vector3? teleportTo = null;
+
     InputManager inputManager;
 
     void Start()
     {
         // Gets Input Manager from scene
         inputManager = InputManager.Instance;
-    }
-
-    private void FixedUpdate()
-    {
-        if (teleportTo != null)
-        {
-            // teleport player to the saved location
-            transform.position = teleportTo.Value;
-            teleportTo = null;
-        }
-
     }
     void Update()
     {
@@ -43,13 +32,12 @@ public class InteractionManager : MonoBehaviour
         {
             // debugging
             Debug.DrawRay(cameraReference.transform.position, rayDirection * hitInfo.distance, Color.red);
-
-            string hitObjectTag = hitInfo.collider.tag;
+            var interactable = hitInfo.collider.GetComponent<IInteractable>();
 
             // Check the tag of the hit object
-            if (hitInfo.collider.CompareTag("painting"))
+            if (interactable != null)
             {
-                HandleLookingAtPainting(hitInfo);
+                HandleLookingAtObject(hitInfo);
             }
             else
             {
@@ -63,7 +51,7 @@ public class InteractionManager : MonoBehaviour
             Debug.DrawRay(transform.position, rayDirection * raycastLength, Color.red);
         }
     }
-    void HandleLookingAtPainting(RaycastHit hitInfo)
+    void HandleLookingAtObject(RaycastHit hitInfo)
     {
         // highlight interactive object
         MeshRenderer renderer = hitInfo.collider.GetComponent<MeshRenderer>();
@@ -73,29 +61,10 @@ public class InteractionManager : MonoBehaviour
         }
         if (inputManager.GetPlayerInteracted())
         {
-            string objectName = hitInfo.collider.gameObject.name;
-            Debug.Log("Moucse Pressed on:" + objectName);
-            int index = GetPaintingIndex(objectName);
-
-            if (index != -1)
-            {
-                // call TeleportPlayerToPainting with the index
-                TeleportPlayerToPainting(index);
-            }
+            hitInfo.collider.GetComponent<IInteractable>().Interact();
         }
         // remove highlight
         _lastLookedAt = hitInfo.collider.gameObject;
-    }
-    void TeleportPlayerToPainting(int index)
-    {
-        GameObject puzzleLocationObject = GameObject.Find("PuzzleLocation" + index);
-
-        if (puzzleLocationObject != null)
-        {
-            Vector3 puzzleLocation = puzzleLocationObject.transform.position;
-            // save puzzle location
-            teleportTo = puzzleLocation;
-        }
     }
     void ClearLastLookedAt()
     {
@@ -109,18 +78,5 @@ public class InteractionManager : MonoBehaviour
             _lastLookedAt = null;
         }
     }
-    int GetPaintingIndex(string objectName)
-    {
-        if (objectName.StartsWith("painting"))
-        {
-            // extract the index from the object name
-            string indexStr = objectName.Substring("painting".Length);
-            if (int.TryParse(indexStr, out int index))
-            {
-                return index;
-            }
-        }
-        // doesnt match the pattern
-        return -1;
-    }
 }
+

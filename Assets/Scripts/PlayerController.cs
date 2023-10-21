@@ -16,6 +16,14 @@ public class PlayerController : MonoBehaviour
     Vector3 playerVelocity;
     Vector3 moveDirection;
     Transform cameraTransform;
+
+    private Vector3? teleportTo = null;
+    // public property to access teleportTo
+    public Vector3? TeleportTo
+    {
+        get { return teleportTo; }
+        set { teleportTo = value; }
+    }
     void Start()
     {
         // Initializes CharacterController
@@ -26,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
         // Gets Main Camera's Transform
         cameraTransform = Camera.main.transform;
-        
+
         // Setting Attributes
         gravityValue = -9.81f;
         jumpHeight = 1.0f;
@@ -53,6 +61,15 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
+    private void FixedUpdate()
+    {
+        if (teleportTo != null)
+        {
+            // teleport player to the saved location
+            transform.position = TeleportTo.Value;
+            TeleportTo = null;
+        }
+    }
 
     // Gets player inputs from InputManager and updates variables.
     private void GetInput()
@@ -77,9 +94,9 @@ public class PlayerController : MonoBehaviour
     {
         // Gives CharacterController movement input
         controller.Move(moveDirection * Time.deltaTime * moveSpeed);
-        
+
         // Rotates player object's forward. 
-        if(moveDirection != Vector3.zero) 
+        if (moveDirection != Vector3.zero)
         {
             gameObject.transform.forward = moveDirection;
         }
@@ -89,7 +106,7 @@ public class PlayerController : MonoBehaviour
 
     // Applies jump
     private void Jump()
-    {   
+    {
         // Adds jump to player's velocity
         playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
     }
