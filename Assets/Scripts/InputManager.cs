@@ -3,8 +3,10 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private static InputManager _instance;
-    public static InputManager Instance {
-        get {
+    public static InputManager Instance
+    {
+        get
+        {
             return _instance;
         }
     }
@@ -13,26 +15,26 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         // Destroys multiple instances of Input Manager
-        if (_instance != null && _instance != this) 
+        if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
         }
-        else 
+        else
         {
             _instance = this;
         }
-        
+
         // Instantiates the Input System
         playerInput = new PlayerInput();
 
-        // Hides Cursor
-        Cursor.visible = false;
+        // Hides Cursor - commented for development time
+        //Cursor.visible = false;
 
         // Locks Cursor to center of view
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void OnEnable() 
+    private void OnEnable()
     {
         playerInput.Enable();
     }
@@ -56,5 +58,5 @@ public class InputManager : MonoBehaviour
     {
         return playerInput.Player.Interact.triggered;
     }
-    
+
 }
