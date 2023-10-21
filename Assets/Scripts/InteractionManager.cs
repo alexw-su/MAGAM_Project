@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class PlayerRaycast : MonoBehaviour
+public class InteractionManager : MonoBehaviour
 {
     public float raycastLength = 10f;
-    public GameObject player;
+    public GameObject cameraReference;
 
     // this probably wont be needed later on, but right now thats how I highlight what player is looking at
     public Material greyMaterial;
@@ -17,7 +15,8 @@ public class PlayerRaycast : MonoBehaviour
     Vector3? teleportTo = null;
     InputManager inputManager;
 
-    void Start() {
+    void Start()
+    {
         // Gets Input Manager from scene
         inputManager = InputManager.Instance;
     }
@@ -27,7 +26,7 @@ public class PlayerRaycast : MonoBehaviour
         if (teleportTo != null)
         {
             // teleport player to the saved location
-            player.transform.position = teleportTo.Value;
+            transform.position = teleportTo.Value;
             teleportTo = null;
         }
 
@@ -39,11 +38,11 @@ public class PlayerRaycast : MonoBehaviour
 
     void RaycastPlayerAim()
     {
-        Vector3 rayDirection = transform.TransformDirection(Vector3.forward);
-        if (Physics.Raycast(transform.position, rayDirection, out RaycastHit hitInfo, raycastLength))
+        Vector3 rayDirection = cameraReference.transform.forward;
+        if (Physics.Raycast(cameraReference.transform.position, rayDirection, out RaycastHit hitInfo, raycastLength))
         {
             // debugging
-            Debug.DrawRay(transform.position, rayDirection * hitInfo.distance, Color.red);
+            Debug.DrawRay(cameraReference.transform.position, rayDirection * hitInfo.distance, Color.red);
 
             string hitObjectTag = hitInfo.collider.tag;
 
