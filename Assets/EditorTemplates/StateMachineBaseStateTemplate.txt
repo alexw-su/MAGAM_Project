@@ -1,0 +1,39 @@
+using UnityEngine;
+using System.Collections;
+
+
+public partial class STATEMACHINE_NAME
+{
+
+    public class STATEMACHINESTATE_NAME_Base : MarcimanState
+    {
+        private STATEMACHINE_NAME _manager;
+        public STATEMACHINE_NAME Manager { get => _manager; }
+
+        public STATEMACHINESTATE_NAME_Base(STATEMACHINE_NAME manager)
+        {
+            _manager = manager;
+        }
+
+
+        #region OnState...
+        public override void OnStateEnter()
+        {
+            base.OnStateEnter();
+
+        }
+
+
+        public override void OnStateRunning()
+        {
+
+        }
+
+
+        public override void OnStateExit()
+        {
+            base.OnStateExit();
+        }
+        #endregion
+    }
+}
