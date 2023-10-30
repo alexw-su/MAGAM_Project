@@ -1,0 +1,24 @@
+using UnityEngine;
+using System.Collections;
+
+public enum STATEMACHINESTATE_NAME
+{STATEENUMS
+}
+
+public partial class STATEMACHINE_NAME : MarcimanStateMachine {
+
+    private STATEMACHINESTATE_NAME _currentState;
+
+    public STATEMACHINESTATE_NAME CurrentState { get => _currentState; }
+
+
+
+    private void ChangeState(STATEMACHINESTATE_NAME newState)
+    {
+        _currentState = newState;
+
+        switch (newState)
+        {CASE_STATE
+        }
+    }
+}
