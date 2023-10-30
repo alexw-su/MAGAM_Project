@@ -18,19 +18,20 @@ public partial class Puzzle1
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-
+            Debug.Log("Entered Pushing the Ladder State");
         }
 
 
         public override void OnStateRunning()
         {
-
+            Debug.Log("Waiting for ladder to be pushed");
         }
 
 
         public override void OnStateExit()
         {
             base.OnStateExit();
+            Debug.Log("Ladder Pushed, Exiting Pushing the Ladder State");
         }
         #endregion
     }

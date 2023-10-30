@@ -20,7 +20,6 @@ public partial class Puzzle1
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-
         }
 
 

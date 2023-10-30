@@ -14,7 +14,9 @@ public partial class Puzzle1 : MarcimanStateMachine {
 
     public puzzle1States CurrentState { get => _currentState; }
 
-
+	void Start() {
+		ChangeState(puzzle1States.Idle);
+	}
 
     private void ChangeState(puzzle1States newState)
     {
@@ -33,4 +35,8 @@ public partial class Puzzle1 : MarcimanStateMachine {
 			break;
         }
     }
+
+	public void Change(puzzle1States newState) {
+		ChangeState(newState);
+	}
 }

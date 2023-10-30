@@ -18,19 +18,20 @@ public partial class Puzzle1
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-
+            Debug.Log("Entering Watered Tree State");
         }
 
 
         public override void OnStateRunning()
         {
-
+            Debug.Log("Tree is watered");
         }
 
 
         public override void OnStateExit()
         {
             base.OnStateExit();
+            Debug.Log("Exiting Watered Tree State");
         }
         #endregion
     }

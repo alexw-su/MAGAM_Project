@@ -18,19 +18,20 @@ public partial class Puzzle1
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-
+            Debug.Log("Entered Idle State");
         }
 
 
         public override void OnStateRunning()
         {
-
+            Debug.Log("In Idle State");
         }
 
 
         public override void OnStateExit()
         {
             base.OnStateExit();
+            Debug.Log("Exiting Idle State");
         }
         #endregion
     }
