@@ -24,7 +24,7 @@ public partial class Puzzle1
 
         public override void OnStateRunning()
         {
-            Debug.Log("Waiting for ladder to be pushed");
+
         }
 
 

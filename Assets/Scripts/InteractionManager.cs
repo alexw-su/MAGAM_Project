@@ -61,7 +61,11 @@ public class InteractionManager : MonoBehaviour
         }
         if (inputManager.GetPlayerInteracted())
         {
-            hitInfo.collider.GetComponent<IInteractable>().Interact();
+            var list = hitInfo.collider.GetComponents<IInteractable>();
+            foreach (IInteractable script in list) 
+            {
+                script.Interact();
+            }
         }
         // remove highlight
         _lastLookedAt = hitInfo.collider.gameObject;
