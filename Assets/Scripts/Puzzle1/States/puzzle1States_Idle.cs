@@ -19,6 +19,7 @@ public partial class Puzzle1
         {
             base.OnStateEnter();
             Debug.Log("Entered Idle State");
+            Manager.SetActiveTree(false);
         }
 
 
