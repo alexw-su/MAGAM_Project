@@ -1,0 +1,12 @@
+{
+   "messages":[
+      {
+         "text":"You looked at a painting, congratulations!",
+         "displayTime":2
+      },
+      {
+         "text":"Second messaag",
+         "displayTime":2
+      }
+   ]
+}
