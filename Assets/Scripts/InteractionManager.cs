@@ -33,9 +33,10 @@ public class InteractionManager : MonoBehaviour
             // debugging
             Debug.DrawRay(cameraReference.transform.position, rayDirection * hitInfo.distance, Color.red);
             var interactable = hitInfo.collider.GetComponent<IInteractable>();
+            var grabbable = hitInfo.collider.GetComponent<IGrabbable>();
 
             // Check the tag of the hit object
-            if (interactable != null)
+            if (interactable != null || grabbable != null)
             {
                 HandleLookingAtObject(hitInfo);
             }
@@ -59,14 +60,30 @@ public class InteractionManager : MonoBehaviour
         {
             renderer.material = yellowMaterial;
         }
-        if (inputManager.GetPlayerInteracted())
-        {
-            var list = hitInfo.collider.GetComponents<IInteractable>();
-            foreach (IInteractable script in list) 
+
+        // If object is interacted, run Interact() on all interactable scripts
+        if (inputManager.GetPlayerInteracted()) 
+        {   
+            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+            if (interactables != null) 
             {
-                script.Interact();
+                foreach (IInteractable script in interactables) 
+                {
+                    script.Interact();
+                }
             }
         }
+
+        // If object is grabbed, run 
+        if (inputManager.GetPlayerGrabbed())
+        {
+            var grabbable = hitInfo.collider.GetComponent<IGrabbable>();
+            if (grabbable != null)
+            {
+                grabbable.Grab();
+            }
+        } 
+        
         // remove highlight
         _lastLookedAt = hitInfo.collider.gameObject;
     }

@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
         }
     }
     private PlayerInput playerInput;
+    private bool held;
+
 
     private void Awake()
     {
@@ -57,6 +59,27 @@ public class InputManager : MonoBehaviour
     public bool GetPlayerInteracted()
     {
         return playerInput.Player.Interact.triggered;
+    }
+
+    public bool GetPlayerGrabbed()
+    {
+        var grab = playerInput.Player.Grab;
+        
+        if (grab.IsPressed() && grab.triggered) {
+            held = true;
+        }
+
+        if (grab.IsPressed() && held)
+        {
+            return playerInput.Player.Grab.triggered;
+        }
+        
+        if (!grab.IsPressed())
+        {
+            held = false;
+            return false;
+        }
+        return false;
     }
 
 }
