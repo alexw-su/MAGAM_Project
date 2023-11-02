@@ -166,7 +166,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""4336c7c6-72fd-472f-acff-395d4f68d445"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Hold(duration=1,pressPoint=1.401298E-45)"",
+                    ""interactions"": ""Hold(duration=0.2,pressPoint=1.401298E-45)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Grab"",
