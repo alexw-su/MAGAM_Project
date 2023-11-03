@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoldingScript : MonoBehaviour/*, IGrabbable*/, IInteractable
+public class GrabbableObjectHandler : MonoBehaviour, IInteractable
 {
     Rigidbody rb;
     public Transform holdingPoint;
@@ -15,24 +15,6 @@ public class HoldingScript : MonoBehaviour/*, IGrabbable*/, IInteractable
         // Gets the rigidbody component of the object
         rb = GetComponent<Rigidbody>();
     }
-
-
-    /*public void Grab()
-    {
-        // Moves object to the holding point
-        rb.MovePosition(holdingPoint.position);
-        
-        // Disables gravity so that it doesn't slip out of grab
-        rb.useGravity = false;
-    }
-
-    public void Drop()
-    {
-        Debug.Log("being dropped");
-        // Reactivates gravity when letting go of object
-        rb.useGravity = true;
-    }*/
-
 
     //Is called, when OnInteraction Start is called with the isGrabbing attached
     public void OnInteractionStart(bool isGrabbing)

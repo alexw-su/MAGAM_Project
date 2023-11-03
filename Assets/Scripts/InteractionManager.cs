@@ -50,10 +50,9 @@ public class InteractionManager : MonoBehaviour
             // debugging
             Debug.DrawRay(cameraReference.transform.position, rayDirection * hitInfo.distance, Color.red);
             var interactable = hitInfo.collider.GetComponent<IInteractable>();
-            var grabbable = hitInfo.collider.GetComponent<IGrabbable>();
 
             // Check the tag of the hit object
-            if (interactable != null || grabbable != null)
+            if (interactable != null)
             {
                 HandleLookingAtObject(hitInfo);
             }
@@ -110,12 +109,6 @@ public class InteractionManager : MonoBehaviour
                 }
                 _isGrabbing = true;
             }
-
-            /*var grabbable = hitInfo.collider.GetComponent<IGrabbable>();
-            if (grabbable != null)
-            {
-                grabbable.Grab();
-            }*/
         } 
         else
         {
@@ -137,13 +130,6 @@ public class InteractionManager : MonoBehaviour
                     _isGrabbing = false;
                 }
             }
-
-
-            /*var grabbable = hitInfo.collider.GetComponent<IGrabbable>();
-            if (grabbable != null)
-            {
-                grabbable.Drop();
-            }*/
         }
         
         // remove highlight
