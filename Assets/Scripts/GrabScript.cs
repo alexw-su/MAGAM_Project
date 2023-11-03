@@ -9,4 +9,8 @@ public class GrabScript : MonoBehaviour, IGrabbable
         Debug.Log("Grabbed");
     }
 
+    public void Drop()
+    {
+        Debug.Log("Dropped");
+    }
 }
