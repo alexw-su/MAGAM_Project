@@ -83,6 +83,14 @@ public class InteractionManager : MonoBehaviour
                 grabbable.Grab();
             }
         } 
+        else
+        {
+            var grabbable = hitInfo.collider.GetComponent<IGrabbable>();
+            if (grabbable != null)
+            {
+                grabbable.Drop();
+            }
+        }
         
         // remove highlight
         _lastLookedAt = hitInfo.collider.gameObject;
