@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
 
 
     #region SFX
+    //Can be called from outside to call any AudioClip, maybe a library would be nice for that.
     public void PlaySFX(AudioClip audioClip)
     {
         sfxSource.PlayOneShot(audioClip);
