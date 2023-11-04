@@ -12,8 +12,13 @@ public class PaintingScript : MonoBehaviour, IInteractable
     {
         messageList = JsonUtility.FromJson<MessageList>(textJson.text);
     }
-    public void Interact()
+
+
+    public void OnInteractionStart(bool isGrabbing)
     {
+        if (isGrabbing)
+            return;
+
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
@@ -21,6 +26,8 @@ public class PaintingScript : MonoBehaviour, IInteractable
         }
         SendMessagesToMessageBus();
     }
+
+
     private void SendMessagesToMessageBus()
     {
         MessageBus messageBus = FindObjectOfType<MessageBus>();

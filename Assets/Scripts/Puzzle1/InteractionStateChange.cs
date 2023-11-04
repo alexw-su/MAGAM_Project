@@ -7,8 +7,11 @@ public class InteractionStateChange : MonoBehaviour, IInteractable
     public Puzzle1 stateMachine;
     public puzzle1States state;
 
-    public void Interact()
+    public void OnInteractionStart(bool isGrabbing)
     {
+        if (isGrabbing)
+            return;
+
         stateMachine.Change(state);
     }
 }

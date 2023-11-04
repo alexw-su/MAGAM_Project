@@ -15,15 +15,32 @@ public class InteractionManager : MonoBehaviour
 
     InputManager inputManager;
 
+
+    private List<IInteractable> _interactableObjects;
+    private bool _isGrabbing = false;
+
     void Start()
     {
         // Gets Input Manager from scene
         inputManager = InputManager.Instance;
+
+        _interactableObjects = new List<IInteractable>();
     }
+
+
     void Update()
     {
         RaycastPlayerAim();
+
+        if (_interactableObjects.Count <= 0)
+            return;
+
+        foreach(var obj in _interactableObjects)
+        {
+            obj.OnInteractionRunning();
+        }
     }
+
 
     void RaycastPlayerAim()
     {
@@ -51,6 +68,8 @@ public class InteractionManager : MonoBehaviour
             Debug.DrawRay(transform.position, rayDirection * raycastLength, Color.red);
         }
     }
+
+
     void HandleLookingAtObject(RaycastHit hitInfo)
     {
         // highlight interactive object
@@ -59,17 +78,65 @@ public class InteractionManager : MonoBehaviour
         {
             renderer.material = yellowMaterial;
         }
-        if (inputManager.GetPlayerInteracted())
-        {
-            var list = hitInfo.collider.GetComponents<IInteractable>();
-            foreach (IInteractable script in list) 
+
+        // If object is interacted, run Interact() on all interactable scripts
+        if (inputManager.GetPlayerInteracted()) 
+        {   
+            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+            if (interactables != null) 
             {
-                script.Interact();
+                foreach (IInteractable script in interactables) 
+                {
+                    script.OnInteractionStart(false);
+                }
             }
         }
+
+        // If object is grabbed, run 
+        if (inputManager.GetPlayerGrabbed())
+        {
+            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+
+            if(interactables != null)
+            {
+                //Run OnInteractionStart with parameter true for grabbing.
+                //Also add IInteractable to List of currently active Interactables for running OnInteractionRunning in the update.
+                foreach (IInteractable script in interactables)
+                {
+                    script.OnInteractionStart(true);
+
+                    _interactableObjects.Add(script);
+                }
+                _isGrabbing = true;
+            }
+        } 
+        else
+        {
+            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+
+            if (interactables != null)
+            {
+                if (_isGrabbing)
+                {
+                    //Only called when _isGrabbing is true, so it is not called constantly when we are not grabbing anything.
+                    //Calling OnInteractionStop, and removing IInteractable reference from interactableObject list. 
+                    foreach (IInteractable script in interactables)
+                    {
+                        Debug.Log("Should Let go");
+                        script.OnInteractionStop();
+
+                        _interactableObjects.Remove(script);
+                    }
+                    _isGrabbing = false;
+                }
+            }
+        }
+        
         // remove highlight
         _lastLookedAt = hitInfo.collider.gameObject;
     }
+
+
     void ClearLastLookedAt()
     {
         if (_lastLookedAt != null)
