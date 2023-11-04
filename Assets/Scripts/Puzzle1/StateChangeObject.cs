@@ -7,12 +7,11 @@ public class StateChangeObject : MonoBehaviour
     public Puzzle1 stateMachine;
     public puzzle1States state;
 
-    void Update() 
+    void Update()
     {
-        if(stateMachine.CurrentState == state) 
+        if (stateMachine.CurrentState == state)
         {
             gameObject.SetActive(false);
         }
     }
-    
 }

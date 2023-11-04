@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
         cameraTransform = Camera.main.transform;
 
         // Setting Attributes
-        gravityValue = -9.81f;
-        jumpHeight = 1.0f;
+        //gravityValue = -9.81f;
+        //jumpHeight = 1.0f;
 
         // Fixes jump registering
         controller.minMoveDistance = 0;
