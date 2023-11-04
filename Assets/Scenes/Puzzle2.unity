@@ -10984,6 +10984,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showLog: 0
+  crystal: {fileID: 1941486522}
+  doorBlock: {fileID: 773384860}
+  particles1: {fileID: 408164479}
+  particles2: {fileID: 595089176}
 --- !u!1 &773384860
 GameObject:
   m_ObjectHideFlags: 0
@@ -14026,7 +14030,7 @@ Transform:
   m_GameObject: {fileID: 1682407591}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.06, y: -112.26, z: -12.544178}
+  m_LocalPosition: {x: 16.06, y: -112.11, z: -12.544178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15731,10 +15735,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 754104653}
-  crystal: {fileID: 1941486522}
-  doorBlock: {fileID: 773384860}
-  particles1: {fileID: 408164479}
-  particles2: {fileID: 595089176}
 --- !u!65 &8219135564850464323
 BoxCollider:
   m_ObjectHideFlags: 0
