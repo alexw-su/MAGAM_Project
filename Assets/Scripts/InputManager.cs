@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
         }
     }
     private PlayerInput playerInput;
+    private bool held;
+
 
     private void Awake()
     {
@@ -57,6 +59,29 @@ public class InputManager : MonoBehaviour
     public bool GetPlayerInteracted()
     {
         return playerInput.Player.Interact.triggered;
+    }
+
+    public bool GetPlayerGrabbed()
+    {
+        var grab = playerInput.Player.Grab;
+        
+        // sets held to true if the player has held the button down longer than the threshold
+        if (grab.IsPressed() && grab.triggered) {
+            held = true;
+        }
+
+        // If the player is still holding the button down after threshold, return true
+        if (grab.IsPressed() && held)
+        {
+            return true;
+        }
+        
+        // Return false when player lets go of button
+        if (!grab.IsPressed())
+        {
+            held = false;
+        }
+        return false;
     }
 
 }
