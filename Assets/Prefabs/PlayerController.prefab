@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 3987942562838380902}
   - component: {fileID: 4208213373566483209}
   - component: {fileID: -200996753769108827}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastLength: 3
   cameraReference: {fileID: 0}
-  greyMaterial: {fileID: 2100000, guid: ebd7dfd52f475f14f8c45539b736dccb, type: 2}
   yellowMaterial: {fileID: 2100000, guid: 8bd3fc483db597c4891caf384fc8a2d0, type: 2}
 --- !u!1 &7341983364329563402
 GameObject:
