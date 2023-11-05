@@ -19,6 +19,10 @@ public partial class Puzzle2
         {
             base.OnStateEnter();
 
+            Manager.crystal.SetActive(true);
+            Manager.doorBlock.GetComponent<Collider>().enabled = false;
+            Manager.particles1.gameObject.SetActive(true);
+            Manager.particles2.gameObject.SetActive(true);
         }
 
 

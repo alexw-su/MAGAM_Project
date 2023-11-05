@@ -10,10 +10,14 @@ public enum Puzzle2States
 
 public partial class Puzzle2 : MarcimanStateMachine
 {
-
     private Puzzle2States _currentState;
+
+    [Header("PuzzleElements")]
+    public ClockScript clock;
     public GameObject crystal;
     public GameObject doorBlock;
+
+    [Header("Particle Systems")]
     public ParticleSystem particles1;
     public ParticleSystem particles2;
 
@@ -22,13 +26,10 @@ public partial class Puzzle2 : MarcimanStateMachine
     void Start()
     {
         ChangeState(Puzzle2States.Idle);
+
         crystal.SetActive(false);
         particles1.gameObject.SetActive(false);
         particles2.gameObject.SetActive(false);
-    }
-    public void Change(Puzzle2States newState)
-    {
-        ChangeState(newState);
     }
 
     private void ChangeState(Puzzle2States newState)
@@ -42,16 +43,8 @@ public partial class Puzzle2 : MarcimanStateMachine
                 break;
             case Puzzle2States.TimeSet:
                 SetState(new State_TimeSet(this));
-                OnStateEnter(newState);
                 break;
         }
-    }
-    private void OnStateEnter(Puzzle2States state)
-    {
-        crystal.SetActive(true);
-        doorBlock.GetComponent<Collider>().enabled = false;
-        particles1.gameObject.SetActive(true);
-        particles2.gameObject.SetActive(true);
     }
 }
 
