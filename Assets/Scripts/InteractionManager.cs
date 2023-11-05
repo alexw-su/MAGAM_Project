@@ -8,7 +8,7 @@ public class InteractionManager : MonoBehaviour
     public GameObject cameraReference;
 
     // this probably wont be needed later on, but right now thats how I highlight what player is looking at
-    public Material greyMaterial;
+    private Material _originalMaterial;
     public Material yellowMaterial;
 
     GameObject _lastLookedAt;
@@ -35,7 +35,7 @@ public class InteractionManager : MonoBehaviour
         if (_interactableObjects.Count <= 0)
             return;
 
-        foreach(var obj in _interactableObjects)
+        foreach (var obj in _interactableObjects)
         {
             obj.OnInteractionRunning();
         }
@@ -74,18 +74,23 @@ public class InteractionManager : MonoBehaviour
     {
         // highlight interactive object
         MeshRenderer renderer = hitInfo.collider.GetComponent<MeshRenderer>();
+
         if (renderer != null)
         {
+            if (_originalMaterial == null)
+            {
+                _originalMaterial = new Material(renderer.material);
+            }
             renderer.material = yellowMaterial;
         }
 
         // If object is interacted, run Interact() on all interactable scripts
-        if (inputManager.GetPlayerInteracted()) 
-        {   
+        if (inputManager.GetPlayerInteracted())
+        {
             var interactables = hitInfo.collider.GetComponents<IInteractable>();
-            if (interactables != null) 
+            if (interactables != null)
             {
-                foreach (IInteractable script in interactables) 
+                foreach (IInteractable script in interactables)
                 {
                     script.OnInteractionStart(false);
                 }
@@ -97,7 +102,7 @@ public class InteractionManager : MonoBehaviour
         {
             var interactables = hitInfo.collider.GetComponents<IInteractable>();
 
-            if(interactables != null)
+            if (interactables != null)
             {
                 //Run OnInteractionStart with parameter true for grabbing.
                 //Also add IInteractable to List of currently active Interactables for running OnInteractionRunning in the update.
@@ -109,7 +114,7 @@ public class InteractionManager : MonoBehaviour
                 }
                 _isGrabbing = true;
             }
-        } 
+        }
         else
         {
             var interactables = hitInfo.collider.GetComponents<IInteractable>();
@@ -131,7 +136,7 @@ public class InteractionManager : MonoBehaviour
                 }
             }
         }
-        
+
         // remove highlight
         _lastLookedAt = hitInfo.collider.gameObject;
     }
@@ -144,9 +149,10 @@ public class InteractionManager : MonoBehaviour
             MeshRenderer lastRenderer = _lastLookedAt.GetComponent<MeshRenderer>();
             if (lastRenderer != null)
             {
-                lastRenderer.material = greyMaterial;
+                lastRenderer.material = _originalMaterial;
             }
             _lastLookedAt = null;
+            _originalMaterial = null;
         }
     }
 }

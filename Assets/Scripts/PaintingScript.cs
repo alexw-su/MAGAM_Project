@@ -10,7 +10,14 @@ public class PaintingScript : MonoBehaviour, IInteractable
 
     void Start()
     {
-        messageList = JsonUtility.FromJson<MessageList>(textJson.text);
+        if (textJson != null)
+        {
+            messageList = JsonUtility.FromJson<MessageList>(textJson.text);
+        }
+        else
+        {
+            Debug.Log("textJson is not assigned. Please assign a TextAsset with the JSON data.");
+        }
     }
 
 
