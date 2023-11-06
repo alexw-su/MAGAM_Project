@@ -23,6 +23,8 @@ public partial class Puzzle2
             Manager.doorBlock.GetComponent<Collider>().enabled = false;
             Manager.particles1.gameObject.SetActive(true);
             Manager.particles2.gameObject.SetActive(true);
+
+            RenderSettings.skybox = Manager.skyBoxMaterialNight;
         }
 
 

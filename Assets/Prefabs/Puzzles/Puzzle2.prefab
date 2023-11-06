@@ -7048,6 +7048,7 @@ MonoBehaviour:
   clock: {fileID: 1275657197688322813}
   crystal: {fileID: 3010595237033101743}
   doorBlock: {fileID: 2919147069639517644}
+  skyBoxMaterialNight: {fileID: 2100000, guid: fcde4a164e806254893b840c7900a03b, type: 2}
   particles1: {fileID: 9057111758547190977}
   particles2: {fileID: 5179280234347226294}
 --- !u!1 &5363302702194812714
