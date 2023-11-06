@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4053178081516088368}
   m_Layer: 0
-  m_Name: Teleport_Into_Puzzle_Location
+  m_Name: Teleport_OutOf_Puzzle_Location
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 1217159437525656444}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.19, y: 4.48, z: -11.08}
+  m_LocalPosition: {x: -6.45002, y: 5.5543013, z: -10.936789}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 3207321760285384796}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 216.8, y: -32.3, z: 0}
+  m_LocalPosition: {x: 2000, y: 2000, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -374,8 +374,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5934514522960765358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16728498, y: 0, z: 0, w: 0.9859086}
-  m_LocalPosition: {x: 204.36, y: -24.53, z: -22.07}
+  m_LocalRotation: {x: 0.15270245, y: 0.048054058, z: -0.0077119423, w: 0.98707306}
+  m_LocalPosition: {x: 1987.39, y: 2008.11, z: -21.93}
   m_LocalScale: {x: 1, y: 1, z: 0.16}
   m_ConstrainProportionsScale: 0
   m_Children: []
