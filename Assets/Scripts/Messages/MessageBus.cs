@@ -11,7 +11,6 @@ public class MessageBus : MonoBehaviour
 
     private void Start()
     {
-        messagePanel.SetActive(false);
     }
 
     public void AddMessage(string text, float displayTime)

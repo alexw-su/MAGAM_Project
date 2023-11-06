@@ -7,15 +7,17 @@ public class CanvasMessage
 {
     public string text;
     public float displayTime;
+    public bool viewed;
 
     public CanvasMessage(string text, float displayTime)
     {
         this.text = text;
         this.displayTime = displayTime;
+        this.viewed = false;
     }
 }
 [System.Serializable]
-public class MessageList
+public class MessageContainer
 {
-    public CanvasMessage[] messages;
+    public Dictionary<string, CanvasMessage> messages;
 }
