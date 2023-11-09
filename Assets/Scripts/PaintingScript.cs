@@ -6,30 +6,52 @@ public class PaintingScript : MonoBehaviour, IInteractable
 {
     public GameObject puzzleLocation;
     public string messageKey;
+    public Animator transition;
+
+    private PlayerController _playerController;
+    private float transitionTime;
 
     void Start()
     {
-
+        transitionTime = 1f;
+        _playerController = FindObjectOfType<PlayerController>();
     }
-
 
     public void OnInteractionStart(bool isGrabbing)
     {
         if (isGrabbing)
             return;
+        
+        StartCoroutine(WindUpTeleport());
 
-        PlayerController playerController = FindObjectOfType<PlayerController>();
-        if (playerController != null)
+        //SendMessagesToMessageBus();
+    }
+
+    private IEnumerator WindUpTeleport()
+    {
+        // Play Fade transition
+        transition.SetTrigger("FadeOut");
+
+        // Wait for Fade
+        yield return new WaitForSeconds(transitionTime);
+
+        // Teleport Player
+        Teleport();
+    }
+
+    private void Teleport()
+    {
+        if (_playerController != null)
         {
-            playerController.TeleportTo = puzzleLocation.transform.position;
+            _playerController.TeleportTo = puzzleLocation.transform.position;
             MessageGeneral messageGeneral = FindObjectOfType<MessageGeneral>();
             if (messageGeneral != null)
             {
                 messageGeneral.SendMessageByKey(messageKey);
             }
         }
-        //SendMessagesToMessageBus();
 
+        transition.SetTrigger("FadeIn");
     }
 
 
