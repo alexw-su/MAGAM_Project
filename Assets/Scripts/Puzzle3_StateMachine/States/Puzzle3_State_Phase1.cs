@@ -18,7 +18,7 @@ public partial class Puzzle3_StateMachine
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-
+            
             InitPuzzle3State(2, Puzzle3Elements.Fire);
         }
 
@@ -32,6 +32,12 @@ public partial class Puzzle3_StateMachine
         public override void OnStateExit()
         {
             base.OnStateExit();
+
+            if (IsExitEvil())
+            {
+                //Trigger some sort of indication that you failed :D
+                Debug.Log("You failed lol!!!!");
+            }
         }
         #endregion
     }

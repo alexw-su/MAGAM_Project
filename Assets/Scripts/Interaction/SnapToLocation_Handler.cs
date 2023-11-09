@@ -12,7 +12,7 @@ public class SnapToLocation_Handler : MonoBehaviour
     public delegate void SnappedToLocation(GameObject gameObject);
     public event SnappedToLocation OnSnappedToLocation;
 
-
+    //Will Trigger the OnSnappedToLocation Event
     public void TriggerSnappedToLocation(GameObject snappedObject)
     {
         OnSnappedToLocation?.Invoke(snappedObject);

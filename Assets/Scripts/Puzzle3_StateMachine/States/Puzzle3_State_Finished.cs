@@ -19,6 +19,7 @@ public partial class Puzzle3_StateMachine
         {
             base.OnStateEnter();
 
+            Debug.Log("You have solved the puzzle, Congrats!");
         }
 
 
