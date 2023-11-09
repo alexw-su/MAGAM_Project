@@ -15,6 +15,7 @@ public class MessageBus : MonoBehaviour
 
     public void AddMessage(string text, float displayTime)
     {
+        Debug.Log("ADDD");
         CanvasMessage message = new CanvasMessage(text, displayTime);
         messageQueue.Enqueue(message);
 
