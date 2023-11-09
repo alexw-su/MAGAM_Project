@@ -7,6 +7,7 @@ TagManager:
   - Interactable
   - Audio
   - painting
+  - Puzzle3_Cauldron
   layers:
   - Default
   - TransparentFX

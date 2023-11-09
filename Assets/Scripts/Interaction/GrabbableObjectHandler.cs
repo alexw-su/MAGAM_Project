@@ -9,6 +9,9 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
 
     private bool _isGrabbed = false;
 
+    public delegate void GrabLetGo();
+    public event GrabLetGo OnGrabLetGo;
+
 
     void Start()
     { 
@@ -21,8 +24,6 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
     {
         if (!isGrabbing)
             return;
-
-        Debug.Log("now start grabbing");
 
         _isGrabbed = true;
 
@@ -47,5 +48,8 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
         _isGrabbed = false;
 
         rb.useGravity = true;
+
+        //Is Called to every subscribed object when grab is being let go.
+        OnGrabLetGo?.Invoke();
     }
 }

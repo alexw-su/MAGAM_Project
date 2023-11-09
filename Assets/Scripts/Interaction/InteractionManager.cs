@@ -154,6 +154,8 @@ public class InteractionManager : MonoBehaviour
             _originalMaterial = null;
         }
     }
+
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collide:" + other.name);
@@ -165,6 +167,22 @@ public class InteractionManager : MonoBehaviour
                 messageGeneral.SendMessageByKey(other.name);
             }
         }
+    }
+
+
+    //For Outside access to Raycast hits
+    public RaycastHit GetRaycastHit()
+    {
+        Vector3 rayDirection = cameraReference.transform.forward;
+
+        RaycastHit hitInfo = new RaycastHit();
+
+        if (Physics.Raycast(cameraReference.transform.position, rayDirection, out hitInfo, raycastLength))
+        {
+            return hitInfo;
+        }
+
+        return hitInfo;
     }
 }
 
