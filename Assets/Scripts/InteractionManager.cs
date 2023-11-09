@@ -136,7 +136,6 @@ public class InteractionManager : MonoBehaviour
                 }
             }
         }
-
         // remove highlight
         _lastLookedAt = hitInfo.collider.gameObject;
     }
@@ -153,6 +152,18 @@ public class InteractionManager : MonoBehaviour
             }
             _lastLookedAt = null;
             _originalMaterial = null;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("collide:" + other.name);
+        if (other.name.StartsWith("Msg"))
+        {
+            MessageGeneral messageGeneral = FindObjectOfType<MessageGeneral>();
+            if (messageGeneral != null)
+            {
+                messageGeneral.SendMessageByKey(other.name);
+            }
         }
     }
 }

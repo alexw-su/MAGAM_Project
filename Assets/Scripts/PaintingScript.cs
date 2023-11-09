@@ -5,19 +5,11 @@ using UnityEngine;
 public class PaintingScript : MonoBehaviour, IInteractable
 {
     public GameObject puzzleLocation;
-    public TextAsset textJson;
-    public MessageList messageList = new MessageList();
+    public string messageKey;
 
     void Start()
     {
-        if (textJson != null)
-        {
-            messageList = JsonUtility.FromJson<MessageList>(textJson.text);
-        }
-        else
-        {
-            Debug.Log("textJson is not assigned. Please assign a TextAsset with the JSON data.");
-        }
+
     }
 
 
@@ -30,21 +22,27 @@ public class PaintingScript : MonoBehaviour, IInteractable
         if (playerController != null)
         {
             playerController.TeleportTo = puzzleLocation.transform.position;
+            MessageGeneral messageGeneral = FindObjectOfType<MessageGeneral>();
+            if (messageGeneral != null)
+            {
+                messageGeneral.SendMessageByKey(messageKey);
+            }
         }
-        SendMessagesToMessageBus();
+        //SendMessagesToMessageBus();
+
     }
 
 
     private void SendMessagesToMessageBus()
     {
-        MessageBus messageBus = FindObjectOfType<MessageBus>();
+        //MessageBus messageBus = FindObjectOfType<MessageBus>();
 
-        if (messageBus != null && messageList != null && messageList.messages != null)
-        {
-            foreach (CanvasMessage message in messageList.messages)
-            {
-                messageBus.AddMessage(message.text, message.displayTime);
-            }
-        }
+        //if (messageBus != null && messageList != null && messageList.messages != null)
+        //{
+        //    foreach (CanvasMessage message in messageList.messages)
+        //    {
+        //        messageBus.AddMessage(message.text, message.displayTime);
+        //    }
+        //}
     }
 }

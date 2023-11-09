@@ -36,12 +36,14 @@ public partial class Puzzle1 : MarcimanStateMachine {
         }
     }
 
+
 	public void Change(puzzle1States newState) 
 	{
 		ChangeState(newState);
 	}
 
-	public void SetActiveTree(bool enable)
+
+	private void SetActiveTree(bool enable)
 	{
 		tree.SetActive(enable);
 	}

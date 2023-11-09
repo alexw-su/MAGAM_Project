@@ -1,12 +1,12 @@
 {
-   "messages":[
-      {
-         "text":"You looked at a painting, congratulations!",
-         "displayTime":2
-      },
-      {
-         "text":"Second messaag",
-         "displayTime":2
-      }
-   ]
+    "messages": {
+        "painting1Enter": {
+            "text": "My adventure at the Brushwood residence is just about to begin! According to my sources the house should be nearby.",
+            "displayTime": 6
+        },
+        "": {
+            "text": "Here it is! Now I just have to figure out how to get inside.",
+            "displayTime": 5
+        }
+    }
 }

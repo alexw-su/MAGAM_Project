@@ -18,7 +18,7 @@ public partial class Puzzle1
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-            Debug.Log("Entered Idle State");
+            //Debug.Log("Entered Idle State");
             Manager.SetActiveTree(false);
         }
 
@@ -32,7 +32,7 @@ public partial class Puzzle1
         public override void OnStateExit()
         {
             base.OnStateExit();
-            Debug.Log("Exiting Idle State");
+            //Debug.Log("Exiting Idle State");
         }
         #endregion
     }

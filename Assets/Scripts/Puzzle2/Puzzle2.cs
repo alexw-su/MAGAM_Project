@@ -16,6 +16,8 @@ public partial class Puzzle2 : MarcimanStateMachine
     public ClockScript clock;
     public GameObject crystal;
     public GameObject doorBlock;
+    [Space]
+    public Material skyBoxMaterialNight;
 
     [Header("Particle Systems")]
     public ParticleSystem particles1;
