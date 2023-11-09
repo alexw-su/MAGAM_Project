@@ -9,12 +9,12 @@ public class SnapToLocation_Handler : MonoBehaviour
     public Transform SnapToLocation { get => snapToLocation; }
 
 
-    public delegate void SnappedToLocation();
+    public delegate void SnappedToLocation(GameObject gameObject);
     public event SnappedToLocation OnSnappedToLocation;
 
 
-    public void TriggerSnappedToLocation()
+    public void TriggerSnappedToLocation(GameObject snappedObject)
     {
-        OnSnappedToLocation?.Invoke();
+        OnSnappedToLocation?.Invoke(snappedObject);
     }
 }

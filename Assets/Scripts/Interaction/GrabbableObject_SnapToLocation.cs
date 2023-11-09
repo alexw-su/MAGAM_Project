@@ -57,6 +57,6 @@ public class GrabbableObject_SnapToLocation : MonoBehaviour
         }
 
         transform.position = _snapToLocation_Handler.SnapToLocation.position;
-        _snapToLocation_Handler.TriggerSnappedToLocation();
+        _snapToLocation_Handler.TriggerSnappedToLocation(this.gameObject);
     }
 }
