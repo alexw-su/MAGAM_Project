@@ -14,7 +14,6 @@ public class MessageController : MonoBehaviour
         if (textJson != null)
         {
             messageContainer = JsonConvert.DeserializeObject<MessageContainer>(textJson.text);
-            //SendMessageToBus(messageContainer.messages["StartMessage"]);
         }
         else
         {
