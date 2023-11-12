@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9121228046260776726}
   - component: {fileID: 1695061843469648955}
   - component: {fileID: 6517844014336921694}
+  - component: {fileID: 3621310787479529899}
   m_Layer: 0
   m_Name: Painting_Upstairs
   m_TagString: Interactable
@@ -119,9 +120,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleLocation: {fileID: 1984904946069446770}
-  textJson: {fileID: 0}
-  messageList:
-    messages: []
+  messageKey: paintingIn
+--- !u!114 &3621310787479529899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160033254344596416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9f50d00e982c74d9dc7de3bda7cc08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textJson: {fileID: 4900000, guid: a373b7a10c186d345a6394a65b1ad567, type: 3}
+  isTrigger: 0
+  messageKeys: []
 --- !u!1 &273067122751337094
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +254,7 @@ GameObject:
   - component: {fileID: 7119158312007473951}
   - component: {fileID: 270467541572243744}
   - component: {fileID: 5351919876089224689}
+  - component: {fileID: 3791496224644807549}
   m_Layer: 0
   m_Name: Painting_InsidePuzzle2
   m_TagString: Interactable
@@ -346,9 +361,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleLocation: {fileID: 6040880398161705529}
-  textJson: {fileID: 0}
-  messageList:
-    messages: []
+  messageKey: paintingOut
+--- !u!114 &3791496224644807549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352189185688962281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9f50d00e982c74d9dc7de3bda7cc08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textJson: {fileID: 4900000, guid: a373b7a10c186d345a6394a65b1ad567, type: 3}
+  isTrigger: 0
+  messageKeys: []
 --- !u!1 &469727085112153819
 GameObject:
   m_ObjectHideFlags: 0
