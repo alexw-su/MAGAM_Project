@@ -1,11 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
+    [Header("Raycast")]
     public float raycastLength = 10f;
     public GameObject cameraReference;
+
+    [Header("Grabbing")]
+    [SerializeField] private Transform interactionHolder;
+    [SerializeField] private Transform interactionPoint;
+    [Space]
+    //[SerializeField] float grabSnapThreshold = 0.5f; --> Keeping this here so that we don't have to add it again if we want to use it
+    [SerializeField] float grabLerpingSpeed = 0.5f;
+    [SerializeField] AnimationCurve grabLerpCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     // this probably wont be needed later on, but right now thats how I highlight what player is looking at
     private Material _originalMaterial;
@@ -19,6 +29,11 @@ public class InteractionManager : MonoBehaviour
     private List<IInteractable> _interactableObjects;
     private bool _isGrabbing = false;
 
+
+    public Transform InteractionPoint { get => interactionPoint; }
+    //public float GrabSnapThreshold { get => grabSnapThreshold; }
+    public float GrabLerpingSpeed { get => grabLerpingSpeed; }
+
     void Start()
     {
         // Gets Input Manager from scene
@@ -31,6 +46,7 @@ public class InteractionManager : MonoBehaviour
     void Update()
     {
         RaycastPlayerAim();
+        InteractionHolderUpdate();
 
         if (_interactableObjects.Count <= 0)
             return;
@@ -40,7 +56,6 @@ public class InteractionManager : MonoBehaviour
             obj.OnInteractionRunning();
         }
     }
-
 
     void RaycastPlayerAim()
     {
@@ -67,6 +82,13 @@ public class InteractionManager : MonoBehaviour
             // debugging
             Debug.DrawRay(transform.position, rayDirection * raycastLength, Color.red);
         }
+    }
+
+
+    //Matches rotation of InteracitonHolder to Main Camera
+    private void InteractionHolderUpdate()
+    {
+        interactionHolder.transform.rotation = cameraReference.transform.rotation;
     }
 
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GrabbableObjectHandler : MonoBehaviour, IInteractable
 {
-    Rigidbody rb;
-    public Transform holdingPoint;
+    private Rigidbody _rb;
+    private InteractionManager _interactionManager;
 
     private bool _isGrabbed = false;
 
@@ -16,7 +16,8 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
     void Start()
     { 
         // Gets the rigidbody component of the object
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
+        _interactionManager = FindObjectOfType<InteractionManager>();
     }
 
     //Is called, when OnInteraction Start is called with the isGrabbing attached
@@ -27,7 +28,7 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
 
         _isGrabbed = true;
 
-        rb.useGravity = false;
+        _rb.useGravity = false;
     }
 
 
@@ -37,8 +38,7 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
         if (!_isGrabbed)
             return;
 
-        // Moves object to the holding point
-        rb.MovePosition(holdingPoint.position);
+        transform.position = Vector3.Lerp(transform.position, _interactionManager.InteractionPoint.position, _interactionManager.GrabLerpingSpeed * Time.deltaTime);
     }
 
 
@@ -47,9 +47,15 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
     {
         _isGrabbed = false;
 
-        rb.useGravity = true;
+        _rb.useGravity = true;
 
         //Is Called to every subscribed object when grab is being let go.
         OnGrabLetGo?.Invoke();
     }
+
+    //Check if snap threshold is reached to position can be snapped to it
+    /*private bool CheckIfThresholdReached()
+    {
+        return Vector3.Distance(transform.position, _interactionManager.InteractionPoint.position) <= _interactionManager.GrabSnapThreshold;
+    }*/
 }
