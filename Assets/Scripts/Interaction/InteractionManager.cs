@@ -29,9 +29,9 @@ public class InteractionManager : MonoBehaviour
     private List<IInteractable> _interactableObjects;
     private bool _isGrabbing = false;
 
-
+    //These Properties are so that you can access their value from the outside, but not change them from the outside.
+    //Just good practise.
     public Transform InteractionPoint { get => interactionPoint; }
-    //public float GrabSnapThreshold { get => grabSnapThreshold; }
     public float GrabLerpingSpeed { get => grabLerpingSpeed; }
 
     void Start()
@@ -85,7 +85,7 @@ public class InteractionManager : MonoBehaviour
     }
 
 
-    //Matches rotation of InteracitonHolder to Main Camera
+    //Matches rotation of InteractionHolder to Main Camera
     private void InteractionHolderUpdate()
     {
         interactionHolder.transform.rotation = cameraReference.transform.rotation;

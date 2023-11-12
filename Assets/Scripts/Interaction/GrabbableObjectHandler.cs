@@ -53,6 +53,9 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
         OnGrabLetGo?.Invoke();
     }
 
+
+
+
     //Check if snap threshold is reached to position can be snapped to it
     /*private bool CheckIfThresholdReached()
     {
