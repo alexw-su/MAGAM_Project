@@ -1,12 +1,19 @@
 {
     "messages": {
-        "painting1Enter": {
-            "text": "My adventure at the Brushwood residence is just about to begin! According to my sources the house should be nearby.",
-            "displayTime": 6
-        },
-        "": {
-            "text": "Here it is! Now I just have to figure out how to get inside.",
+        "paintingArea": {
+            "text": "This painting seems magically... odd, I should investigate it.",
             "displayTime": 5
-        }
+        },
+        "paintingIn": {
+            "text": "Wow, what just happend. I've been transferred to the painting. 
+            The stories about the residence are true. I can probably get out of the painting the 
+            same way I got it in, but before I do that, maybe I can try to see if there is something 
+            that will help me get inside of the house.",
+            "displayTime": 10
+        },
+        "paintingOut": {
+            "text": "I made it back! Lets see what happened here while I was in the painting.",
+            "displayTime": 5
+        },
     }
 }
