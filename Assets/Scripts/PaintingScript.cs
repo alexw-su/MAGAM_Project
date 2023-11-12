@@ -7,6 +7,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
     public GameObject puzzleLocation;
     public string messageKey;
     public Animator transition;
+    public Material distortionMaterial;
 
     private PlayerController _playerController;
     private float transitionTime;
@@ -33,6 +34,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
         transition.SetTrigger("FadeOut");
 
         // Wait for Fade
+        distortionMaterial.SetFloat("_Blend", 0.5f);
         yield return new WaitForSeconds(transitionTime);
 
         // Teleport Player
@@ -50,7 +52,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
                 messageGeneral.SendMessageByKey(messageKey);
             }
         }
-
+        distortionMaterial.SetFloat("_Blend", 0f);
         transition.SetTrigger("FadeIn");
     }
 

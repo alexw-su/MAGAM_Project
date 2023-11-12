@@ -765,6 +765,7 @@ MonoBehaviour:
   puzzleLocation: {fileID: 1877614650}
   messageKey: 
   transition: {fileID: 275577659}
+  distortionMaterial: {fileID: 2100000, guid: f5cc2cde1c6fb5949bf4704812f7cff8, type: 2}
 --- !u!1 &1518881757
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +848,7 @@ MonoBehaviour:
   puzzleLocation: {fileID: 2144960894}
   messageKey: 
   transition: {fileID: 275577659}
+  distortionMaterial: {fileID: 2100000, guid: f5cc2cde1c6fb5949bf4704812f7cff8, type: 2}
 --- !u!65 &1621813849
 BoxCollider:
   m_ObjectHideFlags: 0
