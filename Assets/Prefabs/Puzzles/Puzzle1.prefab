@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7114982676638906199}
   - component: {fileID: 4120444002609799944}
   - component: {fileID: 5566011076528558954}
+  - component: {fileID: 6385319767059964815}
   - component: {fileID: 5130104329600949048}
   m_Layer: 0
   m_Name: PorchPainting
@@ -151,9 +152,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleLocation: {fileID: 260679863008226246}
-  textJson: {fileID: 0}
-  messageList:
-    messages: []
+  messageKey: paintingIn
+--- !u!114 &6385319767059964815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563273949098168346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9f50d00e982c74d9dc7de3bda7cc08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textJson: {fileID: 4900000, guid: 6e06c3faa7f9785429530f2d024c7f4e, type: 3}
+  isTrigger: 0
+  messageKeys: []
 --- !u!114 &5130104329600949048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +373,7 @@ GameObject:
   - component: {fileID: 4570798198402540518}
   - component: {fileID: 8523495668613145649}
   - component: {fileID: 9116892355732775214}
+  - component: {fileID: 270141649791791848}
   m_Layer: 0
   m_Name: PuzzlePainting
   m_TagString: Interactable
@@ -465,9 +480,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleLocation: {fileID: 1217159437525656444}
-  textJson: {fileID: 0}
-  messageList:
-    messages: []
+  messageKey: paintingOut
+--- !u!114 &270141649791791848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934514522960765358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9f50d00e982c74d9dc7de3bda7cc08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textJson: {fileID: 4900000, guid: 6e06c3faa7f9785429530f2d024c7f4e, type: 3}
+  isTrigger: 0
+  messageKeys: []
 --- !u!1 &6245636167979380012
 GameObject:
   m_ObjectHideFlags: 0

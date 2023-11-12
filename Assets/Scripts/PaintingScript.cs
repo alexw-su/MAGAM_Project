@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PaintingScript : MonoBehaviour, IInteractable
@@ -20,6 +21,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
     private float minDistortionValue; 
     private float maxDistortionValue; 
     private float timeElapsed;
+
 
     void Start()
     {
@@ -86,11 +88,17 @@ public class PaintingScript : MonoBehaviour, IInteractable
         if (_playerController != null)
         {
             _playerController.TeleportTo = puzzleLocation.transform.position;
-            MessageGeneral messageGeneral = FindObjectOfType<MessageGeneral>();
-            if (messageGeneral != null)
-            {
-                messageGeneral.SendMessageByKey(messageKey);
-            }
+        }
+        
+        MessageController messageController = GetComponent<MessageController>();
+
+        if (messageController == null)
+        {
+            Debug.LogError("messageController not found!");
+        }
+        else
+        {
+            messageController.SendMessageByKey(messageKey);
         }
 
         // Reset Distortion
@@ -100,19 +108,5 @@ public class PaintingScript : MonoBehaviour, IInteractable
         
         // Fade in
         transition.SetTrigger("FadeIn");
-    }
-
-
-    private void SendMessagesToMessageBus()
-    {
-        //MessageBus messageBus = FindObjectOfType<MessageBus>();
-
-        //if (messageBus != null && messageList != null && messageList.messages != null)
-        //{
-        //    foreach (CanvasMessage message in messageList.messages)
-        //    {
-        //        messageBus.AddMessage(message.text, message.displayTime);
-        //    }
-        //}
     }
 }
