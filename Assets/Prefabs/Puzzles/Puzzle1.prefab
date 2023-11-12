@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzleLocation: {fileID: 260679863008226246}
   messageKey: paintingIn
+  transition: {fileID: 0}
+  distortionMaterial: {fileID: 2100000, guid: f5cc2cde1c6fb5949bf4704812f7cff8, type: 2}
 --- !u!114 &6385319767059964815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +483,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzleLocation: {fileID: 1217159437525656444}
   messageKey: paintingOut
+  transition: {fileID: 0}
+  distortionMaterial: {fileID: 2100000, guid: f5cc2cde1c6fb5949bf4704812f7cff8, type: 2}
 --- !u!114 &270141649791791848
 MonoBehaviour:
   m_ObjectHideFlags: 0
