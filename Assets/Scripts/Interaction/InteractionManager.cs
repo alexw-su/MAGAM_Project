@@ -17,14 +17,11 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] float grabLerpingSpeed = 0.5f;
     [SerializeField] AnimationCurve grabLerpCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
-    // this probably wont be needed later on, but right now thats how I highlight what player is looking at
-    private Material _originalMaterial;
-    public Material yellowMaterial;
-
-    GameObject _lastLookedAt;
+    private int _highlightMask;
+    private int _defaultMask;
+    private GameObject _lastLookedAt;
 
     InputManager inputManager;
-
 
     private List<IInteractable> _interactableObjects;
     private bool _isGrabbing = false;
@@ -33,7 +30,11 @@ public class InteractionManager : MonoBehaviour
     //Just good practise.
     public Transform InteractionPoint { get => interactionPoint; }
     public float GrabLerpingSpeed { get => grabLerpingSpeed; }
-
+    private void Awake()
+    {
+        _highlightMask = LayerMask.NameToLayer("Highlight");
+        _defaultMask = LayerMask.NameToLayer("Default");
+    }
     void Start()
     {
         // Gets Input Manager from scene
@@ -95,15 +96,12 @@ public class InteractionManager : MonoBehaviour
     void HandleLookingAtObject(RaycastHit hitInfo)
     {
         // highlight interactive object
-        MeshRenderer renderer = hitInfo.collider.GetComponent<MeshRenderer>();
+        GameObject target = hitInfo.collider.gameObject;
 
-        if (renderer != null)
+        if (_lastLookedAt != target)
         {
-            if (_originalMaterial == null)
-            {
-                _originalMaterial = new Material(renderer.material);
-            }
-            renderer.material = yellowMaterial;
+            _lastLookedAt = target;
+            _lastLookedAt.layer = _highlightMask;
         }
 
         // If object is interacted, run Interact() on all interactable scripts
@@ -158,8 +156,6 @@ public class InteractionManager : MonoBehaviour
                 }
             }
         }
-        // remove highlight
-        _lastLookedAt = hitInfo.collider.gameObject;
     }
 
 
@@ -167,13 +163,8 @@ public class InteractionManager : MonoBehaviour
     {
         if (_lastLookedAt != null)
         {
-            MeshRenderer lastRenderer = _lastLookedAt.GetComponent<MeshRenderer>();
-            if (lastRenderer != null)
-            {
-                lastRenderer.material = _originalMaterial;
-            }
+            _lastLookedAt.layer = _defaultMask;
             _lastLookedAt = null;
-            _originalMaterial = null;
         }
     }
 
