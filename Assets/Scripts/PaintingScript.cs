@@ -1,17 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PaintingScript : MonoBehaviour, IInteractable
 {
     public GameObject puzzleLocation;
     public string messageKey;
-
-    void Start()
-    {
-
-    }
-
 
     public void OnInteractionStart(bool isGrabbing)
     {
@@ -22,27 +17,17 @@ public class PaintingScript : MonoBehaviour, IInteractable
         if (playerController != null)
         {
             playerController.TeleportTo = puzzleLocation.transform.position;
-            MessageGeneral messageGeneral = FindObjectOfType<MessageGeneral>();
-            if (messageGeneral != null)
-            {
-                messageGeneral.SendMessageByKey(messageKey);
-            }
         }
-        //SendMessagesToMessageBus();
 
-    }
+        MessageController messageController = GetComponent<MessageController>();
 
-
-    private void SendMessagesToMessageBus()
-    {
-        //MessageBus messageBus = FindObjectOfType<MessageBus>();
-
-        //if (messageBus != null && messageList != null && messageList.messages != null)
-        //{
-        //    foreach (CanvasMessage message in messageList.messages)
-        //    {
-        //        messageBus.AddMessage(message.text, message.displayTime);
-        //    }
-        //}
+        if (messageController == null)
+        {
+            Debug.LogError("messageController not found!");
+        }
+        else
+        {
+            messageController.SendMessageByKey(messageKey);
+        }
     }
 }
