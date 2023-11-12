@@ -177,21 +177,6 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("collide:" + other.name);
-        if (other.name.StartsWith("Msg"))
-        {
-            MessageGeneral messageGeneral = FindObjectOfType<MessageGeneral>();
-            if (messageGeneral != null)
-            {
-                messageGeneral.SendMessageByKey(other.name);
-            }
-        }
-    }
-
-
     //For Outside access to Raycast hits
     public RaycastHit GetRaycastHit()
     {
