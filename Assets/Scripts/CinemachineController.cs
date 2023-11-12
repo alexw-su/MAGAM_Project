@@ -33,6 +33,9 @@ public class CinemachineController : CinemachineExtension
 
     protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam, CinemachineCore.Stage stage, ref CameraState state, float deltaTime)
     {
+        if(!Application.isPlaying)
+            return;
+
         if (vcam.Follow)
         {
             // Checks if we are in the stage which orients the camera's target point
