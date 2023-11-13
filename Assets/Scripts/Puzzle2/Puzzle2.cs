@@ -5,6 +5,7 @@ using static UnityEngine.ParticleSystem;
 public enum Puzzle2States
 {
     Idle,
+    PointerPlaced,
     TimeSet,
 }
 
@@ -42,6 +43,9 @@ public partial class Puzzle2 : MarcimanStateMachine
         {
             case Puzzle2States.Idle:
                 SetState(new State_Idle(this));
+                break;
+            case Puzzle2States.PointerPlaced:
+                SetState(new State_PointerPlaced(this));
                 break;
             case Puzzle2States.TimeSet:
                 SetState(new State_TimeSet(this));

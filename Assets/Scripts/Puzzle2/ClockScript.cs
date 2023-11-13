@@ -15,14 +15,17 @@ public class ClockScript : MonoBehaviour, IInteractable
 
     public void OnInteractionStart(bool isGrabbing)
     {
-        transform.Rotate(0, -20, 0);
-
-        float yRotation = transform.localEulerAngles.y % 360;
-
-        //Mathf.Abs returns the absolute value (as in makes it positive) of the rotation, simplyfies the if statement
-        if (Mathf.Abs(yRotation) <= clockSolvedThreshold)
+        if (stateManager.CurrentState != Puzzle2States.PointerPlaced)
         {
-            OnClockSolved?.Invoke();
+            transform.Rotate(0, -20, 0);
+
+            float yRotation = transform.localEulerAngles.y % 360;
+
+            if (Mathf.Abs(yRotation) <= clockSolvedThreshold)
+            {
+                OnClockSolved?.Invoke();
+            }
         }
+
     }
 }
