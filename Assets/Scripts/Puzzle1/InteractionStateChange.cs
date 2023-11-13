@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractionStateChange : MonoBehaviour, IInteractable
+public class InteractionStateChange : MonoBehaviour
 {   
     public Puzzle1 stateMachine;
     public puzzle1States state;
+    public GameObject gameObjectToCollide;
 
-    public void OnInteractionStart(bool isGrabbing)
+    void OnTriggerEnter(Collider other)
     {
-        if (isGrabbing)
-            return;
-
-        stateMachine.Change(state);
+        if(other.gameObject == gameObjectToCollide)
+        {
+            stateMachine.Change(state);
+        }
     }
 }
