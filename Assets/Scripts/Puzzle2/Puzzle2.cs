@@ -14,7 +14,8 @@ public partial class Puzzle2 : MarcimanStateMachine
     private Puzzle2States _currentState;
 
     [Header("PuzzleElements")]
-    public ClockScript clock;
+    public GameObject clock1;
+    public GameObject clock2;
     public GameObject crystal;
     public GameObject doorBlock;
     [Space]

@@ -101,7 +101,7 @@ public class InteractionManager : MonoBehaviour
         if (_lastLookedAt != target)
         {
             _lastLookedAt = target;
-            _lastLookedAt.layer = _highlightMask;
+            SetLayerRecursively(_lastLookedAt.transform, _highlightMask);
         }
 
         // If object is interacted, run Interact() on all interactable scripts
@@ -147,7 +147,6 @@ public class InteractionManager : MonoBehaviour
                     //Calling OnInteractionStop, and removing IInteractable reference from interactableObject list. 
                     foreach (IInteractable script in interactables)
                     {
-                        Debug.Log("Should Let go");
                         script.OnInteractionStop();
 
                         _interactableObjects.Remove(script);
@@ -163,7 +162,8 @@ public class InteractionManager : MonoBehaviour
     {
         if (_lastLookedAt != null)
         {
-            _lastLookedAt.layer = _defaultMask;
+
+            SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
             _lastLookedAt = null;
         }
     }
@@ -181,6 +181,15 @@ public class InteractionManager : MonoBehaviour
         }
 
         return hitInfo;
+    }
+    void SetLayerRecursively(Transform objTransform, int layer)
+    {
+        objTransform.gameObject.layer = layer;
+
+        foreach (Transform child in objTransform)
+        {
+            SetLayerRecursively(child, layer);
+        }
     }
 }
 

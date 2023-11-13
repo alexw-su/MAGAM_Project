@@ -18,6 +18,10 @@ public partial class Puzzle2
         public override void OnStateEnter()
         {
             base.OnStateEnter();
+            Manager.clock1.SetActive(false);
+            Manager.clock2.SetActive(true);
+            Manager.clock2.GetComponent<ClockScript>().OnClockSolved += Clock_OnClockSolved;
+
         }
 
         public override void OnStateRunning()
@@ -28,10 +32,17 @@ public partial class Puzzle2
 
         public override void OnStateExit()
         {
+
             base.OnStateExit();
+            Manager.clock2.GetComponent<ClockScript>().OnClockSolved -= Clock_OnClockSolved;
         }
         #endregion
 
 
+        //This is triggered once the ClockScript fires the OnClockSolved event
+        private void Clock_OnClockSolved()
+        {
+            Manager.ChangeState(Puzzle2States.TimeSet);
+        }
     }
 }

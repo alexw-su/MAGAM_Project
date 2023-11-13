@@ -57,8 +57,8 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 0.01
+    FarClipPlane: 1980.4
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: -200996753769108827}
   m_Layer: 3
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -319,7 +319,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4618360743720043528}
@@ -382,11 +382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9b9de20f2dfb940861fc025a64bf62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastLength: 3
+  raycastLength: 5
   cameraReference: {fileID: 0}
   interactionHolder: {fileID: 8735878580654641083}
   interactionPoint: {fileID: 2702082723853150459}
-  grabSnapThreshold: 0.5
   grabLerpingSpeed: 0.5
   grabLerpCurve:
     serializedVersion: 2
@@ -412,7 +411,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  yellowMaterial: {fileID: 2100000, guid: 8bd3fc483db597c4891caf384fc8a2d0, type: 2}
 --- !u!1 &7341983364329563402
 GameObject:
   m_ObjectHideFlags: 0
