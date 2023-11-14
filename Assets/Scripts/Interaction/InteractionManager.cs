@@ -56,6 +56,14 @@ public class InteractionManager : MonoBehaviour
         {
             obj.OnInteractionRunning();
         }
+          if (Input.GetKeyDown(KeyCode.Escape))
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
     }
 
     void RaycastPlayerAim()
@@ -117,7 +125,7 @@ public class InteractionManager : MonoBehaviour
             }
         }
 
-        // If object is grabbed, run 
+        // If object is grabbed, run
         if (inputManager.GetPlayerGrabbed())
         {
             var interactables = hitInfo.collider.GetComponents<IInteractable>();
@@ -144,7 +152,7 @@ public class InteractionManager : MonoBehaviour
                 if (_isGrabbing)
                 {
                     //Only called when _isGrabbing is true, so it is not called constantly when we are not grabbing anything.
-                    //Calling OnInteractionStop, and removing IInteractable reference from interactableObject list. 
+                    //Calling OnInteractionStop, and removing IInteractable reference from interactableObject list.
                     foreach (IInteractable script in interactables)
                     {
                         script.OnInteractionStop();
