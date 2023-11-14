@@ -56,6 +56,14 @@ public class InteractionManager : MonoBehaviour
         {
             obj.OnInteractionRunning();
         }
+          if (Input.GetKeyDown(KeyCode.Escape))
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
     }
 
     void RaycastPlayerAim()
@@ -101,7 +109,7 @@ public class InteractionManager : MonoBehaviour
         if (_lastLookedAt != target)
         {
             _lastLookedAt = target;
-            _lastLookedAt.layer = _highlightMask;
+            SetLayerRecursively(_lastLookedAt.transform, _highlightMask);
         }
 
         // If object is interacted, run Interact() on all interactable scripts
@@ -117,7 +125,7 @@ public class InteractionManager : MonoBehaviour
             }
         }
 
-        // If object is grabbed, run 
+        // If object is grabbed, run
         if (inputManager.GetPlayerGrabbed())
         {
             var interactables = hitInfo.collider.GetComponents<IInteractable>();
@@ -144,10 +152,9 @@ public class InteractionManager : MonoBehaviour
                 if (_isGrabbing)
                 {
                     //Only called when _isGrabbing is true, so it is not called constantly when we are not grabbing anything.
-                    //Calling OnInteractionStop, and removing IInteractable reference from interactableObject list. 
+                    //Calling OnInteractionStop, and removing IInteractable reference from interactableObject list.
                     foreach (IInteractable script in interactables)
                     {
-                        Debug.Log("Should Let go");
                         script.OnInteractionStop();
 
                         _interactableObjects.Remove(script);
@@ -163,7 +170,8 @@ public class InteractionManager : MonoBehaviour
     {
         if (_lastLookedAt != null)
         {
-            _lastLookedAt.layer = _defaultMask;
+
+            SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
             _lastLookedAt = null;
         }
     }
@@ -181,6 +189,15 @@ public class InteractionManager : MonoBehaviour
         }
 
         return hitInfo;
+    }
+    void SetLayerRecursively(Transform objTransform, int layer)
+    {
+        objTransform.gameObject.layer = layer;
+
+        foreach (Transform child in objTransform)
+        {
+            SetLayerRecursively(child, layer);
+        }
     }
 }
 

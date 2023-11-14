@@ -7,23 +7,20 @@ public class PaintingScript : MonoBehaviour, IInteractable
 {
     public GameObject puzzleLocation;
     public string messageKey;
-    
 
     private PlayerController _playerController;
-    private VFXManager vfx;
+    public VFXManager vfx;
 
     void Start()
     {
         _playerController = FindObjectOfType<PlayerController>();
-        vfx = VFXManager.Instance;
-        print(vfx);
     }
 
     public void OnInteractionStart(bool isGrabbing)
     {
         if (isGrabbing)
             return;
-        
+
         // Starts vfx transition
         vfx.EnableFullScreenPassRendererFeature();
         StartCoroutine(WindUpTeleport());
@@ -52,7 +49,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
         {
             _playerController.TeleportTo = puzzleLocation.transform.position;
         }
-        
+
         MessageController messageController = GetComponent<MessageController>();
 
         if (messageController == null)

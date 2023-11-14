@@ -73,8 +73,6 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     {
 		var snappedGameObject = gameObject.GetComponent<Puzzle3_Item_Handler>();
 
-		Debug.Log(snappedGameObject.Element);
-
 		if(snappedGameObject.Element == _currentElementToBePlaced)
 		{
 			UpdatePuzzlePhases(false);

@@ -6,7 +6,7 @@ public class VFXManager : MonoBehaviour
 {
     public FullScreenPassRendererFeature FSPRF;
     private static VFXManager _instance;
-    public static VFXManager Instance
+    public static VFXManager Instances
     {
         get
         {
@@ -21,9 +21,9 @@ public class VFXManager : MonoBehaviour
 
     // For Distortion
     private float blend;
-    private float lerpDuration; 
-    private float minDistortionValue; 
-    private float maxDistortionValue; 
+    private float lerpDuration;
+    private float minDistortionValue;
+    private float maxDistortionValue;
     private float timeElapsed;
 
     // Start is called before the first frame update
@@ -44,12 +44,12 @@ public class VFXManager : MonoBehaviour
 
         // For Fade Transition
         transitionTime = 1f;
-        
+
         // For Distortion
         blend = 0;
         lerpDuration = 1;
-        minDistortionValue = 0; 
-        maxDistortionValue = 1; 
+        minDistortionValue = 0;
+        maxDistortionValue = 1;
         timeElapsed = 0;
     }
 
@@ -89,7 +89,7 @@ public class VFXManager : MonoBehaviour
 
     // Coroutine that gradually increases the distortion.
     public IEnumerator GradualDecreaseDistortion()
-    {     
+    {
         while (timeElapsed < 1)
         {
             // Sets distortion amount based on time elapsed

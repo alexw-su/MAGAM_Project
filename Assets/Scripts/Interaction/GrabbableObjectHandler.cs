@@ -11,13 +11,19 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
 
     public delegate void GrabLetGo();
     public event GrabLetGo OnGrabLetGo;
+    public bool isRotatable = true; // Flag to control rotation
 
 
     void Start()
-    { 
+    {
         // Gets the rigidbody component of the object
         _rb = GetComponent<Rigidbody>();
         _interactionManager = FindObjectOfType<InteractionManager>();
+        if (!isRotatable)
+        {
+            // If rotation is not allowed, lock the rotation
+            _rb.freezeRotation = true;
+        }
     }
 
     //Is called, when OnInteraction Start is called with the isGrabbing attached

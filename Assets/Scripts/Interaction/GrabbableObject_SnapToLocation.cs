@@ -56,7 +56,33 @@ public class GrabbableObject_SnapToLocation : MonoBehaviour
             return;
         }
 
-        transform.position = _snapToLocation_Handler.SnapToLocation.position;
+        StartCoroutine(SnapToLocation_Routine(_snapToLocation_Handler));
         _snapToLocation_Handler.TriggerSnappedToLocation(this.gameObject);
+    }
+
+
+    private IEnumerator SnapToLocation_Routine(SnapToLocation_Handler snapHandler)
+    {
+        float timer = 0f;
+        float lerp = 0f;
+
+        AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+        Vector3 startPos = transform.position;
+        Quaternion startRot = transform.rotation;
+        while (timer < snapHandler.SnapSpeed)
+        {
+            lerp = curve.Evaluate(timer / snapHandler.SnapSpeed);
+
+            transform.position = Vector3.Lerp(startPos, snapHandler.SnapToLocation.position, lerp);
+
+            transform.rotation = Quaternion.Lerp(startRot, snapHandler.SnapToLocation.rotation, lerp);
+
+            timer += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.position = snapHandler.SnapToLocation.position;
+        transform.rotation = snapHandler.SnapToLocation.rotation;
     }
 }

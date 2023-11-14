@@ -60,6 +60,11 @@ public class PlayerController : MonoBehaviour
         // Applying gravity
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if(inputManager.GetPlayerQuit())
+        {
+            Application.Quit();
+        }
     }
     private void FixedUpdate()
     {

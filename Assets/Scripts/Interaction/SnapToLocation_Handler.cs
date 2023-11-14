@@ -6,8 +6,10 @@ public class SnapToLocation_Handler : MonoBehaviour
 {
     [SerializeField] Transform snapToLocation;
 
-    public Transform SnapToLocation { get => snapToLocation; }
+    [SerializeField] float snapSpeed = 0.5f;
 
+    public Transform SnapToLocation { get => snapToLocation; }
+    public float SnapSpeed { get => snapSpeed; }
 
     public delegate void SnappedToLocation(GameObject gameObject);
     public event SnappedToLocation OnSnappedToLocation;
