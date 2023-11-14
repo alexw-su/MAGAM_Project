@@ -9,6 +9,7 @@ public class InteractionManager : MonoBehaviour
     [Header("Raycast")]
     public float raycastLength = 10f;
     public GameObject cameraReference;
+    public PickUpController controller;
 
     [Header("Grabbing")]
     [SerializeField] private Transform interactionHolder;
@@ -49,18 +50,14 @@ public class InteractionManager : MonoBehaviour
     {
         RaycastPlayerAim();
         InteractionHolderUpdate();
-
-    }
-    private void FixedUpdate()
-    {
         if (!_isGrabbing || _interactableObjects.Count <= 0)
             return;
         foreach (var obj in _interactableObjects)
         {
             obj.OnInteractionRunning();
         }
-    }
 
+    }
     void RaycastPlayerAim()
     {
         Vector3 rayDirection = cameraReference.transform.forward;
@@ -133,6 +130,7 @@ public class InteractionManager : MonoBehaviour
                     _interactableObjects.Add(script);
                 }
                 _isGrabbing = true;
+                controller.PickupObject(hitInfo.transform.gameObject);
             }
         }
         else if (!inputManager.GetPlayerGrabbing())
@@ -151,6 +149,7 @@ public class InteractionManager : MonoBehaviour
                     }
                     _interactableObjects = new List<IInteractable>();
                     _isGrabbing = false;
+                    controller.DropObject();
                 }
             }
         }
