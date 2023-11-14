@@ -657,12 +657,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287146124}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &293038769 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2702082723853150459, guid: b36ca50e36271164895f0863d57a8d03,
-    type: 3}
-  m_PrefabInstance: {fileID: 817492487}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351284823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,27 +1161,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 534716607}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &619466986 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6758501597432298150, guid: b36ca50e36271164895f0863d57a8d03,
-    type: 3}
-  m_PrefabInstance: {fileID: 817492487}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &619466991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619466986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b258d1ebad21d498382eae3174fe43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdArea: {fileID: 1236745129}
-  pickupRange: 5
-  pickupForce: 150
 --- !u!1 &669657212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,39 +1331,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -200996753769108827, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 619466991}
-    - target: {fileID: -200996753769108827, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      propertyPath: raycastLength
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -200996753769108827, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
       propertyPath: cameraReference
       value: 
       objectReference: {fileID: 923819810}
-    - target: {fileID: -200996753769108827, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      propertyPath: grabLerpingSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -200996753769108827, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      propertyPath: interactionPoint
-      value: 
-      objectReference: {fileID: 293038769}
-    - target: {fileID: -200996753769108827, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      propertyPath: pickupController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 612554024438895935, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
       propertyPath: cameraReference
       value: 
       objectReference: {fileID: 923819810}
+    - target: {fileID: 1888489424086483209, guid: b36ca50e36271164895f0863d57a8d03,
+        type: 3}
+      propertyPath: holdArea
+      value: 
+      objectReference: {fileID: 1236745129}
     - target: {fileID: 4375388076977803198, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1441,11 +1394,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618360743720043528, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.0000002
-      objectReference: {fileID: 0}
     - target: {fileID: 6758501597432298150, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
       propertyPath: m_Name
@@ -1454,11 +1402,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6758501597432298150, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 619466991}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b36ca50e36271164895f0863d57a8d03, type: 3}
 --- !u!1 &923819810
 GameObject:
