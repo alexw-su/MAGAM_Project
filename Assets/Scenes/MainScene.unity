@@ -1322,7 +1322,7 @@ PrefabInstance:
     - target: {fileID: -200996753769108827, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
       propertyPath: raycastLength
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -200996753769108827, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
