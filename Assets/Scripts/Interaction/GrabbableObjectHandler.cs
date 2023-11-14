@@ -16,7 +16,6 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
 
     void Start()
     {
-        // Gets the rigidbody component of the object
         _rb = GetComponent<Rigidbody>();
         _interactionManager = FindObjectOfType<InteractionManager>();
         if (!isRotatable)
@@ -33,14 +32,15 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
             return;
 
         _isGrabbed = true;
-
         _rb.useGravity = false;
+        _rb.isKinematic = true;
     }
 
 
     //Is Called from the InteractionManager
     public void OnInteractionRunning()
     {
+        //Debug.Log("ON INTERACTION RUNNING");
         if (!_isGrabbed)
             return;
 
@@ -54,6 +54,7 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
         _isGrabbed = false;
 
         _rb.useGravity = true;
+        _rb.isKinematic = false;
 
         //Is Called to every subscribed object when grab is being let go.
         OnGrabLetGo?.Invoke();

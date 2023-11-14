@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractionManager : MonoBehaviour
 {
@@ -49,21 +50,15 @@ public class InteractionManager : MonoBehaviour
         RaycastPlayerAim();
         InteractionHolderUpdate();
 
-        if (_interactableObjects.Count <= 0)
+    }
+    private void FixedUpdate()
+    {
+        if (!_isGrabbing || _interactableObjects.Count <= 0)
             return;
-
         foreach (var obj in _interactableObjects)
         {
             obj.OnInteractionRunning();
         }
-          if (Input.GetKeyDown(KeyCode.Escape))
-    {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
-    }
     }
 
     void RaycastPlayerAim()
@@ -124,9 +119,7 @@ public class InteractionManager : MonoBehaviour
                 }
             }
         }
-
-        // If object is grabbed, run
-        if (inputManager.GetPlayerGrabbed())
+        else if (inputManager.GetPlayerGrabbed())
         {
             var interactables = hitInfo.collider.GetComponents<IInteractable>();
 
@@ -137,13 +130,12 @@ public class InteractionManager : MonoBehaviour
                 foreach (IInteractable script in interactables)
                 {
                     script.OnInteractionStart(true);
-
                     _interactableObjects.Add(script);
                 }
                 _isGrabbing = true;
             }
         }
-        else
+        else if (!inputManager.GetPlayerGrabbing())
         {
             var interactables = hitInfo.collider.GetComponents<IInteractable>();
 
@@ -152,13 +144,12 @@ public class InteractionManager : MonoBehaviour
                 if (_isGrabbing)
                 {
                     //Only called when _isGrabbing is true, so it is not called constantly when we are not grabbing anything.
-                    //Calling OnInteractionStop, and removing IInteractable reference from interactableObject list.
-                    foreach (IInteractable script in interactables)
+                    for (int i = _interactableObjects.Count - 1; i >= 0; i--)
                     {
+                        IInteractable script = _interactableObjects[i];
                         script.OnInteractionStop();
-
-                        _interactableObjects.Remove(script);
                     }
+                    _interactableObjects = new List<IInteractable>();
                     _isGrabbing = false;
                 }
             }
@@ -170,7 +161,6 @@ public class InteractionManager : MonoBehaviour
     {
         if (_lastLookedAt != null)
         {
-
             SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
             _lastLookedAt = null;
         }

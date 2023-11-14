@@ -64,24 +64,24 @@ public class InputManager : MonoBehaviour
     public bool GetPlayerGrabbed()
     {
         var grab = playerInput.Player.Grab;
-        
-        // sets held to true if the player has held the button down longer than the threshold
-        if (grab.IsPressed() && grab.triggered) {
-            held = true;
-        }
 
-        // If the player is still holding the button down after threshold, return true
-        if (grab.IsPressed() && held)
+        // sets held to true if the player has held the button down longer than the threshold
+        if (grab.triggered)
         {
+            held = true;
             return true;
         }
-        
         // Return false when player lets go of button
         if (!grab.IsPressed())
         {
             held = false;
         }
         return false;
+    }
+    public bool GetPlayerGrabbing()
+    {
+        return held;
+
     }
 
     public bool GetPlayerQuit()
