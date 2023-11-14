@@ -55,7 +55,7 @@ public partial class Puzzle3_StateMachine
         //Exit is considered evil if on Exit the amount of times an element was placed on the counter is less than required.
         protected bool IsExitEvil()
         {
-            return Manager._currentElementsPlacedCounter < Manager._currentElementsPlacedCounter;
+            return Manager._currentElementsPlacedCounter < Manager._currentElementsPlacedGoal;
         }
 
 

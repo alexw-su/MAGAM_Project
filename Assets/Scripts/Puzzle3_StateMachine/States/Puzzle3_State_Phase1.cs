@@ -33,7 +33,7 @@ public partial class Puzzle3_StateMachine
 
             if (IsExitEvil())
             {
-                //Trigger some sort of indication that you failed :D
+                SpawnCloud(Manager.failCloud);
                 Debug.Log("You failed lol!!!!");
             }
         }
