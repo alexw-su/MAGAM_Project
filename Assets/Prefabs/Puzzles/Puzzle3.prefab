@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &2262536471127259486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &6843744065507403999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &8045130185942448572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,6 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &7406043852555945257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +749,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showLog: 0
   cauldronSnapHandler: {fileID: 6852395123967176984}
+  phasePropertiesList:
+  - Phase: 1
+    StateGoal: 3
+    Element: 0
+  - Phase: 2
+    StateGoal: 2
+    Element: 1
+  - Phase: 3
+    StateGoal: 4
+    Element: 2
+  - Phase: 4
+    StateGoal: 1
+    Element: 3
 --- !u!1 &4651568105927734663
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &2825842058254089215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,6 +1085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &12737159474084543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1314,6 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &5940066176737202375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,6 +1508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &2646450074699307483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,6 +1683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &8936018768924415713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1836,6 +1858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &7332393608537372570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2112,6 +2135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9dd2d751142734eafd8e81152cc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotatable: 1
 --- !u!114 &3646183423039254568
 MonoBehaviour:
   m_ObjectHideFlags: 0

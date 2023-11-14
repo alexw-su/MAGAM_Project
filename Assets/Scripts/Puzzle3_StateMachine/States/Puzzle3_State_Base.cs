@@ -7,12 +7,17 @@ public partial class Puzzle3_StateMachine
 
     public class Puzzle3_State_Base : MarcimanState
     {
+        protected Puzzle3_StateProperties _stateProperty;
+
         private Puzzle3_StateMachine _manager;
         public Puzzle3_StateMachine Manager { get => _manager; }
 
-        public Puzzle3_State_Base(Puzzle3_StateMachine manager)
+        public Puzzle3_State_Base(Puzzle3_StateMachine manager, Puzzle3_StateProperties property)
         {
             _manager = manager;
+
+            InitPuzzle3State(property.StateGoal, property.Element);
+            _stateProperty = property;
         }
 
 
@@ -51,6 +56,12 @@ public partial class Puzzle3_StateMachine
         protected bool IsExitEvil()
         {
             return Manager._currentElementsPlacedCounter < Manager._currentElementsPlacedCounter;
+        }
+
+
+        protected void SpawnCloud(GameObject cloud)
+        {
+            Instantiate(cloud, Manager.particleEffectLocation);
         }
     }
 }

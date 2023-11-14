@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public enum Puzzle3_State
 {
@@ -12,9 +14,22 @@ public enum Puzzle3_State
 	Finished,
 }
 
+
+[System.Serializable]
+public class Puzzle3_StateProperties
+{
+	public int Phase = 1;
+	public int StateGoal = 1;
+	public Puzzle3Elements Element = Puzzle3Elements.Fire;
+	public GameObject successCloud;
+}
+
 public partial class Puzzle3_StateMachine : MarcimanStateMachine
 {
 	[SerializeField] SnapToLocation_Handler cauldronSnapHandler;
+    [SerializeField] GameObject failCloud;
+    [SerializeField] List<Puzzle3_StateProperties> phasePropertiesList;
+	[SerializeField] Transform particleEffectLocation;
 
 	private int _currentElementsPlacedGoal = 0;
 	private int _currentElementsPlacedCounter = 0;
@@ -48,22 +63,22 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
         switch (newState)
         {
 		case Puzzle3_State.Idle:
-			SetState(new Puzzle3_State_Idle(this));
+			SetState(new Puzzle3_State_Idle(this, new Puzzle3_StateProperties()));
 			break;
 		case Puzzle3_State.Phase1:
-			SetState(new Puzzle3_State_Phase1(this));
+			SetState(new Puzzle3_State_Phase1(this, phasePropertiesList[0]));
 			break;
 		case Puzzle3_State.Phase2:
-			SetState(new Puzzle3_State_Phase2(this));
+			SetState(new Puzzle3_State_Phase2(this, phasePropertiesList[1]));
 			break;
 		case Puzzle3_State.Phase3:
-			SetState(new Puzzle3_State_Phase3(this));
+			SetState(new Puzzle3_State_Phase3(this, phasePropertiesList[2]));
 			break;
 		case Puzzle3_State.Phase4:
-			SetState(new Puzzle3_State_Phase4(this));
+			SetState(new Puzzle3_State_Phase4(this, phasePropertiesList[3]));
 			break;
 		case Puzzle3_State.Finished:
-			SetState(new Puzzle3_State_Finished(this));
+			SetState(new Puzzle3_State_Finished(this, new Puzzle3_StateProperties()));
 			break;
         }
     }
