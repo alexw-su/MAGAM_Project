@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractionManager : MonoBehaviour
 {
     [Header("Raycast")]
     public float raycastLength = 10f;
     public GameObject cameraReference;
+    public PickUpController controller;
 
     [Header("Grabbing")]
     [SerializeField] private Transform interactionHolder;
@@ -48,24 +50,14 @@ public class InteractionManager : MonoBehaviour
     {
         RaycastPlayerAim();
         InteractionHolderUpdate();
-
-        if (_interactableObjects.Count <= 0)
+        if (!_isGrabbing || _interactableObjects.Count <= 0)
             return;
-
         foreach (var obj in _interactableObjects)
         {
             obj.OnInteractionRunning();
         }
-          if (Input.GetKeyDown(KeyCode.Escape))
-    {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
-    }
-    }
 
+    }
     void RaycastPlayerAim()
     {
         Vector3 rayDirection = cameraReference.transform.forward;
@@ -73,10 +65,12 @@ public class InteractionManager : MonoBehaviour
         {
             // debugging
             Debug.DrawRay(cameraReference.transform.position, rayDirection * hitInfo.distance, Color.red);
-            var interactable = hitInfo.collider.GetComponent<IInteractable>();
+
+            // Check object hit
+            var target = hitInfo.collider.gameObject;
 
             // Check the tag of the hit object
-            if (interactable != null)
+            if (target.CompareTag("Grabbable") || target.CompareTag("Interactable"))
             {
                 HandleLookingAtObject(hitInfo);
             }
@@ -103,7 +97,7 @@ public class InteractionManager : MonoBehaviour
 
     void HandleLookingAtObject(RaycastHit hitInfo)
     {
-        // highlight interactive object
+        // highlight interactive/grabbable object
         GameObject target = hitInfo.collider.gameObject;
 
         if (_lastLookedAt != target)
@@ -115,7 +109,7 @@ public class InteractionManager : MonoBehaviour
         // If object is interacted, run Interact() on all interactable scripts
         if (inputManager.GetPlayerInteracted())
         {
-            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+            var interactables = target.GetComponents<IInteractable>();
             if (interactables != null)
             {
                 foreach (IInteractable script in interactables)
@@ -124,11 +118,9 @@ public class InteractionManager : MonoBehaviour
                 }
             }
         }
-
-        // If object is grabbed, run
-        if (inputManager.GetPlayerGrabbed())
+        else if (inputManager.GetPlayerGrabbed())
         {
-            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+            var interactables = target.GetComponents<IInteractable>();
 
             if (interactables != null)
             {
@@ -137,30 +129,42 @@ public class InteractionManager : MonoBehaviour
                 foreach (IInteractable script in interactables)
                 {
                     script.OnInteractionStart(true);
-
                     _interactableObjects.Add(script);
                 }
+            }
+
+            if (target.CompareTag("Grabbable"))
+            {
                 _isGrabbing = true;
+                controller.PickupObject(hitInfo.transform.gameObject);
             }
         }
-        else
+        else if (!inputManager.GetPlayerGrabbing())
         {
-            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+            var interactables = target.GetComponents<IInteractable>();
 
-            if (interactables != null)
+            if (_isGrabbing)
             {
-                if (_isGrabbing)
+                // If there are any Interactables
+                if (interactables != null)
                 {
                     //Only called when _isGrabbing is true, so it is not called constantly when we are not grabbing anything.
-                    //Calling OnInteractionStop, and removing IInteractable reference from interactableObject list.
-                    foreach (IInteractable script in interactables)
+                    for (int i = _interactableObjects.Count - 1; i >= 0; i--)
                     {
+                        IInteractable script = _interactableObjects[i];
                         script.OnInteractionStop();
-
-                        _interactableObjects.Remove(script);
                     }
-                    _isGrabbing = false;
+                    _interactableObjects = new List<IInteractable>();
                 }
+                
+                // If object is grabbable
+                if (target.CompareTag("Grabbable"))
+                {
+                    controller.DropObject();
+                }
+
+                // Set to grabbing to false
+                _isGrabbing = false;
             }
         }
     }
@@ -170,7 +174,6 @@ public class InteractionManager : MonoBehaviour
     {
         if (_lastLookedAt != null)
         {
-
             SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
             _lastLookedAt = null;
         }
