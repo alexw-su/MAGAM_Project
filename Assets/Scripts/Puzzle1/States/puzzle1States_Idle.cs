@@ -33,6 +33,10 @@ public partial class Puzzle1
         {
             base.OnStateExit();
             //Debug.Log("Exiting Idle State");
+
+            // Gets painting that changes state and disables it
+            var paintingIn = FindObjectOfType<InteractionStateChange>();
+            Destroy(paintingIn.GetComponent<InteractionStateChange>());
         }
         #endregion
     }
