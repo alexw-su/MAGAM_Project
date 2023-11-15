@@ -19,6 +19,7 @@ public partial class Puzzle1
             base.OnStateEnter();
             Debug.Log("Entering Watered Tree State");
             Manager.SetActiveTree(true);
+            Manager.ScaleUpPaintingTree(2);
         }
 
 
