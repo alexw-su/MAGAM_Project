@@ -14,12 +14,12 @@ public class PickUpController : MonoBehaviour, IInteractable
     {
         if (heldObj != null && heldObj.CompareTag("Grabbable"))
         {   
-            Debug.Log("still running");
-            //move
+            // Moves object to holding area
             MoveObject();
         }
         if (heldObj != null && !heldObj.CompareTag("Grabbable"))
-        {
+        {   
+            // Drop object incase tag changes mid-grab
             DropObject();
         }
     }
