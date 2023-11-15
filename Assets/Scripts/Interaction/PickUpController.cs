@@ -12,33 +12,43 @@ public class PickUpController : MonoBehaviour, IInteractable
     public float pickupForce = 150.0f;
     private void FixedUpdate()
     {
-        if (heldObj != null)
-        {
+        if (heldObj != null && heldObj.CompareTag("Grabbable"))
+        {   
+            Debug.Log("still running");
             //move
             MoveObject();
+        }
+        if (heldObj != null && !heldObj.CompareTag("Grabbable"))
+        {
+            DropObject();
         }
     }
     public void PickupObject(GameObject pickObj)
     {
-        if (pickObj.GetComponent<Rigidbody>())
+        if (pickObj.CompareTag("Grabbable")) 
         {
-            heldObjRB = pickObj.GetComponent<Rigidbody>();
-            heldObjRB.useGravity = false;
-            heldObjRB.drag = 10;
-            heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
+            if (pickObj.GetComponent<Rigidbody>())
+            {
+                heldObjRB = pickObj.GetComponent<Rigidbody>();
+                heldObjRB.useGravity = false;
+                heldObjRB.drag = 10;
+                heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
 
-            heldObjRB.transform.parent = holdArea;
-            heldObj = pickObj;
+                heldObjRB.transform.parent = holdArea;
+                heldObj = pickObj;
+            }
         }
     }
     public void DropObject()
     {
-        heldObjRB.useGravity = true;
-        heldObjRB.drag = 1;
-        heldObjRB.constraints = RigidbodyConstraints.None;
+        if (heldObj != null) {
+            heldObjRB.useGravity = true;
+            heldObjRB.drag = 1;
+            heldObjRB.constraints = RigidbodyConstraints.None;
 
-        heldObj.transform.parent = null;
-        heldObj = null;
+            heldObj.transform.parent = null;
+            heldObj = null;
+        }
     }
     public void MoveObject()
     {

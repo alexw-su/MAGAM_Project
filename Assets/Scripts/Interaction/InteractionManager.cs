@@ -95,9 +95,10 @@ public class InteractionManager : MonoBehaviour
 
     void HandleLookingAtObject(RaycastHit hitInfo)
     {
-        // highlight interactive object
+        // highlight interactive/grabbable object
         GameObject target = hitInfo.collider.gameObject;
 
+        if (target.CompareTag("Grabbable") || target.CompareTag("Interactable"))
         if (_lastLookedAt != target)
         {
             _lastLookedAt = target;
