@@ -70,5 +70,7 @@ public class OnCollision_SnapToLocation : MonoBehaviour
 
         transform.position = snapHandler.SnapToLocation.position;
         transform.rotation = snapHandler.SnapToLocation.rotation;
+
+        snapHandler.TriggerSnappedToLocation(gameObject);
     }
 }

@@ -86,6 +86,7 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
 
     private void CauldronSnapHandler_OnSnappedToLocation(GameObject gameObject)
     {
+		Debug.Log("Snapped to location");
 		var snappedGameObject = gameObject.GetComponent<Puzzle3_Item_Handler>();
 
 		if(snappedGameObject.Element == _currentElementToBePlaced)
