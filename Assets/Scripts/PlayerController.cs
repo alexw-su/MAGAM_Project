@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Attribute Values")]
     public float moveSpeed;
+    public float sprintMultiplier;
     public float jumpHeight;
     public float gravityValue;
     public bool grounded;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
         get { return teleportTo; }
         set { teleportTo = value; }
     }
+    private bool sprinting;
     void Start()
     {
         // Initializes CharacterController
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
         // Setting Attributes
         //gravityValue = -9.81f;
         //jumpHeight = 1.0f;
+        //sprintMultiplier = 2;
 
         // Fixes jump registering
         controller.minMoveDistance = 0;
@@ -92,13 +95,30 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+
+        // Checks if sprint input is pressed
+        if (inputManager.GetPlayerSprinting())
+        {
+            sprinting = true;
+        }
+        else
+        {
+            sprinting = false;
+        }
     }
 
     // Uses variables based on input to move player.
     private void MovePlayer()
     {
         // Gives CharacterController movement input
-        controller.Move(moveDirection * Time.deltaTime * moveSpeed);
+        if(!sprinting) 
+        {
+            controller.Move(moveDirection * Time.deltaTime * moveSpeed);
+        }
+        else 
+        {
+            controller.Move(moveDirection * Time.deltaTime * moveSpeed * sprintMultiplier);
+        }
 
         // Rotates player object's forward. 
         if (moveDirection != Vector3.zero)

@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  sprintMultiplier: 1.5
   jumpHeight: 1.5
   gravityValue: -16
   grounded: 0

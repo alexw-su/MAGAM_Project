@@ -84,6 +84,11 @@ public class InputManager : MonoBehaviour
 
     }
 
+    public bool GetPlayerSprinting()
+    {
+        return playerInput.Player.Sprint.IsPressed();
+    }
+
     public bool GetPlayerQuit()
     {
         return playerInput.Player.Quit.triggered;
