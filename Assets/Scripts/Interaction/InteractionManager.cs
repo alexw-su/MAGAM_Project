@@ -68,7 +68,6 @@ public class InteractionManager : MonoBehaviour
 
             // Check object hit
             var target = hitInfo.collider.gameObject;
-            var interactable = hitInfo.collider.GetComponent<IInteractable>();
 
             // Check the tag of the hit object
             if (target.CompareTag("Grabbable") || target.CompareTag("Interactable"))
@@ -133,7 +132,7 @@ public class InteractionManager : MonoBehaviour
                     _interactableObjects.Add(script);
                 }
             }
-            
+
             if (target.CompareTag("Grabbable"))
             {
                 _isGrabbing = true;
@@ -144,9 +143,10 @@ public class InteractionManager : MonoBehaviour
         {
             var interactables = target.GetComponents<IInteractable>();
 
-            if (interactables != null)
+            if (_isGrabbing)
             {
-                if (_isGrabbing)
+                // If there are any Interactables
+                if (interactables != null)
                 {
                     //Only called when _isGrabbing is true, so it is not called constantly when we are not grabbing anything.
                     for (int i = _interactableObjects.Count - 1; i >= 0; i--)
@@ -155,9 +155,16 @@ public class InteractionManager : MonoBehaviour
                         script.OnInteractionStop();
                     }
                     _interactableObjects = new List<IInteractable>();
-                    _isGrabbing = false;
+                }
+                
+                // If object is grabbable
+                if (target.CompareTag("Grabbable"))
+                {
                     controller.DropObject();
                 }
+
+                // Set to grabbing to false
+                _isGrabbing = false;
             }
         }
     }
