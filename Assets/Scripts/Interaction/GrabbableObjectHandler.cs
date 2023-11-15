@@ -23,7 +23,6 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
     }
     public void OnInteractionStop()
     {
-        OnGrabLetGo?.Invoke();
     }
 
 

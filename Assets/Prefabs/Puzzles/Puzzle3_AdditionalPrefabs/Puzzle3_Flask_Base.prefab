@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3921003653191560043}
   - component: {fileID: 989777784078594891}
-  - component: {fileID: 2858289528603042957}
+  - component: {fileID: 5264264630155464247}
   - component: {fileID: 2060333372942705905}
   - component: {fileID: 5816297857668539735}
   - component: {fileID: 3846951797468530053}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRotatable: 1
---- !u!114 &2858289528603042957
+--- !u!114 &5264264630155464247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

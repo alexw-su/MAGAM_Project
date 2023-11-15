@@ -10,6 +10,7 @@ public class PickUpController : MonoBehaviour, IInteractable
     public Transform holdArea;
     public float pickupRange = 5.0f;
     public float pickupForce = 150.0f;
+
     private void FixedUpdate()
     {
         if (heldObj != null && heldObj.CompareTag("Grabbable"))
@@ -48,6 +49,8 @@ public class PickUpController : MonoBehaviour, IInteractable
 
             heldObj.transform.parent = null;
             heldObj = null;
+
+
         }
     }
     public void MoveObject()
