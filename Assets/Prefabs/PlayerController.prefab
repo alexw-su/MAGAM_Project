@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 3987942562838380902}
   - component: {fileID: 4208213373566483209}
   - component: {fileID: -200996753769108827}
+  - component: {fileID: 1888489424086483209}
   m_Layer: 3
   m_Name: PlayerController
   m_TagString: Player
@@ -382,11 +383,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9b9de20f2dfb940861fc025a64bf62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastLength: 5
+  raycastLength: 7
   cameraReference: {fileID: 0}
+  controller: {fileID: 1888489424086483209}
   interactionHolder: {fileID: 8735878580654641083}
   interactionPoint: {fileID: 2702082723853150459}
-  grabLerpingSpeed: 0.5
+  grabLerpingSpeed: 10
   grabLerpCurve:
     serializedVersion: 2
     m_Curve:
@@ -411,6 +413,21 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1888489424086483209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6758501597432298150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b258d1ebad21d498382eae3174fe43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdArea: {fileID: 0}
+  pickupRange: 5
+  pickupForce: 150
 --- !u!1 &7341983364329563402
 GameObject:
   m_ObjectHideFlags: 0

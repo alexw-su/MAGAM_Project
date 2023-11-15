@@ -85,6 +85,7 @@ public class VFXManager : MonoBehaviour
         // When time elapsed is above 1, set distortion to max.
         blend = maxDistortionValue;
         timeElapsed = 0;
+        distortionMaterial.SetFloat("_Blend", blend);
     }
 
     // Coroutine that gradually increases the distortion.
@@ -106,6 +107,7 @@ public class VFXManager : MonoBehaviour
         // When time elapsed is above 1, set distortion to 0.
         blend = minDistortionValue;
         timeElapsed = 0;
+        distortionMaterial.SetFloat("_Blend", blend);
         DisableFullScreenPassRendererFeature();
     }
 

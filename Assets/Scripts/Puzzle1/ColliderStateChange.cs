@@ -13,6 +13,7 @@ public class ColliderStateChange : MonoBehaviour
         if(other.gameObject == gameObjectToCollide)
         {
             stateMachine.Change(state);
+            other.gameObject.tag = "Untagged";
         }
     }
 }
