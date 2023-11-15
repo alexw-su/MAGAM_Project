@@ -7,6 +7,7 @@ public class OnCollision_SnapToLocation : MonoBehaviour
 {
     [Header("Location")]
     [SerializeField] string locationTag;
+    [SerializeField] bool destroyOnSnapFinish = true;
 
     private SnapToLocation_Handler _snapToLocation_Handler;
 
@@ -25,8 +26,6 @@ public class OnCollision_SnapToLocation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entered trigger of: " + other.gameObject.name);
-
         if (other.gameObject.GetComponent<SnapToLocation_Handler>())
         {
             gameObject.tag = "Untagged";
@@ -72,5 +71,11 @@ public class OnCollision_SnapToLocation : MonoBehaviour
         transform.rotation = snapHandler.SnapToLocation.rotation;
 
         snapHandler.TriggerSnappedToLocation(gameObject);
+
+        if(destroyOnSnapFinish)
+        {
+            yield return new WaitForEndOfFrame();
+            Destroy(gameObject);
+        }
     }
 }

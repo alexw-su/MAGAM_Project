@@ -21,6 +21,10 @@ public class Puzzle3_StateProperties
 	public int Phase = 1;
 	public int StateGoal = 1;
 	public Puzzle3Elements Element = Puzzle3Elements.Fire;
+
+	public Transform respawnPosition;
+
+	public GameObject elementFlaskPrefab;
 	public GameObject successCloud;
 }
 
@@ -31,9 +35,10 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     [SerializeField] List<Puzzle3_StateProperties> phasePropertiesList;
 	[SerializeField] Transform particleEffectLocation;
 
-	private int _currentElementsPlacedGoal = 0;
 	private int _currentElementsPlacedCounter = 0;
-	private Puzzle3Elements _currentElementToBePlaced = Puzzle3Elements.Fire;
+
+
+    private Puzzle3_StateProperties _currentActiveStateProperty = null;
 
     private Puzzle3_State _currentState;
 
@@ -42,6 +47,11 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     private void Start()
     {
 		ChangeState(Puzzle3_State.Idle);
+
+		foreach(var property in phasePropertiesList)
+		{
+            Instantiate(property.elementFlaskPrefab, property.respawnPosition);
+        }
     }
 
 
@@ -86,10 +96,11 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
 
     private void CauldronSnapHandler_OnSnappedToLocation(GameObject gameObject)
     {
-		Debug.Log("Snapped to location");
 		var snappedGameObject = gameObject.GetComponent<Puzzle3_Item_Handler>();
 
-		if(snappedGameObject.Element == _currentElementToBePlaced)
+		RespawnDroppedFlask(snappedGameObject);
+
+        if (snappedGameObject.Element == _currentActiveStateProperty.Element)
 		{
 			UpdatePuzzlePhases(false);
 		}
@@ -104,16 +115,39 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
 	{
 		if(reset)
 		{
-			ChangeState(Puzzle3_State.Phase1);
+			FailReset();
 			return;
         }
 
         _currentElementsPlacedCounter++;
-        if (_currentElementsPlacedCounter < _currentElementsPlacedGoal)
+        if (_currentElementsPlacedCounter < _currentActiveStateProperty.StateGoal)
 		{
 			return;
 		}
 		//Changes State to next higher State (i.e. Phase 2 to Phase 3) by going to stateEnum + 1
 		ChangeState(_currentState + 1);
 	}
+
+
+    //Cycles through all types and respawns the correct one.
+    private void RespawnDroppedFlask(Puzzle3_Item_Handler handler)
+	{
+		foreach(var property in phasePropertiesList)
+		{
+			if (property.Element != handler.Element)
+				continue;
+
+            Instantiate(property.elementFlaskPrefab, property.respawnPosition);
+			return;
+        }
+	}
+
+
+    private void FailReset()
+    {
+		Debug.Log("You failed, try again");
+
+        Instantiate(failCloud, particleEffectLocation);
+        ChangeState(Puzzle3_State.Phase1);
+    }
 }

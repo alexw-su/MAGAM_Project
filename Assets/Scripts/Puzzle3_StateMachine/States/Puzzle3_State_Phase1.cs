@@ -30,12 +30,6 @@ public partial class Puzzle3_StateMachine
         public override void OnStateExit()
         {
             base.OnStateExit();
-
-            if (IsExitEvil())
-            {
-                SpawnCloud(Manager.failCloud);
-                Debug.Log("You failed lol!!!!");
-            }
         }
         #endregion
     }

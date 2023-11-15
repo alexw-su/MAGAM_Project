@@ -30,12 +30,6 @@ public partial class Puzzle3_StateMachine
         public override void OnStateExit()
         {
             base.OnStateExit();
-
-            if (IsExitEvil())
-            {
-                //Trigger some sort of indication that you failed :D
-                Debug.Log("You failed lol!!!!");
-            }
         }
         #endregion
     }

@@ -7,8 +7,6 @@ public partial class Puzzle3_StateMachine
 
     public class Puzzle3_State_Base : MarcimanState
     {
-        protected Puzzle3_StateProperties _stateProperty;
-
         private Puzzle3_StateMachine _manager;
         public Puzzle3_StateMachine Manager { get => _manager; }
 
@@ -16,8 +14,7 @@ public partial class Puzzle3_StateMachine
         {
             _manager = manager;
 
-            InitPuzzle3State(property.StateGoal, property.Element);
-            _stateProperty = property;
+            InitPuzzle3State(property);
         }
 
 
@@ -43,25 +40,13 @@ public partial class Puzzle3_StateMachine
 
         //Setting ItemType that needs to be placed in the Caludron in order for it to count.
         //Also Setting Element Goal for Amount of Items of this type that need to be placed to advance.
-        protected void InitPuzzle3State(int elementGoal, Puzzle3Elements elementType)
+        protected void InitPuzzle3State(Puzzle3_StateProperties property)
         {
             //Resets Counter in Base State everytime a new State is entered
+            Manager._currentActiveStateProperty = property;
+
+            Debug.Log("Now in state " + property.Element);
             Manager._currentElementsPlacedCounter = 0;
-
-            Manager._currentElementsPlacedGoal = elementGoal;
-            Manager._currentElementToBePlaced = elementType;
-        }
-
-        //Exit is considered evil if on Exit the amount of times an element was placed on the counter is less than required.
-        protected bool IsExitEvil()
-        {
-            return Manager._currentElementsPlacedCounter < Manager._currentElementsPlacedGoal;
-        }
-
-
-        protected void SpawnCloud(GameObject cloud)
-        {
-            Instantiate(cloud, Manager.particleEffectLocation);
         }
     }
 }

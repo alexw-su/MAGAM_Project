@@ -315,6 +315,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2795513808813013071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4192664654145607365}
+  m_Layer: 0
+  m_Name: FlaskSpawnPoint_Earth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4192664654145607365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2795513808813013071}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.99, y: 1.7056001, z: 17.191345}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4211423009243315874}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3049172152174394262
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +380,37 @@ Transform:
   - {fileID: 5954825141709661014}
   - {fileID: 4231984956071503166}
   m_Father: {fileID: 3530240861087712307}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4031355931526116858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9187379170293702459}
+  m_Layer: 0
+  m_Name: FlaskSpawnPoint_Air
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9187379170293702459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4031355931526116858}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.876, y: 1.7056001, z: 17.092}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4211423009243315874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4238023925593720452
 GameObject:
@@ -512,18 +574,30 @@ MonoBehaviour:
   - Phase: 1
     StateGoal: 3
     Element: 0
+    respawnPosition: {fileID: 6899534014670250950}
+    elementFlaskPrefab: {fileID: 9026600824463063104, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
+      type: 3}
     successCloud: {fileID: 0}
   - Phase: 2
     StateGoal: 2
     Element: 1
+    respawnPosition: {fileID: 6931054044733196633}
+    elementFlaskPrefab: {fileID: 9026600824463063104, guid: 6693d8bba2aa4694291c2da1511d568c,
+      type: 3}
     successCloud: {fileID: 0}
   - Phase: 3
     StateGoal: 4
     Element: 2
+    respawnPosition: {fileID: 9187379170293702459}
+    elementFlaskPrefab: {fileID: 9026600824463063104, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
+      type: 3}
     successCloud: {fileID: 0}
   - Phase: 4
     StateGoal: 1
     Element: 3
+    respawnPosition: {fileID: 4192664654145607365}
+    elementFlaskPrefab: {fileID: 9026600824463063104, guid: 04da82f2abae30844b1a04af8fcd5692,
+      type: 3}
     successCloud: {fileID: 0}
   particleEffectLocation: {fileID: 7940761638203300364}
 --- !u!1 &4640495684864069119
@@ -591,11 +665,73 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7993730228516730935}
-  - {fileID: 7810931629807553221}
-  - {fileID: 3364209735260972461}
-  - {fileID: 874642913542905113}
+  - {fileID: 6899534014670250950}
+  - {fileID: 4192664654145607365}
+  - {fileID: 6931054044733196633}
+  - {fileID: 9187379170293702459}
   m_Father: {fileID: 3530240861087712307}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4947408404425908439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6899534014670250950}
+  m_Layer: 0
+  m_Name: FlaskSpawnPoint_Fire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6899534014670250950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947408404425908439}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.7, y: 1.7056001, z: 17.191345}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4211423009243315874}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5161353671735364765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6931054044733196633}
+  m_Layer: 0
+  m_Name: FlaskSpawnPoint_Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6931054044733196633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161353671735364765}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.423, y: 1.7056001, z: 17.309}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4211423009243315874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5690298534888767474
 GameObject:
@@ -6070,228 +6206,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 296826982677677859}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3252473579904023400
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4211423009243315874}
-    m_Modifications:
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.5529604
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.7055997
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17.298723
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7144727
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.6996633
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -88.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9026600824463063104, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-        type: 3}
-      propertyPath: m_Name
-      value: Puzzle3_Flask_Fire
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e26e52a41fb9a2e4eb29f2f322a2d90f, type: 3}
---- !u!4 &7810931629807553221 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4703195708127146413, guid: e26e52a41fb9a2e4eb29f2f322a2d90f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3252473579904023400}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &3434686144284314010
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4211423009243315874}
-    m_Modifications:
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.0284452
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.7056001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17.191345
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9026600824463063104, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-        type: 3}
-      propertyPath: m_Name
-      value: Puzzle3_Flask_Air
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 06fc3d9ef6b41424e92601c9a34bcf57, type: 3}
---- !u!4 &7993730228516730935 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4703195708127146413, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
-    type: 3}
-  m_PrefabInstance: {fileID: 3434686144284314010}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5577216156219403444
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4211423009243315874}
-    m_Modifications:
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.2795238
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.7056
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17.299953
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9026600824463063104, guid: 04da82f2abae30844b1a04af8fcd5692,
-        type: 3}
-      propertyPath: m_Name
-      value: Puzzle3_Flask_Earth
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 04da82f2abae30844b1a04af8fcd5692, type: 3}
---- !u!4 &874642913542905113 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4703195708127146413, guid: 04da82f2abae30844b1a04af8fcd5692,
-    type: 3}
-  m_PrefabInstance: {fileID: 5577216156219403444}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5731805999815216412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6602,77 +6516,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8773024, y: 0.5891416, z: 0.07509184}
   m_Center: {x: 0.009898814, y: 0.008739369, z: 2.2}
---- !u!1001 &8067364744143262720
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4211423009243315874}
-    m_Modifications:
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.03699
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.7055997
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17.25755
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9026600824463063104, guid: 6693d8bba2aa4694291c2da1511d568c,
-        type: 3}
-      propertyPath: m_Name
-      value: Puzzle3_Flask_Water
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6693d8bba2aa4694291c2da1511d568c, type: 3}
---- !u!4 &3364209735260972461 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4703195708127146413, guid: 6693d8bba2aa4694291c2da1511d568c,
-    type: 3}
-  m_PrefabInstance: {fileID: 8067364744143262720}
-  m_PrefabAsset: {fileID: 0}
