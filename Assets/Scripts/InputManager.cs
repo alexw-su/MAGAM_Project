@@ -88,10 +88,4 @@ public class InputManager : MonoBehaviour
     {
         return playerInput.Player.Quit.triggered;
     }
-
-    public bool GetPlayerQuit()
-    {
-        return playerInput.Player.Quit.triggered;
-    }
-
 }
