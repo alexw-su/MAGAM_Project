@@ -65,12 +65,18 @@ public class InteractionManager : MonoBehaviour
         {
             // debugging
             Debug.DrawRay(cameraReference.transform.position, rayDirection * hitInfo.distance, Color.red);
+
+            // Check object hit
+            var target = hitInfo.collider.gameObject;
             var interactable = hitInfo.collider.GetComponent<IInteractable>();
 
             // Check the tag of the hit object
-            if (interactable != null)
+            if (target.CompareTag("Grabbable") || target.CompareTag("Interactable"))
             {
-                HandleLookingAtObject(hitInfo);
+                if (interactable != null)
+                {
+                    HandleLookingAtObject(hitInfo);
+                }
             }
             else
             {
@@ -98,7 +104,6 @@ public class InteractionManager : MonoBehaviour
         // highlight interactive/grabbable object
         GameObject target = hitInfo.collider.gameObject;
 
-        if (target.CompareTag("Grabbable") || target.CompareTag("Interactable"))
         if (_lastLookedAt != target)
         {
             _lastLookedAt = target;
@@ -108,7 +113,7 @@ public class InteractionManager : MonoBehaviour
         // If object is interacted, run Interact() on all interactable scripts
         if (inputManager.GetPlayerInteracted())
         {
-            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+            var interactables = target.GetComponents<IInteractable>();
             if (interactables != null)
             {
                 foreach (IInteractable script in interactables)
@@ -119,7 +124,7 @@ public class InteractionManager : MonoBehaviour
         }
         else if (inputManager.GetPlayerGrabbed())
         {
-            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+            var interactables = target.GetComponents<IInteractable>();
 
             if (interactables != null)
             {
@@ -132,11 +137,11 @@ public class InteractionManager : MonoBehaviour
                 }
                 _isGrabbing = true;
                 controller.PickupObject(hitInfo.transform.gameObject);
-            }
+            }   
         }
         else if (!inputManager.GetPlayerGrabbing())
         {
-            var interactables = hitInfo.collider.GetComponents<IInteractable>();
+            var interactables = target.GetComponents<IInteractable>();
 
             if (interactables != null)
             {
