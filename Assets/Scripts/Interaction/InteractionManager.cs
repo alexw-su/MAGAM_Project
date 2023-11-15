@@ -73,10 +73,7 @@ public class InteractionManager : MonoBehaviour
             // Check the tag of the hit object
             if (target.CompareTag("Grabbable") || target.CompareTag("Interactable"))
             {
-                if (interactable != null)
-                {
-                    HandleLookingAtObject(hitInfo);
-                }
+                HandleLookingAtObject(hitInfo);
             }
             else
             {
@@ -135,9 +132,13 @@ public class InteractionManager : MonoBehaviour
                     script.OnInteractionStart(true);
                     _interactableObjects.Add(script);
                 }
+            }
+            
+            if (target.CompareTag("Grabbable"))
+            {
                 _isGrabbing = true;
                 controller.PickupObject(hitInfo.transform.gameObject);
-            }   
+            }
         }
         else if (!inputManager.GetPlayerGrabbing())
         {
