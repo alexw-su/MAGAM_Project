@@ -75,6 +75,7 @@ public partial class Puzzle2 : MarcimanStateMachine
         if (correctTime)
         {
             ChangeState(Puzzle2States.TimeSet);
+            clock2.tag = "Untagged";
         }
     }
 }
