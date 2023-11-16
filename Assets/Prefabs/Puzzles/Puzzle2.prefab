@@ -379,38 +379,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &920096149536645371
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6683687962866384310}
-  m_Layer: 0
-  m_Name: ClockPuzzle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6683687962866384310
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920096149536645371}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.456035, y: -54.748085, z: -8.679307}
-  m_LocalScale: {x: 2.378079, y: 2.378079, z: 2.378079}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1396269712177827365}
-  m_Father: {fileID: 2123611001276517443}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1809401130511628075
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6861808542611826163}
   m_Layer: 0
-  m_Name: EndSpawnPoint
+  m_Name: Teleportation_Point_Outside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -598,11 +566,11 @@ Transform:
   m_GameObject: {fileID: 1984904946069446770}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.01, y: -4.31, z: -1.15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -13.459967, y: -74.65242, z: -10.620183}
+  m_LocalScale: {x: 1.3052025, y: 1.3052025, z: 1.3052025}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2334559423063151027}
+  m_Father: {fileID: 2242856774169841542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2049495763607616058
 GameObject:
@@ -774,6 +742,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8507536204449975427}
+  - {fileID: 6861808542611826163}
   - {fileID: 2334559423063151027}
   - {fileID: 2123611001276517443}
   m_Father: {fileID: 3006044695174828365}
@@ -6267,6 +6236,7 @@ GameObject:
   - component: {fileID: 9013323545604423418}
   - component: {fileID: 198967637961099352}
   - component: {fileID: 7679546790784174802}
+  - component: {fileID: 3446989883897455807}
   m_Layer: 0
   m_Name: Obj_Clock
   m_TagString: Untagged
@@ -6283,14 +6253,14 @@ Transform:
   m_GameObject: {fileID: 4913073936397288686}
   serializedVersion: 2
   m_LocalRotation: {x: -0.50000006, y: -0.49999997, z: -0.50000006, w: 0.49999997}
-  m_LocalPosition: {x: 2.6, y: -5.858, z: -0.414}
-  m_LocalScale: {x: 373.58804, y: 373.588, z: 373.58783}
+  m_LocalPosition: {x: -1.2730303, y: -68.67887, z: -9.663832}
+  m_LocalScale: {x: 888.4219, y: 888.4218, z: 888.4213}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6023953232082451807}
   - {fileID: 6829534111681864092}
   - {fileID: 4787190504531153527}
-  m_Father: {fileID: 6683687962866384310}
+  m_Father: {fileID: 2123611001276517443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9013323545604423418
 MeshFilter:
@@ -6363,6 +6333,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.0015930354
   m_Center: {x: 0.0000000018626451, y: 3.7557876e-10, z: 0.0002906235}
+--- !u!114 &3446989883897455807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4913073936397288686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609bdab96b05ba946932752d68023e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapToLocation: {fileID: 0}
+  snapSpeed: 1
 --- !u!1 &5293143098132271751
 GameObject:
   m_ObjectHideFlags: 0
@@ -6452,7 +6436,6 @@ Transform:
   - {fileID: 2519472678898904026}
   - {fileID: 7807303642186755697}
   - {fileID: 3583659459044359737}
-  - {fileID: 6861808542611826163}
   - {fileID: 8471623523799872113}
   - {fileID: 8780398752824346259}
   - {fileID: 2212091457540983072}
@@ -6598,7 +6581,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4159566812610726818}
-  - {fileID: 6683687962866384310}
+  - {fileID: 1396269712177827365}
   m_Father: {fileID: 2242856774169841542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5848999215277570746
@@ -6716,7 +6699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8507536204449975427}
   m_Layer: 0
-  m_Name: Teleportation_Point
+  m_Name: Teleportation_Point_Inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
