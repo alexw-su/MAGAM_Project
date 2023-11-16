@@ -31,7 +31,6 @@ public class ScaleUpTree : MonoBehaviour
             transform.localScale = new Vector3(scale,scale,scale);
             transform.Rotate(Vector3.up, rotate);
             yield return null;
-            print(rotate);
         }
 
         // When time elapsed is above 1, set scale and rotation to max.
