@@ -6,13 +6,11 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
 {
 
     public delegate void GrabLetGo();
-    public event GrabLetGo OnGrabLetGo;
     public bool isRotatable = true; // Flag to control rotation
 
 
     void Start()
     {
-
     }
 
     public void OnInteractionStart(bool isGrabbing)
@@ -24,9 +22,6 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
     public void OnInteractionStop()
     {
     }
-
-
-
 
     //Check if snap threshold is reached to position can be snapped to it
     /*private bool CheckIfThresholdReached()

@@ -97,13 +97,26 @@ public class InteractionManager : MonoBehaviour
 
     void HandleLookingAtObject(RaycastHit hitInfo)
     {
-        // highlight interactive/grabbable object
+        // highlight interactive/grabbable object, but dont highlight when grabbed
         GameObject target = hitInfo.collider.gameObject;
 
         if (_lastLookedAt != target)
         {
             _lastLookedAt = target;
-            SetLayerRecursively(_lastLookedAt.transform, _highlightMask);
+            if (_isGrabbing)
+            {
+                SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
+            }
+            else
+            {
+                SetLayerRecursively(_lastLookedAt.transform, _highlightMask);
+
+            }
+        }
+        else if (_isGrabbing && target.CompareTag("Grabbable"))
+        {
+            SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
+
         }
 
         // If object is interacted, run Interact() on all interactable scripts
@@ -156,7 +169,7 @@ public class InteractionManager : MonoBehaviour
                     }
                     _interactableObjects = new List<IInteractable>();
                 }
-                
+
                 // If object is grabbable
                 if (target.CompareTag("Grabbable"))
                 {

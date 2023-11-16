@@ -9,14 +9,13 @@ public class ClockScript : MonoBehaviour, IInteractable
     public float clockSolvedThreshold = 20.0f;
 
 
-    public delegate void ClockSolved();
     public delegate void PointerPlaced();
-    public event ClockSolved OnClockSolved;
     public event PointerPlaced OnPointerPlaced;
 
 
     public void OnInteractionStart(bool isGrabbing)
     {
+        // Debug.Log("STATE" + stateManager.CurrentState);
         if (stateManager.CurrentState == Puzzle2States.PointerPlaced)
         {
             transform.Rotate(0, -20, 0);
@@ -25,15 +24,31 @@ public class ClockScript : MonoBehaviour, IInteractable
             bool val = Mathf.Abs(yRotation) <= clockSolvedThreshold;
             if (Mathf.Abs(yRotation) <= clockSolvedThreshold)
             {
-                OnClockSolved?.Invoke();
+                stateManager.correctTime = true;
+            }
+            else
+            {
+                stateManager.correctTime = false;
             }
         }
     }
+    public void OnInteractionRunning()
+    {
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Obj_Clock")
         {
             OnPointerPlaced?.Invoke();
+            SphereCollider sphereCollider = other.GetComponent<SphereCollider>();
+
+            // Check if the SphereCollider exists before destroying it
+            if (sphereCollider != null)
+            {
+                // Destroy the SphereCollider component
+                Destroy(sphereCollider);
+            }
         }
     }
 }
