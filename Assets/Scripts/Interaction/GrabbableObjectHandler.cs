@@ -7,6 +7,7 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
 
     public delegate void GrabLetGo();
     public event GrabLetGo OnGrabLetGo;
+    public bool isRotatable = true; // Flag to control rotation
 
 
     void Start()
@@ -22,7 +23,6 @@ public class GrabbableObjectHandler : MonoBehaviour, IInteractable
     }
     public void OnInteractionStop()
     {
-        OnGrabLetGo?.Invoke();
     }
 
 

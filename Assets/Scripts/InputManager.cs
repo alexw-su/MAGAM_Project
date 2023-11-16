@@ -93,5 +93,4 @@ public class InputManager : MonoBehaviour
     {
         return playerInput.Player.Quit.triggered;
     }
-
 }
