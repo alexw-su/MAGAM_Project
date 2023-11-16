@@ -12,7 +12,10 @@ public partial class Puzzle1 : MarcimanStateMachine {
 
     private puzzle1States _currentState;
     public puzzle1States CurrentState { get => _currentState; }
+	public float scaleSize;
 	public GameObject tree;
+	public ScaleUpTree paintingTree;
+
 
 	void Start() {
 		ChangeState(puzzle1States.Idle);
@@ -46,5 +49,10 @@ public partial class Puzzle1 : MarcimanStateMachine {
 	private void SetActiveTree(bool enable)
 	{
 		tree.SetActive(enable);
+	}
+
+	private void ScaleUpPaintingTree(float size)
+	{
+		paintingTree.StartScaleToSize(size);
 	}
 }

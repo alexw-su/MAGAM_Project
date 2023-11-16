@@ -18,6 +18,8 @@ public partial class Puzzle1
         public override void OnStateEnter()
         {
             base.OnStateEnter();
+
+            // Debugging
             Debug.Log("Entered Pushing the Ladder State");
         }
 
@@ -31,7 +33,9 @@ public partial class Puzzle1
         public override void OnStateExit()
         {
             base.OnStateExit();
-            Debug.Log("Ladder Pushed, Exiting Pushing the Ladder State");
+
+            // Debugging
+            //Debug.Log("Ladder Pushed, Exiting Pushing the Ladder State");
         }
         #endregion
     }
