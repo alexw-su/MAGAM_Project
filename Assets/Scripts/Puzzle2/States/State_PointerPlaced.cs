@@ -23,8 +23,6 @@ public partial class Puzzle2
             Manager.crystal.SetActive(false);
             Manager.particles1.gameObject.SetActive(false);
             Manager.particles2.gameObject.SetActive(false);
-            Manager.clock2.GetComponent<ClockScript>().OnClockSolved += Clock_OnClockSolved;
-            RenderSettings.skybox = Manager.skyBoxMaterialNight;
         }
 
         public override void OnStateRunning()
@@ -37,7 +35,6 @@ public partial class Puzzle2
         {
 
             base.OnStateExit();
-            Manager.clock2.GetComponent<ClockScript>().OnClockSolved -= Clock_OnClockSolved;
         }
         #endregion
 
@@ -45,7 +42,7 @@ public partial class Puzzle2
         //This is triggered once the ClockScript fires the OnClockSolved event
         private void Clock_OnClockSolved()
         {
-            Debug.Log("Clock_OnClockSolved" );
+            Debug.Log("Clock_OnClockSolved");
             Manager.ChangeState(Puzzle2States.TimeSet);
         }
     }

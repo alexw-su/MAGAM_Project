@@ -25,7 +25,6 @@ public partial class Puzzle2
             Manager.particles2.gameObject.SetActive(true);
 
             RenderSettings.skybox = Manager.skyBoxMaterialNight;
-            Manager.clock2.GetComponent<ClockScript>().OnClockUnsolved += Clock_OnClockUnsolved;
         }
 
 
@@ -38,13 +37,7 @@ public partial class Puzzle2
         public override void OnStateExit()
         {
             base.OnStateExit();
-            Manager.clock2.GetComponent<ClockScript>().OnClockUnsolved += Clock_OnClockUnsolved;
         }
         #endregion
-
-        private void Clock_OnClockUnsolved(){
-            Debug.Log("Clock_OnClockUnsolved");
-            Manager.ChangeState(Puzzle2States.PointerPlaced);
-        }
     }
 }

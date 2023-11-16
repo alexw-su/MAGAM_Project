@@ -10,23 +10,24 @@ public class PickUpController : MonoBehaviour, IInteractable
     public Transform holdArea;
     public float pickupRange = 5.0f;
     public float pickupForce = 150.0f;
+    public GameObject GetHeldObj { get => heldObj; }
 
     private void FixedUpdate()
     {
         if (heldObj != null && heldObj.CompareTag("Grabbable"))
-        {   
+        {
             // Moves object to holding area
             MoveObject();
         }
         if (heldObj != null && !heldObj.CompareTag("Grabbable"))
-        {   
+        {
             // Drop object incase tag changes mid-grab
             DropObject();
         }
     }
     public void PickupObject(GameObject pickObj)
     {
-        if (pickObj.CompareTag("Grabbable")) 
+        if (pickObj.CompareTag("Grabbable"))
         {
             if (pickObj.GetComponent<Rigidbody>())
             {
@@ -42,7 +43,8 @@ public class PickUpController : MonoBehaviour, IInteractable
     }
     public void DropObject()
     {
-        if (heldObj != null) {
+        if (heldObj != null)
+        {
             heldObjRB.useGravity = true;
             heldObjRB.drag = 1;
             heldObjRB.constraints = RigidbodyConstraints.None;
