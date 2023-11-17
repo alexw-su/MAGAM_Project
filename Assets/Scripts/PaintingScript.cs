@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Cinemachine;
 
 public class PaintingScript : MonoBehaviour, IInteractable
 {
-    public GameObject puzzleLocation;
+    public GameObject teleportToPoint;
+    public GameObject teleportPointToMove;
     public string messageKey;
 
     private PlayerController _playerController;
@@ -20,7 +22,13 @@ public class PaintingScript : MonoBehaviour, IInteractable
     {
         if (isGrabbing)
             return;
-
+        
+        // Update position of teleport point for other painting
+        if(teleportPointToMove != null)
+        {
+            teleportPointToMove.transform.position = _playerController.transform.position;
+        }
+        
         // Starts vfx transition
         vfx.EnableFullScreenPassRendererFeature();
         StartCoroutine(WindUpTeleport());
@@ -47,7 +55,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
     {
         if (_playerController != null)
         {
-            _playerController.TeleportTo = puzzleLocation.transform.position;
+            _playerController.TeleportTo = teleportToPoint.transform.position;
         }
 
         MessageController messageController = GetComponent<MessageController>();
@@ -60,7 +68,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
         {
             messageController.SendMessageByKey(messageKey);
         }
-
+        
         vfx.TriggerFadeIn();
         StartCoroutine(vfx.GradualDecreaseDistortion());
     }
