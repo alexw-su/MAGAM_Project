@@ -40,7 +40,18 @@ public class InputManager : MonoBehaviour
     {
         playerInput.Enable();
     }
+    public void ToggleLookInput(bool toggle)
+    {
+        if (toggle)
+        {
+            playerInput.Player.Look.Enable();
+        }
+        else
+        {
+            playerInput.Player.Look.Disable();
+        }
 
+    }
     public Vector2 GetPlayerMovement()
     {
         return playerInput.Player.Movement.ReadValue<Vector2>();
@@ -88,7 +99,14 @@ public class InputManager : MonoBehaviour
     {
         return playerInput.Player.Sprint.IsPressed();
     }
-
+    public bool CKeyPressed()
+    {
+        return playerInput.Player.CPressed.triggered;
+    }
+    public bool YKeyPressed()
+    {
+        return playerInput.Player.YPressed.triggered;
+    }
     public bool GetPlayerQuit()
     {
         return playerInput.Player.Quit.triggered;
