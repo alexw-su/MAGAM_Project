@@ -6,7 +6,7 @@ using UnityEngine;
 public class PaintingScript : MonoBehaviour, IInteractable
 {
     public GameObject puzzleLocation;
-    public string messageKey;
+    public List<StringPair> stringPairs = new List<StringPair>();
 
     private PlayerController _playerController;
     public VFXManager vfx;
@@ -25,8 +25,6 @@ public class PaintingScript : MonoBehaviour, IInteractable
         vfx.EnableFullScreenPassRendererFeature();
         StartCoroutine(WindUpTeleport());
         StartCoroutine(vfx.GradualIncreaseDistortion());
-
-        //SendMessagesToMessageBus();
     }
 
     // Coroutine that teleports player after the fade out transition finishes.
@@ -50,15 +48,14 @@ public class PaintingScript : MonoBehaviour, IInteractable
             _playerController.TeleportTo = puzzleLocation.transform.position;
         }
 
-        MessageController messageController = GetComponent<MessageController>();
 
-        if (messageController == null)
+        foreach (StringPair pair in stringPairs)
         {
-            Debug.LogError("messageController not found!");
-        }
-        else
-        {
-            messageController.SendMessageByKey(messageKey);
+            MessageBus messageBus = FindObjectOfType<MessageBus>();
+            if (messageBus != null)
+            {
+                messageBus.AddMessage(pair.Category, pair.Key);
+            }
         }
 
         vfx.TriggerFadeIn();
