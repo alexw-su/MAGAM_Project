@@ -397,7 +397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01fabf11e0dee7488a5181d37be4dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleLocation: {fileID: 260679863008226246}
+  teleportToPoint: {fileID: 260679863008226246}
+  teleportPointToMove: {fileID: 1217159437525656444}
   stringPairs:
   - Category: puzzle1
     Key: enterPuzzle
@@ -1400,7 +1401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01fabf11e0dee7488a5181d37be4dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleLocation: {fileID: 1217159437525656444}
+  teleportToPoint: {fileID: 1217159437525656444}
+  teleportPointToMove: {fileID: 260679863008226246}
   stringPairs: []
   vfx: {fileID: 0}
 --- !u!114 &1383985276381910087
