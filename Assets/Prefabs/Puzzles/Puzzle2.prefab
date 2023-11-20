@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9121228046260776726}
   - component: {fileID: 1695061843469648955}
   - component: {fileID: 6517844014336921694}
-  - component: {fileID: 3621310787479529899}
   m_Layer: 0
   m_Name: Painting_Outside
   m_TagString: Interactable
@@ -120,23 +119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleLocation: {fileID: 1984904946069446770}
-  messageKey: paintingIn
+  stringPairs:
+  - Category: puzzle2
+    Key: enterPuzzle
   vfx: {fileID: 0}
---- !u!114 &3621310787479529899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160033254344596416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9f50d00e982c74d9dc7de3bda7cc08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textJson: {fileID: 4900000, guid: a373b7a10c186d345a6394a65b1ad567, type: 3}
-  isTrigger: 0
-  messageKeys: []
 --- !u!1 &352189185688962281
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,9 +136,7 @@ GameObject:
   - component: {fileID: 7119158312007473951}
   - component: {fileID: 270467541572243744}
   - component: {fileID: 5351919876089224689}
-  - component: {fileID: 3791496224644807549}
-  - component: {fileID: 3616908238124234429}
-  - component: {fileID: 8174916625797850926}
+  - component: {fileID: 5959986480674940426}
   m_Layer: 0
   m_Name: Painting_Inside
   m_TagString: Interactable
@@ -259,9 +243,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleLocation: {fileID: 6040880398161705529}
-  messageKey: paintingOut
+  stringPairs: []
   vfx: {fileID: 0}
---- !u!114 &3791496224644807549
+--- !u!114 &5959986480674940426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,34 +254,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 352189185688962281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9f50d00e982c74d9dc7de3bda7cc08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textJson: {fileID: 4900000, guid: a373b7a10c186d345a6394a65b1ad567, type: 3}
-  isTrigger: 0
-  messageKeys: []
---- !u!114 &3616908238124234429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352189185688962281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b487d248ec39add43bf809509d026eef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8174916625797850926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352189185688962281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b487d248ec39add43bf809509d026eef, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f43b376c27d7dc458745bcc0ceedaae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &690245764344668399
@@ -6407,7 +6364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showLog: 0
   pointerSnapHandler: {fileID: 3446989883897455807}
-  painting2Leave: {fileID: 3616908238124234429}
+  puzzle2Leave: {fileID: 5959986480674940426}
   clock1: {fileID: 1809401130511628075}
   clock2: {fileID: 8461768052044812801}
   crystal: {fileID: 3010595237033101743}
@@ -6416,6 +6373,12 @@ MonoBehaviour:
   particles1: {fileID: 9057111758547190977}
   particles2: {fileID: 5179280234347226294}
   correctTime: 0
+  messageUnsolved:
+    Category: puzzle2
+    Key: exitPuzzleUnsolved
+  messageSolved:
+    Category: puzzle2
+    Key: exitPuzzleSolved
 --- !u!1 &5533465439671632493
 GameObject:
   m_ObjectHideFlags: 0

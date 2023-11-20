@@ -291,7 +291,6 @@ GameObject:
   - component: {fileID: 7114982676638906199}
   - component: {fileID: 4120444002609799944}
   - component: {fileID: 5566011076528558954}
-  - component: {fileID: 6385319767059964815}
   - component: {fileID: 5130104329600949048}
   m_Layer: 0
   m_Name: Painting_Outside
@@ -400,23 +399,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportToPoint: {fileID: 260679863008226246}
   teleportPointToMove: {fileID: 1217159437525656444}
-  messageKey: paintingIn
+  stringPairs:
+  - Category: puzzle1
+    Key: enterPuzzle
   vfx: {fileID: 0}
---- !u!114 &6385319767059964815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563273949098168346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9f50d00e982c74d9dc7de3bda7cc08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textJson: {fileID: 4900000, guid: 6e06c3faa7f9785429530f2d024c7f4e, type: 3}
-  isTrigger: 0
-  messageKeys: []
 --- !u!114 &5130104329600949048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,9 +744,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showLog: 0
+  puzzle1Leave: {fileID: 1383985276381910087}
   scaleSize: 3
   tree: {fileID: 0}
   paintingTree: {fileID: 7787556130870604321}
+  messageUnsolved:
+    Category: puzzle1
+    Key: exitPuzzleUnsolved
+  messageSolved:
+    Category: puzzle1
+    Key: exitPuzzleSolved
 --- !u!1 &3006791626789763792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1295,7 @@ GameObject:
   - component: {fileID: 4570798198402540518}
   - component: {fileID: 8523495668613145649}
   - component: {fileID: 9116892355732775214}
-  - component: {fileID: 270141649791791848}
+  - component: {fileID: 1383985276381910087}
   m_Layer: 0
   m_Name: Painting_Inside
   m_TagString: Interactable
@@ -1410,9 +1403,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportToPoint: {fileID: 1217159437525656444}
   teleportPointToMove: {fileID: 260679863008226246}
-  messageKey: paintingOut
+  stringPairs: []
   vfx: {fileID: 0}
---- !u!114 &270141649791791848
+--- !u!114 &1383985276381910087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1421,12 +1414,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5934514522960765358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9f50d00e982c74d9dc7de3bda7cc08, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f43b376c27d7dc458745bcc0ceedaae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textJson: {fileID: 4900000, guid: 6e06c3faa7f9785429530f2d024c7f4e, type: 3}
-  isTrigger: 0
-  messageKeys: []
 --- !u!1 &6387400954699982321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,6 +2323,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WateringCan
       objectReference: {fileID: 0}
+    - target: {fileID: 5856371082104603213, guid: 20c0eeab62a72b9429ed51ca032ac664,
+        type: 3}
+      propertyPath: m_TagString
+      value: Grabbable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2527,6 +2522,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9074280577585666475}
+    - targetCorrespondingSourceObject: {fileID: 6269984171707755317, guid: ad2d0caee6c8d7141a44144a97836c74,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7407361871578287916}
   m_SourcePrefab: {fileID: 100100000, guid: ad2d0caee6c8d7141a44144a97836c74, type: 3}
 --- !u!1 &203923853090507283 stripped
 GameObject:
@@ -2561,6 +2560,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8361868726552479363}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2524309577221909942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6269984171707755317, guid: ad2d0caee6c8d7141a44144a97836c74,
+    type: 3}
+  m_PrefabInstance: {fileID: 8361868726552479363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7407361871578287916
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524309577221909942}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.0000001, z: 1}
+  m_Center: {x: 0.0000019073486, y: 0, z: 0.00024414062}
 --- !u!1 &5147159164776743891 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3703422002534663504, guid: ad2d0caee6c8d7141a44144a97836c74,
