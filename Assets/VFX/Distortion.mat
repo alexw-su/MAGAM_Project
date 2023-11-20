@@ -39,8 +39,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 1
-    - _Blend: 1
-    - _NoiseScale: 0
+    - _Blend: 0
+    - _NoiseScale: 10
     m_Colors:
     - _PanSpeed: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
