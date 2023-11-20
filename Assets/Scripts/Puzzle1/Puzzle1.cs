@@ -71,7 +71,6 @@ public partial class Puzzle1 : MarcimanStateMachine
     void PaintingLeaveHandler()
     {
         MessageBus messageBus = FindObjectOfType<MessageBus>();
-        Debug.Log("PUZZLE1LEAVE HADNLE" + messageBus);
         if (_currentState != puzzle1States.TreeWatered)
         {
             if (messageUnsolved != null && messageBus != null)
