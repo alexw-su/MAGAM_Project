@@ -48,7 +48,6 @@ public class InteractionManager : MonoBehaviour
 
     void Update()
     {
-
         RaycastPlayerAim();
         InteractionHolderUpdate();
         if (!_isGrabbing || _interactableObjects.Count <= 0)

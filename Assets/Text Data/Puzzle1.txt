@@ -1,0 +1,19 @@
+{
+    "messages": {
+        "paintingArea": {
+            "text": "This painting seems magically... odd, I should investigate it.",
+            "displayTime": 5
+        },
+        "paintingIn": {
+            "text": "Wow, what just happend. I've been transferred to the painting. 
+            The stories about the residence are true. I can probably get out of the painting the 
+            same way I got it in, but before I do that, maybe I can try to see if there is something 
+            that will help me get inside of the house.",
+            "displayTime": 10
+        },
+        "paintingOut": {
+            "text": "I made it back! Lets see what happened here while I was in the painting.",
+            "displayTime": 5
+        },
+    }
+}

@@ -15,7 +15,7 @@ public partial class Puzzle2 : MarcimanStateMachine
 
     [Header("PuzzleElements")]
     [SerializeField] SnapToLocation_Handler pointerSnapHandler;
-    [SerializeField] PuzzleLeave puzzle2Leave;
+    [SerializeField] Painting2Leave painting2Leave;
     public GameObject clock1;
     public GameObject clock2;
     public GameObject crystal;
@@ -28,8 +28,6 @@ public partial class Puzzle2 : MarcimanStateMachine
     public ParticleSystem particles2;
     public Puzzle2States CurrentState { get => _currentState; }
     public bool correctTime = false;
-    public StringPair messageUnsolved;
-    public StringPair messageSolved;
 
     void Start()
     {
@@ -42,13 +40,13 @@ public partial class Puzzle2 : MarcimanStateMachine
     private void OnEnable()
     {
         pointerSnapHandler.OnSnappedToLocation += PointerSnapHandler_OnSnappedToLocation;
-        puzzle2Leave.OnLeavePainting += PaintingLeaveHandler;
+        painting2Leave.OnLeavePainting += PaintingLeaveHandler;
     }
 
     private void OnDisable()
     {
         pointerSnapHandler.OnSnappedToLocation -= PointerSnapHandler_OnSnappedToLocation;
-        puzzle2Leave.OnLeavePainting += PaintingLeaveHandler;
+        painting2Leave.OnLeavePainting += PaintingLeaveHandler;
     }
     private void ChangeState(Puzzle2States newState)
     {
@@ -74,21 +72,10 @@ public partial class Puzzle2 : MarcimanStateMachine
     }
     private void PaintingLeaveHandler()
     {
-        MessageBus messageBus = FindObjectOfType<MessageBus>();
         if (correctTime)
         {
             ChangeState(Puzzle2States.TimeSet);
             clock2.tag = "Untagged";
-            if (messageSolved != null && messageBus != null)
-            {
-                messageBus.AddMessage(messageSolved.Category, messageSolved.Key);
-                messageSolved = null;
-            }
-        }
-        if (messageUnsolved != null && messageBus != null)
-        {
-            messageBus.AddMessage(messageUnsolved.Category, messageUnsolved.Key);
-            messageUnsolved = null;
         }
     }
 }

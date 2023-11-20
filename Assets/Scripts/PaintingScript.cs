@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using Cinemachine;
 
 public class PaintingScript : MonoBehaviour, IInteractable
 {
-    public GameObject teleportToPoint;
-    public GameObject teleportPointToMove;
-    public List<StringPair> stringPairs = new List<StringPair>();
+    public GameObject puzzleLocation;
+    public string messageKey;
 
     private PlayerController _playerController;
     public VFXManager vfx;
@@ -22,17 +20,13 @@ public class PaintingScript : MonoBehaviour, IInteractable
     {
         if (isGrabbing)
             return;
-        
-        // Update position of teleport point for other painting
-        if(teleportPointToMove != null)
-        {
-            teleportPointToMove.transform.position = _playerController.transform.position;
-        }
-        
+
         // Starts vfx transition
         vfx.EnableFullScreenPassRendererFeature();
         StartCoroutine(WindUpTeleport());
         StartCoroutine(vfx.GradualIncreaseDistortion());
+
+        //SendMessagesToMessageBus();
     }
 
     // Coroutine that teleports player after the fade out transition finishes.
@@ -53,19 +47,20 @@ public class PaintingScript : MonoBehaviour, IInteractable
     {
         if (_playerController != null)
         {
-            _playerController.TeleportTo = teleportToPoint.transform.position;
+            _playerController.TeleportTo = puzzleLocation.transform.position;
         }
 
+        MessageController messageController = GetComponent<MessageController>();
 
-        foreach (StringPair pair in stringPairs)
+        if (messageController == null)
         {
-            MessageBus messageBus = FindObjectOfType<MessageBus>();
-            if (messageBus != null)
-            {
-                messageBus.AddMessage(pair.Category, pair.Key);
-            }
+            Debug.LogError("messageController not found!");
         }
-        
+        else
+        {
+            messageController.SendMessageByKey(messageKey);
+        }
+
         vfx.TriggerFadeIn();
         StartCoroutine(vfx.GradualDecreaseDistortion());
     }

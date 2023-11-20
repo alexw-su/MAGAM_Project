@@ -89,24 +89,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""CPressed"",
-                    ""type"": ""Button"",
-                    ""id"": ""2be1d902-65a9-48d1-b57c-1b85ecce9f27"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""YPressed"",
-                    ""type"": ""Button"",
-                    ""id"": ""e21656c4-76b7-4098-83a2-3fc460dbbbc5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -230,28 +212,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e22cb02f-bd97-432e-a1da-a9d0d1113b47"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""CPressed"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""55a6f9a9-c99c-4ce8-b51c-638dbb8cb08f"",
-                    ""path"": ""<Keyboard>/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""YPressed"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -267,8 +227,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Grab = m_Player.FindAction("Grab", throwIfNotFound: true);
         m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_CPressed = m_Player.FindAction("CPressed", throwIfNotFound: true);
-        m_Player_YPressed = m_Player.FindAction("YPressed", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -337,8 +295,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Grab;
     private readonly InputAction m_Player_Quit;
     private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_CPressed;
-    private readonly InputAction m_Player_YPressed;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -350,8 +306,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Grab => m_Wrapper.m_Player_Grab;
         public InputAction @Quit => m_Wrapper.m_Player_Quit;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-        public InputAction @CPressed => m_Wrapper.m_Player_CPressed;
-        public InputAction @YPressed => m_Wrapper.m_Player_YPressed;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -382,12 +336,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @CPressed.started += instance.OnCPressed;
-            @CPressed.performed += instance.OnCPressed;
-            @CPressed.canceled += instance.OnCPressed;
-            @YPressed.started += instance.OnYPressed;
-            @YPressed.performed += instance.OnYPressed;
-            @YPressed.canceled += instance.OnYPressed;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -413,12 +361,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @CPressed.started -= instance.OnCPressed;
-            @CPressed.performed -= instance.OnCPressed;
-            @CPressed.canceled -= instance.OnCPressed;
-            @YPressed.started -= instance.OnYPressed;
-            @YPressed.performed -= instance.OnYPressed;
-            @YPressed.canceled -= instance.OnYPressed;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -445,7 +387,5 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnGrab(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnCPressed(InputAction.CallbackContext context);
-        void OnYPressed(InputAction.CallbackContext context);
     }
 }

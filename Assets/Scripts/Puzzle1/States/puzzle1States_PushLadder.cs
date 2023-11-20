@@ -20,7 +20,7 @@ public partial class Puzzle1
             base.OnStateEnter();
 
             // Debugging
-            //Debug.Log("Entered Pushing the Ladder State");
+            Debug.Log("Entered Pushing the Ladder State");
         }
 
 

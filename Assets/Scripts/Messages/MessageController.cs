@@ -1,69 +1,67 @@
 using Newtonsoft.Json;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
 
 public class MessageController : MonoBehaviour
 {
+    private MessageContainer messageContainer = new MessageContainer();
+    public TextAsset textJson;
     public bool isTrigger = true;
-    public List<StringPair> stringPairs = new List<StringPair>();
-    MessageBus messageBus;
-
-    private bool _firstTime = true; // wink wink
-    private void Start()
+    public List<string> messageKeys = new List<string>();
+    void Start()
     {
-        messageBus = FindObjectOfType<MessageBus>();
-    }
-
-
-    public void SendMessages()
-    {
-        bool destroySelf = true;
-        foreach (StringPair pair in stringPairs)
+        if (textJson != null)
         {
-            if (messageBus != null)
+            messageContainer = JsonConvert.DeserializeObject<MessageContainer>(textJson.text);
+        }
+        else
+        {
+            Debug.Log("messageContainer is not assigned. Please assign a TextAsset with the JSON data.");
+        }
+    }
+    public void SendMessageByKeys()
+    {
+        foreach (string key in messageKeys)
+        {
+            if (messageContainer.messages.ContainsKey(key))
             {
-                CanvasMessage msg = messageBus.GetMessage(pair.Category, pair.Key);
-                if (msg != null)
+                CanvasMessage message = messageContainer.messages[key];
+                StartCoroutine(WaitAndSendMessage(message));
+                if (message.repeatable == false)
                 {
-                    if (!_firstTime)
-                    {
-                        if (msg.repeatable)
-                        {
-                            messageBus.AddMessage(pair.Category, pair.Key);
-                        }
-                    }
-                    else
-                    {
-                        messageBus.AddMessage(pair.Category, pair.Key);
-                    }
-                    // no repeatable messages - destroy component
-                    if (msg.repeatable)
-                    {
-                        destroySelf = false;
-                    }
+                    Destroy(gameObject);
                 }
-                else
-                {
-                    Debug.LogWarning($"MessageController: category '{pair.Category}' and key '{pair.Key}' not found.");
-                }
-
             }
         }
-        if (destroySelf)
-        {
-            Destroy(gameObject);
-        }
-        _firstTime = false;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (isTrigger && other.tag == "Player")
         {
-            SendMessages();
+            SendMessageByKeys();
+        }
+    }
+    IEnumerator WaitAndSendMessage(CanvasMessage message)
+    {
+        if (message.delay > 0)
+        {
+            yield return new WaitForSeconds(message.delay);
+        }
+        MessageBus messageBus = FindObjectOfType<MessageBus>();
+
+        if (messageBus != null)
+        {
+            messageBus.AddMessage(message.text, message.displayTime);
+        }
+    }
+    public void SendMessageByKey(string key)
+    {
+        MessageBus messageBus = FindObjectOfType<MessageBus>();
+        if (messageBus != null && messageContainer.messages.ContainsKey(key))
+        {
+            CanvasMessage message = messageContainer.messages[key];
+            messageBus.AddMessage(message.text, message.displayTime);
         }
     }
 }

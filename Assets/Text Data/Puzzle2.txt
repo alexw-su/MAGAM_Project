@@ -1,0 +1,16 @@
+{
+    "messages": {
+        "paintingArea": {
+            "text": "I made it! Now lets see what do we have here.",
+            "displayTime": 5
+        },
+        "paintingIn": {
+            "text": "Such an odd feeling, I barely looked at the painting and suddenly I was in it. This place seems much bigger than in reality. There's also something wrong with that clock",
+            "displayTime": 5
+        },
+        "paintingOut": {
+            "text": "And I'm back. Seems like the time of the day changed. And what is this blue glow? I should follow it.",
+            "displayTime": 5
+        },
+    }
+}
