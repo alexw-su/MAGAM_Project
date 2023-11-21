@@ -1793,6 +1793,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ef71c61a4b7a584ab19647cf6f6946e, type: 3}
+--- !u!4 &409970603 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6034732934323742679, guid: b36ca50e36271164895f0863d57a8d03,
+    type: 3}
+  m_PrefabInstance: {fileID: 817492487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &410730902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2892,6 +2898,11 @@ PrefabInstance:
       propertyPath: cameraReference
       value: 
       objectReference: {fileID: 923819810}
+    - target: {fileID: 781046965336982491, guid: b36ca50e36271164895f0863d57a8d03,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1888489424086483209, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
       propertyPath: holdArea
@@ -2952,7 +2963,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 612554024438895935, guid: b36ca50e36271164895f0863d57a8d03, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3197,7 +3209,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 600
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -12924,6 +12936,79 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6269969451282735586}
   m_Enabled: 1
+--- !u!1001 &2537810557392374744
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -64.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5494362
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.105274275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.81406873
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.15597855
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764669528267835169, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981229817642767040, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_Name
+      value: CinemachinePlayerCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943510099389605423, guid: 9743d650dfbe96a40957004a387f49b5,
+        type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 409970603}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9743d650dfbe96a40957004a387f49b5, type: 3}
 --- !u!205 &2544955278831438229
 LODGroup:
   m_ObjectHideFlags: 0
@@ -28627,3 +28712,4 @@ SceneRoots:
   - {fileID: 272351598}
   - {fileID: 755491297}
   - {fileID: 390008388}
+  - {fileID: 2537810557392374744}
