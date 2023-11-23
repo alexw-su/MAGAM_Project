@@ -18,7 +18,7 @@ public partial class Puzzle2
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-
+            Debug.Log("VERY IMPORTANTA STATE ENTER");
             Manager.crystal.SetActive(true);
             Manager.doorBlock.GetComponent<Collider>().enabled = false;
             Manager.particles1.gameObject.SetActive(true);

@@ -13,26 +13,26 @@
          },
          "frontDoorLocked":{
             "text":"Seems like the front door is locked. I will need to find another way",
-            "displayTime":5
+            "displayTime":4
          }
       },
       "puzzle1":{
          "paintingArea":{
             "text":"This painting next to the entrance seems... odd, Maybe I should investigate it.",
-            "displayTime":6
+            "displayTime":4
          },
          "enterPuzzle":{
             "text":"I have been transferred to the painting! So the stories about the residence are true! \nMaybe I can try to see if there is something here that will help me get inside of the real residence.",
-            "displayTime":10
+            "displayTime":8
          },
          "exitPuzzleUnsolved":{
             "text":"I have a feeling that I missed some important detail while I was in the painting.",
-            "displayTime":10,
+            "displayTime":5,
             "delay":2
          },
          "exitPuzzleSolved":{
             "text":"And I'm back. Let's see what happened around the house while I was in the painting.",
-            "displayTime":10,
+            "displayTime":5,
             "delay":2
          }
       },
@@ -43,16 +43,16 @@
          },
          "enterPuzzle":{
             "text":"Such an odd feeling, I barely looked at the painting and suddenly I was in it. This place seems much bigger than in reality. Hmm, there's also something wrong with that clock.",
-            "displayTime":10
+            "displayTime":5
          },
          "exitPuzzleUnsolved":{
             "text":"I sense there might be a crucial detail I overlooked.",
-            "displayTime":10,
+            "displayTime":5,
             "delay":2
          },
          "exitPuzzleSolved":{
             "text":"Back to reality. Curious to see what unfolded around during my absence.",
-            "displayTime":10,
+            "displayTime":5,
             "delay":2
          }
       }

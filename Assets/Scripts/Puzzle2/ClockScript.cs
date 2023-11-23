@@ -6,7 +6,7 @@ public class ClockScript : MonoBehaviour, IInteractable
 {
     public Puzzle2 stateManager;
     [Space]
-    public float clockSolvedThreshold = 20.0f;
+    public float clockSolvedThreshold = 30.0f;
 
 
     public delegate void PointerPlaced();
