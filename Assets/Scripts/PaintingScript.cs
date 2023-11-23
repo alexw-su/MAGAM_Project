@@ -17,19 +17,20 @@ public class PaintingScript : MonoBehaviour, IInteractable
     void Start()
     {
         _playerController = FindObjectOfType<PlayerController>();
+        inputManager = InputManager.Instance;
     }
 
     public void OnInteractionStart(bool isGrabbing)
     {
         if (isGrabbing)
             return;
-        
+
         // Update position of teleport point for other painting
         if(teleportPointToMove != null)
         {
             teleportPointToMove.transform.position = _playerController.transform.position;
         }
-        
+
         // Locks player inputs
         inputManager.LockInput();
 
@@ -72,7 +73,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
                 messageBus.AddMessage(pair.Category, pair.Key);
             }
         }
-        
+
         vfx.TriggerFadeIn();
         StartCoroutine(vfx.GradualDecreaseDistortion());
     }
