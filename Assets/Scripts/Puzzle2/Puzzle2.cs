@@ -84,12 +84,14 @@ public partial class Puzzle2 : MarcimanStateMachine
                 messageBus.AddMessage(messageSolved.Category, messageSolved.Key);
                 messageSolved = null;
             }
+        } else {
+            if (messageUnsolved != null && messageBus != null)
+            {
+                messageBus.AddMessage(messageUnsolved.Category, messageUnsolved.Key);
+                messageUnsolved = null;
+            }
         }
-        if (messageUnsolved != null && messageBus != null)
-        {
-            messageBus.AddMessage(messageUnsolved.Category, messageUnsolved.Key);
-            messageUnsolved = null;
-        }
+
     }
 }
 

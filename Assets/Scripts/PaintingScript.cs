@@ -11,6 +11,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
     public List<StringPair> stringPairs = new List<StringPair>();
 
     private PlayerController _playerController;
+    private InputManager inputManager;
     public VFXManager vfx;
 
     void Start()
@@ -29,6 +30,9 @@ public class PaintingScript : MonoBehaviour, IInteractable
             teleportPointToMove.transform.position = _playerController.transform.position;
         }
         
+        // Locks player inputs
+        inputManager.LockInput();
+
         // Starts vfx transition
         vfx.EnableFullScreenPassRendererFeature();
         StartCoroutine(WindUpTeleport());
@@ -55,6 +59,9 @@ public class PaintingScript : MonoBehaviour, IInteractable
         {
             _playerController.TeleportTo = teleportToPoint.transform.position;
         }
+
+        // Unlocks the player inputs
+        inputManager.UnlockInput();
 
 
         foreach (StringPair pair in stringPairs)

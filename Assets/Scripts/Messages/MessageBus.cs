@@ -13,6 +13,7 @@ public class MessageBus : MonoBehaviour
     public TextMeshProUGUI messageText;
     public GameObject messageLogPanel;
     public TextMeshProUGUI messageLogText;
+    public TextMeshProUGUI instructionsText;
     private bool _isLogOpen = false;
     // currently displayed messages
     private List<CanvasMessage> _displayedMessagesSet = new List<CanvasMessage>();
@@ -49,6 +50,7 @@ public class MessageBus : MonoBehaviour
         {
             Debug.Log("textJson is not assigned. Assign a TextAsset with the JSON data.");
         }
+        StartCoroutine(HideInstructions());
     }
     private void Update()
     {
@@ -131,6 +133,12 @@ public class MessageBus : MonoBehaviour
             Debug.LogWarning($"Cannot get message '{category}' and key '{key}' not found.");
             return null;
         }
+    }
+    private IEnumerator HideInstructions()
+    {
+        yield return new WaitForSeconds(20);
+        instructionsText.text = "";
+
     }
     private void ToggleMessageLog()
     {

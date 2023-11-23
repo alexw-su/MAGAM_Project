@@ -40,6 +40,17 @@ public class InputManager : MonoBehaviour
     {
         playerInput.Enable();
     }
+
+    public void LockInput()
+    {
+        playerInput.Disable();
+    }
+
+    public void UnlockInput()
+    {
+        playerInput.Enable();
+    }
+
     public void ToggleLookInput(bool toggle)
     {
         if (toggle)
