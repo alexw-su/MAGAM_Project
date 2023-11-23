@@ -103,6 +103,10 @@ public class InteractionManager : MonoBehaviour
 
         if (_lastLookedAt != target)
         {
+            if (_lastLookedAt != null)
+            {
+                SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
+            }
             _lastLookedAt = target;
             if (_isGrabbing)
             {
