@@ -68,6 +68,11 @@ public class InputManager : MonoBehaviour
         return playerInput.Player.Movement.ReadValue<Vector2>();
     }
 
+    public bool IsPlayerMoving()
+    {
+        return playerInput.Player.Movement.IsPressed();
+    }
+
     public Vector2 GetPlayerLook()
     {
         return playerInput.Player.Look.ReadValue<Vector2>();

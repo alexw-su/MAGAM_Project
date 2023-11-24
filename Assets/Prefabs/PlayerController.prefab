@@ -277,11 +277,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6647cdc7e196296448a92f36f49b048f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  sprintMultiplier: 1.5
+  moveSpeed: 4
+  acceleration: 15
+  sprintMultiplier: 2
   jumpHeight: 1.5
   gravityValue: -16
   grounded: 0
+  cameraHolder: {fileID: 6034732934323742679}
+  bobbingSpeed: 7
+  bobbingAmount: 0.075
+  swayAmount: 0.075
 --- !u!114 &-200996753769108827
 MonoBehaviour:
   m_ObjectHideFlags: 0
