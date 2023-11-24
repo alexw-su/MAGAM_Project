@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using TMPro;
 
 public enum Puzzle3_State
 {
@@ -30,12 +31,20 @@ public class Puzzle3_StateProperties
 
 public partial class Puzzle3_StateMachine : MarcimanStateMachine
 {
-	[SerializeField] SnapToLocation_Handler cauldronSnapHandler;
+    [Header("General")]
     [SerializeField] GameObject failCloud;
     [SerializeField] List<Puzzle3_StateProperties> phasePropertiesList;
 	[SerializeField] Transform particleEffectLocation;
+	[Header("Cauldron")]
+    [SerializeField] SnapToLocation_Handler cauldronSnapHandler;
+    [Tooltip("The last Element is always white, because thats the pause inbetween the pulses")]
+    [SerializeField] List<Color> solvedPuzzleColorSequence;
+	[SerializeField] GameObject cauldronGooeyObject;
+	[SerializeField] float solvedPuzzleInterval = 2f;
 
 	private int _currentElementsPlacedCounter = 0;
+
+	private Material _cauldronMaterial;
 
 
     private Puzzle3_StateProperties _currentActiveStateProperty = null;
@@ -52,6 +61,9 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
 		{
             Instantiate(property.elementFlaskPrefab, property.respawnPosition);
         }
+
+        _cauldronMaterial = new Material(cauldronGooeyObject.GetComponent<MeshRenderer>().material);
+		cauldronGooeyObject.GetComponent<MeshRenderer>().material = _cauldronMaterial;
     }
 
 
