@@ -17,6 +17,7 @@ public class ScaleUpTree : MonoBehaviour
     }
     public IEnumerator ScaleToSize(float size)
     {
+        Debug.Log("SCALE TO SIZE");
 
         while (timeElapsed < transformationTime)
         {
@@ -28,14 +29,14 @@ public class ScaleUpTree : MonoBehaviour
             timeElapsed += Time.deltaTime;
 
             // Sets scale and rotation for transform
-            transform.localScale = new Vector3(scale,scale,scale);
+            transform.localScale = new Vector3(scale, scale, scale);
             transform.Rotate(Vector3.up, rotate);
             yield return null;
         }
 
         // When time elapsed is above 1, set scale and rotation to max.
-        transform.localScale = new Vector3(size,size,size);
-        
+        transform.localScale = new Vector3(size, size, size);
+
         // Update current scale and rotation for script.
         currentScale = transform.localScale;
         currentRotation = transform.rotation;
