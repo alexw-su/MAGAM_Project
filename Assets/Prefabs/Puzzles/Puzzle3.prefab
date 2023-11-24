@@ -665,6 +665,10 @@ MonoBehaviour:
       type: 3}
     successCloud: {fileID: 0}
   particleEffectLocation: {fileID: 7940761638203300364}
+  solvedPuzzleColorSequence:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.8776462, a: 1}
+  - {r: 0.38374758, g: 0.8584906, b: 0, a: 1}
 --- !u!1 &4640495684864069119
 GameObject:
   m_ObjectHideFlags: 0

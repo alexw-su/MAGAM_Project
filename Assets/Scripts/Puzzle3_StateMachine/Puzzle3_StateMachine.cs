@@ -34,6 +34,7 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     [SerializeField] GameObject failCloud;
     [SerializeField] List<Puzzle3_StateProperties> phasePropertiesList;
 	[SerializeField] Transform particleEffectLocation;
+	[SerializeField] List<Color> solvedPuzzleColorSequence;
 
 	private int _currentElementsPlacedCounter = 0;
 
