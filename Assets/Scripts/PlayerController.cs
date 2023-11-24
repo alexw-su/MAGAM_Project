@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Attribute Values")]
     public float moveSpeed;
+    public float acceleration;
     public float sprintMultiplier;
     public float jumpHeight;
     public float gravityValue;
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
     Vector3 playerVelocity;
     Vector3 moveDirection;
     Transform cameraTransform;
+
+    private float currentMoveSpeed;
 
     private Vector3? teleportTo = null;
     // public property to access teleportTo
@@ -38,9 +41,7 @@ public class PlayerController : MonoBehaviour
         cameraTransform = Camera.main.transform;
 
         // Setting Attributes
-        //gravityValue = -9.81f;
-        //jumpHeight = 1.0f;
-        //sprintMultiplier = 2;
+        currentMoveSpeed = 0;
 
         // Fixes jump registering
         controller.minMoveDistance = 0;
@@ -57,8 +58,23 @@ public class PlayerController : MonoBehaviour
         // Gets player input
         GetInput();
 
+        //
+        if (inputManager.IsPlayerMoving())
+        {
+            // Accelerates current speed up to move speed
+            currentMoveSpeed += acceleration * Time.deltaTime;
+            if (currentMoveSpeed > moveSpeed) currentMoveSpeed = moveSpeed;
+        }
+
         // Moves Player according to input
         MovePlayer();
+
+        // If no movement input, deaccelerate player movement
+        if (!inputManager.IsPlayerMoving())
+        {
+            currentMoveSpeed -= acceleration * Time.deltaTime;
+            if(currentMoveSpeed < 0 ) currentMoveSpeed = 0;
+        }
 
         // Applying gravity
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -82,9 +98,12 @@ public class PlayerController : MonoBehaviour
     // Gets player inputs from InputManager and updates variables.
     private void GetInput()
     {
-        // Gets directional input from inputManager
-        Vector2 movement = inputManager.GetPlayerMovement();
-        moveDirection = new Vector3(movement.x, 0f, movement.y);
+        if(inputManager.IsPlayerMoving())
+        {
+            // Gets directional input from inputManager
+            Vector2 movement = inputManager.GetPlayerMovement();
+            moveDirection = new Vector3(movement.x, 0f, movement.y);
+        }
 
         // Changes/Rotates directional movement based on Camera's direction
         moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
@@ -110,14 +129,15 @@ public class PlayerController : MonoBehaviour
     // Uses variables based on input to move player.
     private void MovePlayer()
     {
+
         // Gives CharacterController movement input
         if(!sprinting) 
         {
-            controller.Move(moveDirection * Time.deltaTime * moveSpeed);
+            controller.Move(moveDirection * Time.deltaTime * currentMoveSpeed);
         }
         else 
         {
-            controller.Move(moveDirection * Time.deltaTime * moveSpeed * sprintMultiplier);
+            controller.Move(moveDirection * Time.deltaTime * currentMoveSpeed * sprintMultiplier);
         }
 
         // Rotates player object's forward. 
