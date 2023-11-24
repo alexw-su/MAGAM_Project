@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public float gravityValue;
     public bool grounded;
+    public Transform cameraHolder;
+    private float currentMoveSpeed;
 
     InputManager inputManager;
     CharacterController controller;
@@ -19,7 +21,13 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
     Transform cameraTransform;
 
-    private float currentMoveSpeed;
+    // Player Effect variables
+    public float bobbingSpeed;
+    public float bobbingAmount;
+    public float swayAmount;
+    float bobbingTime;
+    float cameraHolderDefaultY;
+    float cameraHolderDefaultX;
 
     private Vector3? teleportTo = null;
     // public property to access teleportTo
@@ -42,6 +50,8 @@ public class PlayerController : MonoBehaviour
 
         // Setting Attributes
         currentMoveSpeed = 0;
+        cameraHolderDefaultY = cameraHolder.localPosition.y;
+        cameraHolderDefaultX = cameraHolder.localPosition.x;
 
         // Fixes jump registering
         controller.minMoveDistance = 0;
@@ -58,22 +68,40 @@ public class PlayerController : MonoBehaviour
         // Gets player input
         GetInput();
 
-        //
+        // If player is giving movement input
         if (inputManager.IsPlayerMoving())
         {
             // Accelerates current speed up to move speed
             currentMoveSpeed += acceleration * Time.deltaTime;
             if (currentMoveSpeed > moveSpeed) currentMoveSpeed = moveSpeed;
+
+            // Add head bobbing and swaying to camera holder
+            bobbingTime += Time.deltaTime * bobbingSpeed;
+            if (sprinting) bobbingTime += Time.deltaTime * bobbingSpeed;
+            cameraHolder.localPosition = new Vector3(
+                cameraHolderDefaultX + Mathf.Sin(bobbingTime * 0.5f) * swayAmount, 
+                cameraHolderDefaultY + Mathf.Sin(bobbingTime) * bobbingAmount, 
+                cameraHolder.localPosition.z
+            );
         }
 
         // Moves Player according to input
         MovePlayer();
 
-        // If no movement input, deaccelerate player movement
+        // If no movement input
         if (!inputManager.IsPlayerMoving())
         {
+            // Decelerate player movement
             currentMoveSpeed -= acceleration * Time.deltaTime;
             if(currentMoveSpeed < 0 ) currentMoveSpeed = 0;
+
+            // Stop bobbing and swaying and return to default position
+            bobbingTime = 0;
+            cameraHolder.localPosition = new Vector3(
+                Mathf.Lerp(cameraHolder.localPosition.x, cameraHolderDefaultX, Time.deltaTime * bobbingSpeed), 
+                Mathf.Lerp(cameraHolder.localPosition.y, cameraHolderDefaultY, Time.deltaTime * bobbingSpeed), 
+                cameraHolder.localPosition.z
+            );
         }
 
         // Applying gravity
@@ -103,11 +131,11 @@ public class PlayerController : MonoBehaviour
             // Gets directional input from inputManager
             Vector2 movement = inputManager.GetPlayerMovement();
             moveDirection = new Vector3(movement.x, 0f, movement.y);
+        
+            // Changes/Rotates directional movement based on Camera's direction
+            moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
+            moveDirection.y = 0f;
         }
-
-        // Changes/Rotates directional movement based on Camera's direction
-        moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
-        moveDirection.y = 0f;
 
         // Checks if jump input was triggered during grounded
         if (inputManager.GetPlayerJumped() && grounded)
