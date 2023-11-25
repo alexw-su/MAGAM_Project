@@ -14,6 +14,7 @@ public partial class Puzzle1 : MarcimanStateMachine
 
     [SerializeField] PuzzleLeave puzzle1Leave;
     private puzzle1States _currentState;
+    private bool scaleTriggered;
     public puzzle1States CurrentState { get => _currentState; }
     public float scaleSize;
     public GameObject tree;
@@ -24,6 +25,7 @@ public partial class Puzzle1 : MarcimanStateMachine
     void Start()
     {
         ChangeState(puzzle1States.Idle);
+        scaleTriggered = false;
     }
     private void OnEnable()
     {
@@ -58,7 +60,6 @@ public partial class Puzzle1 : MarcimanStateMachine
         ChangeState(newState);
     }
 
-
     private void SetActiveTree(bool enable)
     {
         tree.SetActive(enable);
@@ -66,7 +67,11 @@ public partial class Puzzle1 : MarcimanStateMachine
 
     private void ScaleUpPaintingTree(float size)
     {
-        paintingTree.StartScaleToSize(size);
+        if(!scaleTriggered)
+        {
+            paintingTree.StartScaleToSize(size);
+            scaleTriggered = true;
+        }
     }
     void PaintingLeaveHandler()
     {

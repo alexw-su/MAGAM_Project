@@ -12,6 +12,9 @@ public class InteractionStateChange : MonoBehaviour, IInteractable
         if(isGrabbing)
             return;
 
-        stateMachine.Change(state);
+        if(stateMachine.CurrentState != state)
+        {
+            stateMachine.Change(state);
+        }
     }
 }
