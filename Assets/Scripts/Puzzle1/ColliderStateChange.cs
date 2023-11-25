@@ -9,8 +9,6 @@ public class ColliderStateChange : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("COLLIDE1" + other.name);
-        Debug.Log("COLLIDE2" + gameObjectToCollide);
         if (other.gameObject == gameObjectToCollide)
         {
             stateMachine.Change(puzzle1States.TreeWatered);
