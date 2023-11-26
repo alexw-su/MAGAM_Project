@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColliderLerpToPoint: MonoBehaviour
+public class ColliderLerpToPoint : MonoBehaviour
 {
     public GameObject gameObjectToCollide;
     public Transform lerpingPoint;
@@ -10,6 +10,7 @@ public class ColliderLerpToPoint: MonoBehaviour
     float timeElapsed;
     Transform startTransform;
     bool triggeredOnce;
+    float minDistance = 0.3f;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class ColliderLerpToPoint: MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == gameObjectToCollide && !triggeredOnce)
-        {   
+        {
             triggeredOnce = true;
             other.gameObject.tag = "Untagged";
             startTransform = other.gameObject.transform;
@@ -30,16 +31,15 @@ public class ColliderLerpToPoint: MonoBehaviour
 
     IEnumerator LerpToPoint()
     {
-        // Debug.Log("Lerping to Point");
-
-        while (timeElapsed < lerpTime)
+        while (timeElapsed < lerpTime && Vector3.Distance(gameObjectToCollide.transform.position, lerpingPoint.position) > minDistance)
         {
-            gameObjectToCollide.transform.position = Vector3.Lerp(startTransform.position,lerpingPoint.position,timeElapsed / lerpTime);
+            gameObjectToCollide.transform.position = Vector3.Lerp(startTransform.position, lerpingPoint.position, timeElapsed / lerpTime);
 
             timeElapsed += Time.deltaTime;
-            
+
             yield return null;
         }
+
         gameObjectToCollide.GetComponent<WateringAnimationHandler>().PlayAnimation();
     }
 }
