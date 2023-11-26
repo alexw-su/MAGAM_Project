@@ -135,6 +135,7 @@ public class PlayerController : MonoBehaviour
             // Changes/Rotates directional movement based on Camera's direction
             moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
             moveDirection.y = 0f;
+            moveDirection.Normalize();
         }
 
         // Checks if jump input was triggered during grounded

@@ -8,16 +8,21 @@ public class ScaleUpTree : MonoBehaviour
     private float timeElapsed;
     private Vector3 currentScale;
     private Quaternion currentRotation;
+    public ParticleSystem ps;
 
     void Start()
     {
         timeElapsed = 0;
         currentScale = transform.localScale;
         currentRotation = transform.rotation;
+        ps.Stop();
     }
     public IEnumerator ScaleToSize(float size)
     {
         Debug.Log("SCALE TO SIZE");
+
+        // Start Particle System
+        ps.Play();
 
         while (timeElapsed < transformationTime)
         {
@@ -36,6 +41,9 @@ public class ScaleUpTree : MonoBehaviour
 
         // When time elapsed is above 1, set scale and rotation to max.
         transform.localScale = new Vector3(size, size, size);
+
+        // Stop particle System
+        ps.Stop();
 
         // Update current scale and rotation for script.
         currentScale = transform.localScale;
