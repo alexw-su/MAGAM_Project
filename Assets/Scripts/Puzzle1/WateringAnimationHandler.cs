@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WateringAnimationScript : MonoBehaviour
+public class WateringAnimationHandler : MonoBehaviour
 {
     public Puzzle1 stateMachine;
     public puzzle1States state;
+    public ParticleSystem ps;
     public float rotationTime;
     public float pouringTime;
     float timeElapsed;
@@ -15,6 +16,7 @@ public class WateringAnimationScript : MonoBehaviour
     {
         timeElapsed = 0;
         rb = gameObject.GetComponent<Rigidbody>();
+        ps.Stop();
     }
 
     public void PlayAnimation()
@@ -47,11 +49,11 @@ public class WateringAnimationScript : MonoBehaviour
             transform.Rotate(Vector3.right, rotate);
             yield return null;
         }
-        
+        ps.Play();
         rb.angularVelocity = Vector3.zero;
         // Debug.Log("Pouring");
-
         yield return new WaitForSeconds(pouringTime);
+        ps.Stop();
         stateMachine.Change(state);
         gameObject.GetComponent<Rigidbody>().useGravity = true;
     }

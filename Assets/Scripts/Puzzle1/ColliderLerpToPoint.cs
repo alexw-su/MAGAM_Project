@@ -40,6 +40,6 @@ public class ColliderLerpToPoint: MonoBehaviour
             
             yield return null;
         }
-        gameObjectToCollide.GetComponent<WateringAnimationScript>().PlayAnimation();
+        gameObjectToCollide.GetComponent<WateringAnimationHandler>().PlayAnimation();
     }
 }
