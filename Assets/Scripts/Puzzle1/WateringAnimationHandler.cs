@@ -21,20 +21,26 @@ public class WateringAnimationHandler : MonoBehaviour
 
     public void PlayAnimation()
     {
+        // Prevent from falling
         rb.useGravity = false;
-        rb.angularVelocity = Vector3.zero;
         rb.velocity = Vector3.zero;
 
+        // Prevent continues rotation
+        rb.angularVelocity = Vector3.zero;
+
+        // Setup for pouring animation
         ResetRotation();
         StartCoroutine(Pour());
     }
 
+    // Resets the rotation of the watering can.
     void ResetRotation()
     {
         // Debug.Log("Reseting Rotation");
         transform.rotation = Quaternion.identity;
     }
 
+    // Lerps the rotation of the watering can so it looks like it is pouring water
     IEnumerator Pour()
     {
         // Debug.Log("Rotating");
@@ -49,10 +55,15 @@ public class WateringAnimationHandler : MonoBehaviour
             transform.Rotate(Vector3.right, rotate);
             yield return null;
         }
+
+        // Play watering particles
         ps.Play();
-        rb.angularVelocity = Vector3.zero;
         // Debug.Log("Pouring");
+
+        // Wait until the water is done pouring
         yield return new WaitForSeconds(pouringTime);
+
+        // Stop particles and change states
         ps.Stop();
         stateMachine.Change(state);
         gameObject.GetComponent<Rigidbody>().useGravity = true;

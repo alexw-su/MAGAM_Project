@@ -32,7 +32,7 @@ public partial class Puzzle1
         public override void OnStateExit()
         {
             base.OnStateExit();
-            Debug.Log("Exiting Watered Tree State");
+            // Debug.Log("Exiting Watered Tree State");
         }
         #endregion
     }
