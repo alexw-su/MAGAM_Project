@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6454328172616560079}
   - component: {fileID: 4895363988025487895}
   - component: {fileID: 3684641760145030705}
+  - component: {fileID: 1762210456226369646}
   m_Layer: 0
   m_Name: Puzzle3_Cauldron
   m_TagString: Puzzle3_Cauldron
@@ -71,6 +72,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapToLocation: {fileID: 146828253376877861}
   snapSpeed: 0.5
+--- !u!114 &1762210456226369646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114543877535865288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b262d582f93b9c84daf3168b1b855472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulseAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  cauldronGooeyObject: {fileID: 2358665433920263898}
 --- !u!1 &2149663305282548974
 GameObject:
   m_ObjectHideFlags: 0
@@ -5008,6 +5046,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b4aafb4f331a44ca8723b352104cfe, type: 3}
+--- !u!1 &2358665433920263898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5233112405309087440, guid: f9b4aafb4f331a44ca8723b352104cfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 7504239111674005514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8047599158721343457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f9b4aafb4f331a44ca8723b352104cfe,

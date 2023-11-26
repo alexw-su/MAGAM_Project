@@ -100,7 +100,6 @@ public class InteractionManager : MonoBehaviour
     {
         // highlight interactive/grabbable object, but dont highlight when grabbed
         GameObject target = hitInfo.collider.gameObject;
-
         if (_lastLookedAt != target)
         {
             if (_lastLookedAt != null)
@@ -194,6 +193,7 @@ public class InteractionManager : MonoBehaviour
         {
             SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
             _lastLookedAt = null;
+            _isGrabbing = false;
         }
     }
 

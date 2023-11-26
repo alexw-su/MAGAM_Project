@@ -18,7 +18,7 @@ public partial class Puzzle3_StateMachine
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-            Manager.ChangeState(Puzzle3_State.Phase1);
+            Manager.ChangeState(Puzzle3_State.Potion_Phase1);
         }
 
 

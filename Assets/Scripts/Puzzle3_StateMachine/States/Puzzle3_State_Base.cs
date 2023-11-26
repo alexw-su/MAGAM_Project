@@ -44,8 +44,6 @@ public partial class Puzzle3_StateMachine
         {
             //Resets Counter in Base State everytime a new State is entered
             Manager._currentActiveStateProperty = property;
-
-            Debug.Log("Now in state " + property.Element);
             Manager._currentElementsPlacedCounter = 0;
         }
     }

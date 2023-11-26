@@ -504,7 +504,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 600
+  far clip plane: 200
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
@@ -664,6 +664,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1226444278362137369, guid: 346e37528bd3b884eb0bad479dcf7443,
+        type: 3}
+      propertyPath: phasePropertiesList.Array.data[0].StateGoal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1226444278362137369, guid: 346e37528bd3b884eb0bad479dcf7443,
+        type: 3}
+      propertyPath: phasePropertiesList.Array.data[1].StateGoal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1226444278362137369, guid: 346e37528bd3b884eb0bad479dcf7443,
+        type: 3}
+      propertyPath: phasePropertiesList.Array.data[2].StateGoal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3530240861087712307, guid: 346e37528bd3b884eb0bad479dcf7443,
         type: 3}
       propertyPath: m_LocalPosition.x
