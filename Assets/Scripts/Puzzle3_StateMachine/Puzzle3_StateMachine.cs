@@ -237,7 +237,7 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
 	//If Reset State == Book_Phase 1, then spawn something else
     private void FailReset(Puzzle3_State resetState)
     {
-        if (resetState != Puzzle3_State.Potion_Phase1)
+        if (resetState == Puzzle3_State.Potion_Phase1)
             Instantiate(failCloud, particleEffectLocation);
 
         ChangeState(resetState);
