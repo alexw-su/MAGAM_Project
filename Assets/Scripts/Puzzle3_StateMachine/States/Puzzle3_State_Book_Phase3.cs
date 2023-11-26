@@ -5,10 +5,10 @@ using System.Collections;
 public partial class Puzzle3_StateMachine
 {
 
-    public class Puzzle3_State_Idle : Puzzle3_State_Base
+    public class Puzzle3_State_Book_Phase3 : Puzzle3_State_Base
     {
 
-        public Puzzle3_State_Idle(Puzzle3_StateMachine manager, Puzzle3_StateProperties property) : base(manager, property)
+        public Puzzle3_State_Book_Phase3(Puzzle3_StateMachine manager, Puzzle3_StateProperties property) : base(manager, property)
         {
 
         }
@@ -18,7 +18,6 @@ public partial class Puzzle3_StateMachine
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-            Manager.ChangeState(Puzzle3_State.Potion_Phase1);
         }
 
 

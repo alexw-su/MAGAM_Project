@@ -5,10 +5,10 @@ using System.Collections;
 public partial class Puzzle3_StateMachine
 {
 
-    public class Puzzle3_State_Phase2 : Puzzle3_State_Base
+    public class Puzzle3_State_Potion_Phase4 : Puzzle3_State_Base
     {
 
-        public Puzzle3_State_Phase2(Puzzle3_StateMachine manager, Puzzle3_StateProperties property) : base(manager, property)
+        public Puzzle3_State_Potion_Phase4(Puzzle3_StateMachine manager, Puzzle3_StateProperties property) : base(manager, property)
         {
 
         }

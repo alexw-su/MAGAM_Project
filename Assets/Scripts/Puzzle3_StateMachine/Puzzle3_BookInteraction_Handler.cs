@@ -21,4 +21,15 @@ public class Puzzle3_BookInteraction_Handler : MonoBehaviour, IInteractable
     public Puzzle3_BookColor BookColor { get => bookColor; }
 
 
+    public delegate void BookInteraction(bool isSolutionBook, Puzzle3_BookColor bookColor);
+    public event BookInteraction OnBookInteraction;
+
+
+    public void OnInteractionStart(bool isGrabbing)
+    {
+        if (isGrabbing)
+            return;
+
+        OnBookInteraction?.Invoke(isSolutionBook, bookColor);
+    }
 }

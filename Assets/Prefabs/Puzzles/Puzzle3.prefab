@@ -668,11 +668,25 @@ MonoBehaviour:
   cauldronSnapHandler: {fileID: 6852395123967176984}
   solvedPuzzleColorSequence:
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0.8776462, a: 1}
-  - {r: 0.38374758, g: 0.8584906, b: 0, a: 1}
+  - {r: 0.09963012, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0.35978818, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  cauldronGooeyObject: {fileID: 5512769404609386995}
+  cauldronColorHandler: {fileID: 8380708752662667079}
   solvedPuzzleInterval: 3
+  bookInteractionHandlerList:
+  - {fileID: 3001498894365728006}
+  - {fileID: 7150314430979638377}
+  - {fileID: 933010117159329793}
+  - {fileID: 4921523298284063928}
+  - {fileID: 3117376815293492947}
+  - {fileID: 5255453333065267551}
+  bookPhaseProperties:
+  - bookState: 6
+    bookColor: 1
+  - bookState: 7
+    bookColor: 2
+  - bookState: 8
+    bookColor: 3
 --- !u!1 &4640495684864069119
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,12 +3064,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7798795465392983849}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5512769404609386995 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2358665433920263898, guid: 4f6cd72de6eebac428246e255a2f67a4,
-    type: 3}
-  m_PrefabInstance: {fileID: 7798795465392983849}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6852395123967176984 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3684641760145030705, guid: 4f6cd72de6eebac428246e255a2f67a4,
@@ -3074,6 +3082,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7798795465392983849}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8380708752662667079 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1762210456226369646, guid: 4f6cd72de6eebac428246e255a2f67a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7798795465392983849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b262d582f93b9c84daf3168b1b855472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9175653311713207636
 PrefabInstance:
   m_ObjectHideFlags: 0
