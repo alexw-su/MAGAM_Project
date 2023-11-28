@@ -11,10 +11,25 @@ public enum Puzzle4_State
 
 public partial class Puzzle4_StateMachine : MarcimanStateMachine {
 
+	[SerializeField] Puzzle4_PaintingAssembly_Handler paintingAssemblyHandler;
+
     private Puzzle4_State _currentState;
 
     public Puzzle4_State CurrentState { get => _currentState; }
 
+
+    private void Start()
+    {
+        ChangeState(Puzzle4_State.PaintingAssemble);
+
+        paintingAssemblyHandler.OnPaintingAssembled += PaintingAssemblyHandler_OnPaintingAssembled;
+    }
+
+
+    private void OnDestroy()
+    {
+        paintingAssemblyHandler.OnPaintingAssembled -= PaintingAssemblyHandler_OnPaintingAssembled;
+    }
 
 
     private void ChangeState(Puzzle4_State newState)
@@ -36,5 +51,11 @@ public partial class Puzzle4_StateMachine : MarcimanStateMachine {
 			SetState(new Puzzle4_State_Finished(this));
 			break;
         }
+    }
+
+
+    private void PaintingAssemblyHandler_OnPaintingAssembled()
+    {
+        ChangeState(Puzzle4_State.MazePhase);
     }
 }
