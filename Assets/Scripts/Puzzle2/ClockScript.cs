@@ -18,9 +18,9 @@ public class ClockScript : MonoBehaviour, IInteractable
         // Debug.Log("STATE" + stateManager.CurrentState);
         if (stateManager.CurrentState == Puzzle2States.PointerPlaced)
         {
-            transform.Rotate(0, -20, 0);
+            transform.Rotate(-20, 0, 0);
 
-            float yRotation = transform.localEulerAngles.y % 360;
+            float yRotation = transform.localEulerAngles.x % 360;
             bool val = Mathf.Abs(yRotation) <= clockSolvedThreshold;
             if (Mathf.Abs(yRotation) <= clockSolvedThreshold)
             {
@@ -38,7 +38,7 @@ public class ClockScript : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Obj_Clock")
+        if (other.name == "altermative_clock")
         {
             OnPointerPlaced?.Invoke();
             SphereCollider sphereCollider = other.GetComponent<SphereCollider>();

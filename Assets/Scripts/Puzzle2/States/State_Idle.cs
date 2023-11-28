@@ -37,6 +37,7 @@ public partial class Puzzle2
 
         private void Clock_OnPointerPlaced()
         {
+            Debug.Log("3");
             Manager.ChangeState(Puzzle2States.PointerPlaced);
         }
     }

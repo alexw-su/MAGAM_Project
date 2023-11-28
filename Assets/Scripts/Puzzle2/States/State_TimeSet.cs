@@ -20,7 +20,6 @@ public partial class Puzzle2
             base.OnStateEnter();
             Debug.Log("VERY IMPORTANTA STATE ENTER");
             Manager.crystal.SetActive(true);
-            Manager.doorBlock.GetComponent<Collider>().enabled = false;
             Manager.particles1.gameObject.SetActive(true);
             Manager.particles2.gameObject.SetActive(true);
 
