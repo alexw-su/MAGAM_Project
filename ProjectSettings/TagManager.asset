@@ -9,6 +9,7 @@ TagManager:
   - painting
   - Puzzle3_Cauldron
   - Grabbable
+  - Puzzle4_Painting
   layers:
   - Default
   - TransparentFX

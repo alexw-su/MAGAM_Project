@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8600807814394287380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8328067001978737807}
+  m_Layer: 0
+  m_Name: PaintingPart_SnapLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8328067001978737807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8600807814394287380}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8932070410260469563}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7482095561276840969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,7 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2026805596651817778, guid: e341e722f8ef1494ca4be0335799090f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8328067001978737807}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3996552944837342849, guid: e341e722f8ef1494ca4be0335799090f,
         type: 3}
@@ -84,6 +119,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6478217382122319754}
+    - targetCorrespondingSourceObject: {fileID: 3814614700302959993, guid: e341e722f8ef1494ca4be0335799090f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5800658204759813591}
+    - targetCorrespondingSourceObject: {fileID: 3814614700302959993, guid: e341e722f8ef1494ca4be0335799090f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4606482030257220805}
   m_SourcePrefab: {fileID: 100100000, guid: e341e722f8ef1494ca4be0335799090f, type: 3}
 --- !u!1 &5810529725184797320 stripped
 GameObject:
@@ -143,3 +186,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paintingScript: {fileID: 7375441926586270989}
+  snapToLocation_Handler: {fileID: 4606482030257220805}
+  canvasMesh: {fileID: 8340905391127131553}
+  fullyAssembledTexture: {fileID: 0}
+  halfAssembledTexture: {fileID: 0}
+--- !u!1 &5991341795620182384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3814614700302959993, guid: e341e722f8ef1494ca4be0335799090f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7482095561276840969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5800658204759813591
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991341795620182384}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4606482030257220805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991341795620182384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609bdab96b05ba946932752d68023e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapToLocation: {fileID: 8328067001978737807}
+  snapSpeed: 1
+--- !u!23 &8340905391127131553 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1447176138088196520, guid: e341e722f8ef1494ca4be0335799090f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7482095561276840969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8932070410260469563 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2026805596651817778, guid: e341e722f8ef1494ca4be0335799090f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7482095561276840969}
+  m_PrefabAsset: {fileID: 0}
