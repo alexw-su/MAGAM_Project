@@ -2825,6 +2825,11 @@ PrefabInstance:
       propertyPath: teleportToPoint
       value: 
       objectReference: {fileID: 2485453934717155133}
+    - target: {fileID: 7375441926586270989, guid: 945c499ae0b88ee448a495697672a965,
+        type: 3}
+      propertyPath: teleportPointToMove
+      value: 
+      objectReference: {fileID: 187325338645171286}
     - target: {fileID: 8932070410260469563, guid: 945c499ae0b88ee448a495697672a965,
         type: 3}
       propertyPath: m_LocalPosition.x
