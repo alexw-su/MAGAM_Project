@@ -74,3 +74,10 @@ crashlytics-build.properties
 
 # VS Code
 .vscode
+
+# annoying updates
+Assets/SimpleNaturePack.meta
+Assets/SimpleNaturePack/
+Assets/Feel/NiceVibrations/
+Assets/Feel/NiceVibrations
+Assets/Feel/NiceVibrations/OlderVersions/v1.7/NiceVibrations-v-1-7.unitypackage.meta
