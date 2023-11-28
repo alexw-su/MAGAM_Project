@@ -781,16 +781,6 @@ PrefabInstance:
       propertyPath: cameraReference
       value: 
       objectReference: {fileID: 923819810}
-    - target: {fileID: 612554024438895935, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      propertyPath: cameraReference
-      value: 
-      objectReference: {fileID: 923819810}
-    - target: {fileID: 781046965336982491, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1888489424086483209, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
       propertyPath: holdArea
@@ -846,23 +836,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618360743720043528, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4618360743720043528, guid: b36ca50e36271164895f0863d57a8d03,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.0000002
-      objectReference: {fileID: 0}
     - target: {fileID: 6758501597432298150, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 612554024438895935, guid: b36ca50e36271164895f0863d57a8d03, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
