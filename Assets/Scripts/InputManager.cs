@@ -78,6 +78,14 @@ public class InputManager : MonoBehaviour
         return playerInput.Player.Look.ReadValue<Vector2>();
     }
 
+    public bool IsPlayerLooking()
+    {
+        var look = GetPlayerLook();
+        if(look.x > 0 || look.x < 0) return true;
+        if(look.y > 0 || look.y < 0) return true;
+        return false;
+    }
+
     public bool GetPlayerJumped()
     {
         return playerInput.Player.Jump.triggered;
