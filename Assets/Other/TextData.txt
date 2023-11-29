@@ -24,14 +24,14 @@
          },
          "interact":{
             "text":"Click [Left Mouse Button] to INTERACT with highlighted objects.",
-            "displayTime":5,
+            "displayTime":3,
             "delay":0,
             "inputRequired":true,
             "input":"Interact"
          },
          "grab":{
             "text":"Hold [Left Mouse Button] to GRAB moveable objects.",
-            "displayTime":5,
+            "displayTime":3,
             "delay":0,
             "inputRequired":true,
             "input":"Grab"
