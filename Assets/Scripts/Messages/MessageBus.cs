@@ -166,7 +166,9 @@ public class MessageBus : MonoBehaviour
         if(inputManager.GetPlayerJumped() && input == Input.Jump) return true;
         if(inputManager.GetPlayerSprinting() && input == Input.Run) return true;
         if(inputManager.GetPlayerInteracted() && input == Input.Interact) return true;
-        if((inputManager.GetPlayerGrabbed() || inputManager.GetPlayerGrabbing()) && input == Input.Grab) return true;
+        if(inputManager.GetPlayerGrabbing() && input == Input.Grab) return true;
+
+        // Return false if nothing matches
         return false;
     }
 
