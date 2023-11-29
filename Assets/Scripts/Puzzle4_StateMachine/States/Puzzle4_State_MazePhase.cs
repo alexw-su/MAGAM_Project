@@ -19,8 +19,8 @@ public partial class Puzzle4_StateMachine
         {
             base.OnStateEnter();
 
+            Manager.playerTrigger.OnPlayerEnterTrigger += PlayerTrigger_OnPlayerEnterTrigger;
         }
-
 
         public override void OnStateRunning()
         {
@@ -31,7 +31,15 @@ public partial class Puzzle4_StateMachine
         public override void OnStateExit()
         {
             base.OnStateExit();
+            Manager.playerTrigger.OnPlayerEnterTrigger -= PlayerTrigger_OnPlayerEnterTrigger;
         }
         #endregion
+
+
+
+        private void PlayerTrigger_OnPlayerEnterTrigger()
+        {
+            Manager.ChangeState(Puzzle4_State.Finished);
+        }
     }
 }
