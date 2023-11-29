@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Cinemachine;
 using UnityEngine;
 
 public class MessageBus : MonoBehaviour
 {
+    public CinemachineInputProvider cip;
     public TextAsset textJson;
     public Dictionary<string, Dictionary<string, CanvasMessage>> _messageContainer = new Dictionary<string, Dictionary<string, CanvasMessage>>();
     public GameObject messagePanel;
@@ -84,6 +86,7 @@ public class MessageBus : MonoBehaviour
             }
             else
             {
+                messageText.text = "";
                 messagePanel.SetActive(false);
             }
         }
@@ -167,6 +170,8 @@ public class MessageBus : MonoBehaviour
         if(inputManager.GetPlayerSprinting() && input == Input.Run) return true;
         if(inputManager.GetPlayerInteracted() && input == Input.Interact) return true;
         if(inputManager.GetPlayerGrabbing() && input == Input.Grab) return true;
+        if(inputManager.CKeyPressed() && input == Input.Clear) return true;
+        if(inputManager.YKeyPressed() && input == Input.Log) return true;
 
         // Return false if nothing matches
         return false;
@@ -207,6 +212,7 @@ public class MessageBus : MonoBehaviour
             }
             messageLogText.text = text;
             messagePanel.SetActive(false);
+            cip.gameObject.SetActive(false);
             inputManager.ToggleLookInput(false);
             messageLogPanel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -216,6 +222,7 @@ public class MessageBus : MonoBehaviour
             Time.timeScale = 1f;
             messagePanel.SetActive(true);
             messageLogPanel.SetActive(false);
+            cip.gameObject.SetActive(true);
             inputManager.ToggleLookInput(true);
             Cursor.lockState = CursorLockMode.Locked;
         }
