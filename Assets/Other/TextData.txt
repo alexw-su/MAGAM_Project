@@ -10,7 +10,7 @@
          },
          "jump":{
             "text":"Use [Space] to JUMP.",
-            "displayTime":5,
+            "displayTime":1,
             "delay":0,
             "inputRequired":true,
             "input":"Jump"
@@ -39,7 +39,7 @@
          "clearing":{
             "text":"Pressing [C] will CLEAR the messages on the screen.",
             "displayTime":1,
-            "delay":6,
+            "delay":4,
             "inputRequired":true,
             "input":"Clear"
          },
