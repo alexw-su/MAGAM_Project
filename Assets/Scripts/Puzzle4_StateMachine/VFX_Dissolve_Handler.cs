@@ -2,8 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VFX_Item_Material_Dissolve : MonoBehaviour
+public class VFX_Dissolve_Handler : MonoBehaviour
 {
+    [Header("Other Appearance")]
+    [SerializeField] bool doSize = true;
+    [SerializeField] bool doPosition = true;
+    [SerializeField] bool disableAfterDissolve = true;
+    [SerializeField] float startSize = 1f;
+    [SerializeField] float endSize = 3f;
+    [SerializeField] AnimationCurve sizeAnimCurve = AnimationCurve.EaseInOut(0,0,1,1);
+    [SerializeField] float startHeight = 4f;
+    [SerializeField] float endHeight = 2.2f;
+
+    [Header("Material Stuff")]
     [SerializeField] float yMin;
     [SerializeField] float yMax;
     [SerializeField] Color startColor;
@@ -11,11 +22,6 @@ public class VFX_Item_Material_Dissolve : MonoBehaviour
     [SerializeField] MeshRenderer affectedGeometry;
 
     Material _material;
-
-    private void Start()
-    {
-        InitAppearance(2f);
-    }
 
     public void InitAppearance(float duration)
     {
@@ -28,6 +34,9 @@ public class VFX_Item_Material_Dissolve : MonoBehaviour
 
     public void InitDissapperance(float duration)
     {
+        _material = new Material(affectedGeometry.material);
+        affectedGeometry.material = _material;
+
         StartCoroutine(DisappearRoutine(duration));
     }
 
@@ -41,8 +50,21 @@ public class VFX_Item_Material_Dissolve : MonoBehaviour
         {
             lerp = timer / duration;
 
+            //Material Part
             _material.SetFloat("_CutOffHeight", Mathf.Lerp(yMin, yMax, lerp));
             _material.SetColor("_EdgeColor", Color.Lerp(startColor, endColor, lerp));
+
+            float tempLerp = sizeAnimCurve.Evaluate(lerp);
+            if (doSize)
+            {
+                //Size Part
+                affectedGeometry.gameObject.transform.localScale = Mathf.Lerp(startSize, endSize, tempLerp) * Vector3.one;
+            }
+            if(doPosition)
+            {
+                //Position Part
+                gameObject.transform.position = new Vector3(transform.position.x, Mathf.Lerp(startHeight, endHeight, tempLerp), transform.position.z);
+            }
 
             timer += Time.deltaTime;
             yield return new WaitForEndOfFrame();
@@ -69,5 +91,10 @@ public class VFX_Item_Material_Dissolve : MonoBehaviour
         }
         _material.SetFloat("_CutOffHeight", yMin);
         _material.SetColor("_EdgeColor", startColor);
+
+        if(disableAfterDissolve)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

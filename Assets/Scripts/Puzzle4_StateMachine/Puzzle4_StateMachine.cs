@@ -13,8 +13,10 @@ public partial class Puzzle4_StateMachine : MarcimanStateMachine {
 
     [Header("Painting Assembly")]
     [SerializeField] Puzzle4_PaintingAssembly_Handler paintingAssemblyHandler;
+    [SerializeField] VFX_Dissolve_Handler wallDissolveHandler;
     [Header("Maze Part")]
     [SerializeField] OnPlayerEnter_Trigger playerTrigger;
+    [SerializeField] VFX_Dissolve_Handler crystalHandler;
 
     private Puzzle4_State _currentState;
 
@@ -58,6 +60,7 @@ public partial class Puzzle4_StateMachine : MarcimanStateMachine {
 
     private void PaintingAssemblyHandler_OnPaintingAssembled()
     {
+        wallDissolveHandler.InitDissapperance(4.0f);
         ChangeState(Puzzle4_State.MazePhase);
     }
 }
