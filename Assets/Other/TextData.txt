@@ -35,6 +35,20 @@
             "delay":0,
             "inputRequired":true,
             "input":"Grab"
+         },
+         "clearing":{
+            "text":"Press [C] to CLEAR messages on the screen.",
+            "displayTime":5,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Clear"
+         },
+         "log":{
+            "text":"You can read previous messages by opening the LOG with [Y].",
+            "displayTime":5,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Log"
          }
       },
       "interactions":{

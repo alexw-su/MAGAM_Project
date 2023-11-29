@@ -58,5 +58,7 @@ public enum Input
     Jump,
     Run,
     Interact,
-    Grab
+    Grab,
+    Clear,
+    Log,
 }
