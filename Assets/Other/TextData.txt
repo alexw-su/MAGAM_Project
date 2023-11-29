@@ -17,7 +17,7 @@
          },
          "run":{
             "text":"Press [Left Shift] to RUN.",
-            "displayTime":5,
+            "displayTime":3,
             "delay":0,
             "inputRequired":true,
             "input":"Run"
@@ -37,15 +37,15 @@
             "input":"Grab"
          },
          "clearing":{
-            "text":"Press [C] to CLEAR messages on the screen.",
-            "displayTime":5,
-            "delay":0,
+            "text":"Pressing [C] will CLEAR the messages on the screen.",
+            "displayTime":1,
+            "delay":6,
             "inputRequired":true,
             "input":"Clear"
          },
          "log":{
             "text":"You can read previous messages by opening the LOG with [Y].",
-            "displayTime":5,
+            "displayTime":1,
             "delay":0,
             "inputRequired":true,
             "input":"Log"
