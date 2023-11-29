@@ -1,5 +1,42 @@
 {
    "messages":{
+      "tutorial":{
+         "moveAndLook":{
+            "text":"Use [W,A,S,D] to MOVE. Use [Mouse] to LOOK.",
+            "displayTime":5,
+            "delay":10,
+            "inputRequired":true,
+            "input":"Move"
+         },
+         "jump":{
+            "text":"Use [Space] to JUMP.",
+            "displayTime":5,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Jump"
+         },
+         "run":{
+            "text":"Press [Left Shift] to RUN.",
+            "displayTime":5,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Run"
+         },
+         "interact":{
+            "text":"Click [Left Mouse Button] to INTERACT with highlighted objects.",
+            "displayTime":5,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Interact"
+         },
+         "grab":{
+            "text":"Hold [Left Mouse Button] to GRAB moveable objects.",
+            "displayTime":5,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Grab"
+         }
+      },
       "interactions":{
          "startMessage":{
             "text":"My adventure at the Brushwood residence is just about to begin! \nAccording to my sources the residence should be nearby.",
