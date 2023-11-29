@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Cinemachine;
 using UnityEngine;
 
 public class MessageBus : MonoBehaviour
 {
+    public CinemachineInputProvider cip;
     public TextAsset textJson;
     public Dictionary<string, Dictionary<string, CanvasMessage>> _messageContainer = new Dictionary<string, Dictionary<string, CanvasMessage>>();
     public GameObject messagePanel;
@@ -84,6 +86,7 @@ public class MessageBus : MonoBehaviour
             }
             else
             {
+                messageText.text = "";
                 messagePanel.SetActive(false);
             }
         }
@@ -98,10 +101,14 @@ public class MessageBus : MonoBehaviour
         {
             CanvasMessage message = _messageContainer[category][key];
 
-            if (!messageLog.Contains(message) || message.repeatable)
+            if ((!messageLog.Contains(message) || message.repeatable) && !message.inputRequired)
             {
                 messageLog.Add(message);
                 StartCoroutine(DisplayMessage(message));
+            }
+            else if (message.inputRequired)
+            {
+                StartCoroutine(DisplayButtonMessage(message));
             }
             else
             {
@@ -122,6 +129,54 @@ public class MessageBus : MonoBehaviour
         yield return new WaitForSeconds(message.displayTime);
         _displayedMessagesSet.Remove(message);
     }
+
+    private IEnumerator DisplayButtonMessage(CanvasMessage message)
+    {
+        // Wait for delay
+        yield return new WaitForSeconds(message.delay);
+        _displayedMessagesSet.Add(message);
+
+        // Wait for display time
+        yield return new WaitForSeconds(message.displayTime);
+        
+        // Wait for corresponding button
+        bool inputPressed = false;
+        while(!inputPressed)
+        {
+            inputPressed = GetInputMatch(message.input);
+            yield return null;
+        }
+
+        // Remove message
+        _displayedMessagesSet.Remove(message);
+    }
+
+    // Returns true or false if current player input matches with a Input-enum
+    private bool GetInputMatch(Input input)
+    {
+        // Check if message's required input is not defined
+        if(input == Input.None) 
+        {
+            Debug.LogWarning($"Input-Required Message has not defined a required input to be pressed");
+            
+            // To move on without problems -> returns true
+            return true;
+        }
+
+        // Check if message's required input matches with current player input
+        if(inputManager.IsPlayerMoving() && input == Input.Move) return true;
+        if(inputManager.IsPlayerLooking() && input == Input.Look) return true;
+        if(inputManager.GetPlayerJumped() && input == Input.Jump) return true;
+        if(inputManager.GetPlayerSprinting() && input == Input.Run) return true;
+        if(inputManager.GetPlayerInteracted() && input == Input.Interact) return true;
+        if(inputManager.GetPlayerGrabbing() && input == Input.Grab) return true;
+        if(inputManager.CKeyPressed() && input == Input.Clear) return true;
+        if(inputManager.YKeyPressed() && input == Input.Log) return true;
+
+        // Return false if nothing matches
+        return false;
+    }
+
     public CanvasMessage GetMessage(string category, string key)
     {
         if (_messageContainer.ContainsKey(category) && _messageContainer[category].ContainsKey(key))
@@ -157,6 +212,7 @@ public class MessageBus : MonoBehaviour
             }
             messageLogText.text = text;
             messagePanel.SetActive(false);
+            cip.gameObject.SetActive(false);
             inputManager.ToggleLookInput(false);
             messageLogPanel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -166,6 +222,7 @@ public class MessageBus : MonoBehaviour
             Time.timeScale = 1f;
             messagePanel.SetActive(true);
             messageLogPanel.SetActive(false);
+            cip.gameObject.SetActive(true);
             inputManager.ToggleLookInput(true);
             Cursor.lockState = CursorLockMode.Locked;
         }

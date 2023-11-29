@@ -1,5 +1,56 @@
 {
    "messages":{
+      "tutorial":{
+         "moveAndLook":{
+            "text":"Use [W,A,S,D] to MOVE. Use [Mouse] to LOOK.",
+            "displayTime":5,
+            "delay":10,
+            "inputRequired":true,
+            "input":"Move"
+         },
+         "jump":{
+            "text":"Use [Space] to JUMP.",
+            "displayTime":5,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Jump"
+         },
+         "run":{
+            "text":"Press [Left Shift] to RUN.",
+            "displayTime":3,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Run"
+         },
+         "interact":{
+            "text":"Click [Left Mouse Button] to INTERACT with highlighted objects.",
+            "displayTime":3,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Interact"
+         },
+         "grab":{
+            "text":"Hold [Left Mouse Button] to GRAB moveable objects.",
+            "displayTime":3,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Grab"
+         },
+         "clearing":{
+            "text":"Pressing [C] will CLEAR the messages on the screen.",
+            "displayTime":1,
+            "delay":6,
+            "inputRequired":true,
+            "input":"Clear"
+         },
+         "log":{
+            "text":"You can read previous messages by opening the LOG with [Y].",
+            "displayTime":1,
+            "delay":0,
+            "inputRequired":true,
+            "input":"Log"
+         }
+      },
       "interactions":{
          "startMessage":{
             "text":"My adventure at the Brushwood residence is just about to begin! \nAccording to my sources the residence should be nearby.",
