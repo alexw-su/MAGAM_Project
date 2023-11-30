@@ -7,39 +7,39 @@ using TMPro;
 
 public enum Puzzle3_State
 {
-	Idle,
-	Potion_Phase1,
-	Potion_Phase2,
-	Potion_Phase3,
-	Potion_Phase4,
-	Finished_Cauldron,
-	Book_Phase1,
-	Book_Phase2,
-	Book_Phase3,
-	Finished_Book
+    Idle,
+    Potion_Phase1,
+    Potion_Phase2,
+    Potion_Phase3,
+    Potion_Phase4,
+    Finished_Cauldron,
+    Book_Phase1,
+    Book_Phase2,
+    Book_Phase3,
+    Finished_Book
 }
 
 
 [System.Serializable]
 public class Puzzle3_StateProperties
 {
-	public int Phase = 1;
-	public int StateGoal = 1;
-	public Puzzle3Elements Element = Puzzle3Elements.Fire;
+    public int Phase = 1;
+    public int StateGoal = 1;
+    public Puzzle3Elements Element = Puzzle3Elements.Fire;
 
-	public Transform respawnPosition;
+    public Transform respawnPosition;
 
-	public GameObject elementFlaskPrefab;
-	public GameObject successCloud;
+    public GameObject elementFlaskPrefab;
+    public GameObject successCloud;
 }
 
 
 [System.Serializable]
 public class Puzzle3_BookPhase_Properties
 {
-	[Header("Matches the bookcolor to its supposed state")]
-	public Puzzle3_State bookState = Puzzle3_State.Book_Phase1;
-	public Puzzle3_BookColor bookColor;
+    [Header("Matches the bookcolor to its supposed state")]
+    public Puzzle3_State bookState = Puzzle3_State.Book_Phase1;
+    public Puzzle3_BookColor bookColor;
 }
 
 public partial class Puzzle3_StateMachine : MarcimanStateMachine
@@ -47,26 +47,26 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     [Header("General")]
     [SerializeField] GameObject failCloud;
     [SerializeField] List<Puzzle3_StateProperties> phasePropertiesList;
-	[SerializeField] Transform particleEffectLocation;
+    [SerializeField] Transform particleEffectLocation;
 
-	[Header("Cauldron")]
+    [Header("Cauldron")]
     [SerializeField] SnapToLocation_Handler cauldronSnapHandler;
     [Tooltip("The last Element is always white, because thats the pause inbetween the pulses")]
     [SerializeField] List<Color> solvedPuzzleColorSequence;
-	[SerializeField] Puzzle3_Cauldron_ColorSequence_Handler cauldronColorHandler;
-	[SerializeField] float solvedPuzzleInterval = 2f;
+    [SerializeField] Puzzle3_Cauldron_ColorSequence_Handler cauldronColorHandler;
+    [SerializeField] float solvedPuzzleInterval = 2f;
 
-	[Header("Books")]
-	[SerializeField] List<Puzzle3_BookInteraction_Handler> bookInteractionHandlerList;
-	[SerializeField] List<Puzzle3_BookPhase_Properties> bookPhaseProperties;
+    [Header("Books")]
+    [SerializeField] List<Puzzle3_BookInteraction_Handler> bookInteractionHandlerList;
+    [SerializeField] List<Puzzle3_BookPhase_Properties> bookPhaseProperties;
 
     [Header("Painting Piece")]
     [SerializeField] GameObject paintingPiece;
     [SerializeField] Transform paintingSpawnPosition;
 
-	private int _currentElementsPlacedCounter = 0;
+    private int _currentElementsPlacedCounter = 0;
 
-	private Material _cauldronMaterial;
+    private Material _cauldronMaterial;
 
 
     private Puzzle3_StateProperties _currentActiveStateProperty = null;
@@ -77,10 +77,10 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
 
     private void Start()
     {
-		ChangeState(Puzzle3_State.Idle);
+        ChangeState(Puzzle3_State.Idle);
 
-		foreach(var property in phasePropertiesList)
-		{
+        foreach (var property in phasePropertiesList)
+        {
             Instantiate(property.elementFlaskPrefab, property.respawnPosition);
         }
     }
@@ -150,95 +150,95 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     #region Event Subscriptions
     private void CauldronSnapHandler_OnSnappedToLocation(GameObject gameObject)
     {
-		var snappedGameObject = gameObject.GetComponent<Puzzle3_Item_Handler>();
+        var snappedGameObject = gameObject.GetComponent<Puzzle3_Item_Handler>();
 
-		RespawnDroppedFlask(snappedGameObject);
+        RespawnDroppedFlask(snappedGameObject);
 
         if (snappedGameObject.Element == _currentActiveStateProperty.Element)
-		{
-			UpdatePuzzlePhases(false);
-		}
-		else
-		{
-			UpdatePuzzlePhases(true, Puzzle3_State.Potion_Phase1);
-		}
+        {
+            UpdatePuzzlePhases(false);
+        }
+        else if ((int)_currentState < 5)
+        {
+            UpdatePuzzlePhases(true, Puzzle3_State.Potion_Phase1);
+        }
     }
 
 
-	private void Book_OnBookInteraction(bool isSolutionBook, Puzzle3_BookColor bookColor)
-	{
-		if ((int)_currentState < (int)Puzzle3_State.Book_Phase1)
-		{
-			Debug.Log("Don't touch this yet, my G");
-			return;
-		}
+    private void Book_OnBookInteraction(bool isSolutionBook, Puzzle3_BookColor bookColor)
+    {
+        if ((int)_currentState < (int)Puzzle3_State.Book_Phase1)
+        {
+            Debug.Log("Don't touch this yet, my G");
+            return;
+        }
 
-		if(!isSolutionBook)
-		{
-			UpdatePuzzlePhases(true, Puzzle3_State.Book_Phase1);
+        if (!isSolutionBook)
+        {
+            UpdatePuzzlePhases(true, Puzzle3_State.Book_Phase1);
             return;
         }
 
 
-		foreach(var bookCombi in bookPhaseProperties)
-		{
-			if (_currentState != bookCombi.bookState)
-				continue;
+        foreach (var bookCombi in bookPhaseProperties)
+        {
+            if (_currentState != bookCombi.bookState)
+                continue;
 
-			if(bookCombi.bookColor != bookColor)
-			{
+            if (bookCombi.bookColor != bookColor)
+            {
                 UpdatePuzzlePhases(true, Puzzle3_State.Book_Phase1);
-				break;
+                break;
             }
 
-			UpdatePuzzlePhases();
-			break;
+            UpdatePuzzlePhases();
+            break;
 
         }
     }
     #endregion
 
-	//Use this for bookPhase
+    //Use this for bookPhase
     private void UpdatePuzzlePhases()
     {
         ChangeState(_currentState + 1);
     }
 
-	//Use this for Cauldron Phase
+    //Use this for Cauldron Phase
     private void UpdatePuzzlePhases(bool reset, Puzzle3_State resetToState = Puzzle3_State.Idle)
-	{
-		if(reset)
-		{
-			FailReset(resetToState);
-			return;
+    {
+        if (reset)
+        {
+            FailReset(resetToState);
+            return;
         }
 
         _currentElementsPlacedCounter++;
         if (_currentElementsPlacedCounter < _currentActiveStateProperty.StateGoal)
-		{
-			return;
-		}
-		//Changes State to next higher State (i.e. Phase 2 to Phase 3) by going to stateEnum + 1
-		ChangeState(_currentState + 1);
-	}
+        {
+            return;
+        }
+        //Changes State to next higher State (i.e. Phase 2 to Phase 3) by going to stateEnum + 1
+        ChangeState(_currentState + 1);
+    }
 
 
     //Cycles through all types and respawns the correct one.
     private void RespawnDroppedFlask(Puzzle3_Item_Handler handler)
-	{
-		foreach(var property in phasePropertiesList)
-		{
-			if (property.Element != handler.Element)
-				continue;
+    {
+        foreach (var property in phasePropertiesList)
+        {
+            if (property.Element != handler.Element)
+                continue;
 
             Instantiate(property.elementFlaskPrefab, property.respawnPosition);
-			return;
+            return;
         }
-	}
+    }
 
 
-	//If Reset State == Potion_Phase 1, then spawn cloud
-	//If Reset State == Book_Phase 1, then spawn something else
+    //If Reset State == Potion_Phase 1, then spawn cloud
+    //If Reset State == Book_Phase 1, then spawn something else
     private void FailReset(Puzzle3_State resetState)
     {
         if (resetState == Puzzle3_State.Potion_Phase1)
