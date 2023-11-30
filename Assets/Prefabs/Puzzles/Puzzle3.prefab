@@ -653,15 +653,15 @@ MonoBehaviour:
   - Phase: 3
     StateGoal: 4
     Element: 3
-    respawnPosition: {fileID: 9187379170293702459}
-    elementFlaskPrefab: {fileID: 9026600824463063104, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
+    respawnPosition: {fileID: 4192664654145607365}
+    elementFlaskPrefab: {fileID: 9026600824463063104, guid: 04da82f2abae30844b1a04af8fcd5692,
       type: 3}
     successCloud: {fileID: 0}
   - Phase: 4
     StateGoal: 1
     Element: 2
-    respawnPosition: {fileID: 4192664654145607365}
-    elementFlaskPrefab: {fileID: 9026600824463063104, guid: 04da82f2abae30844b1a04af8fcd5692,
+    respawnPosition: {fileID: 9187379170293702459}
+    elementFlaskPrefab: {fileID: 9026600824463063104, guid: 06fc3d9ef6b41424e92601c9a34bcf57,
       type: 3}
     successCloud: {fileID: 0}
   particleEffectLocation: {fileID: 7940761638203300364}
