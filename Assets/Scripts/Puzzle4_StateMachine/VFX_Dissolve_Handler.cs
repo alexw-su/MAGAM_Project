@@ -11,8 +11,8 @@ public class VFX_Dissolve_Handler : MonoBehaviour
     [SerializeField] float startSize = 1f;
     [SerializeField] float endSize = 3f;
     [SerializeField] AnimationCurve sizeAnimCurve = AnimationCurve.EaseInOut(0,0,1,1);
-    [SerializeField] float startHeight = 4f;
-    [SerializeField] float endHeight = 2.2f;
+    [SerializeField] Transform startTransform;
+    [SerializeField] Transform endTransform;
 
     [Header("Material Stuff")]
     [SerializeField] float yMin;
@@ -22,6 +22,8 @@ public class VFX_Dissolve_Handler : MonoBehaviour
     [SerializeField] MeshRenderer affectedGeometry;
 
     Material _material;
+
+    Vector3 _startPosition;
 
     public void InitAppearance(float duration)
     {
@@ -63,7 +65,7 @@ public class VFX_Dissolve_Handler : MonoBehaviour
             if(doPosition)
             {
                 //Position Part
-                gameObject.transform.position = new Vector3(transform.position.x, Mathf.Lerp(startHeight, endHeight, tempLerp), transform.position.z);
+                gameObject.transform.position = Vector3.Lerp(startTransform.position, endTransform.position, tempLerp);
             }
 
             timer += Time.deltaTime;

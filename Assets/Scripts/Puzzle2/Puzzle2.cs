@@ -29,6 +29,10 @@ public partial class Puzzle2 : MarcimanStateMachine
     public StringPair messageUnsolved;
     public StringPair messageSolved;
 
+    [Header("PaintingPart")]
+    [SerializeField] GameObject paintingPart;
+    [SerializeField] Transform paintingPartSpawnPoint;
+
     void Start()
     {
         ChangeState(Puzzle2States.Idle);

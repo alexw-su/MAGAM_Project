@@ -24,6 +24,8 @@ public partial class Puzzle2
             Manager.particles2.gameObject.SetActive(true);
 
             RenderSettings.skybox = Manager.skyBoxMaterialNight;
+
+            Instantiate(Manager.paintingPart, Manager.paintingPartSpawnPoint);
         }
 
 

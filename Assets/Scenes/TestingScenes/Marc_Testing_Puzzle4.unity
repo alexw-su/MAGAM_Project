@@ -837,16 +837,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle4
       objectReference: {fileID: 0}
-    - target: {fileID: 4860628683996766505, guid: 07a2726c032b1a24abf0cc85d5e6458b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6377575330591568313, guid: 07a2726c032b1a24abf0cc85d5e6458b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4821756983681010914, guid: 07a2726c032b1a24abf0cc85d5e6458b, type: 3}
