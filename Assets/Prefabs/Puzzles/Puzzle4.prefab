@@ -1391,8 +1391,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  startHeight: 8
-  endHeight: 2.2
+  startTransform: {fileID: 1535169726905499240}
+  endTransform: {fileID: 9070262322741453804}
   yMin: -1.5
   yMax: 2.2
   startColor: {r: 1, g: 0, b: 0, a: 1}
@@ -1852,6 +1852,37 @@ Transform:
   - {fileID: 7620911409070495721}
   m_Father: {fileID: 2227576497420893386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4553793312107923548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1535169726905499240}
+  m_Layer: 0
+  m_Name: Crystal_StartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1535169726905499240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553793312107923548}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 11.81, z: 74.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9004676959036603844}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4860628683996766505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,8 +1967,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  startHeight: 2.4
-  endHeight: 2.2
+  startTransform: {fileID: 0}
+  endTransform: {fileID: 0}
   yMin: -2
   yMax: 2.5
   startColor: {r: 1, g: 0, b: 0, a: 1}
@@ -2426,6 +2457,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7072184663076797631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9070262322741453804}
+  m_Layer: 0
+  m_Name: Crystal_EndPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9070262322741453804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7072184663076797631}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.64, z: 74.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9004676959036603844}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7083798667578509304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,6 +2519,8 @@ Transform:
   m_Children:
   - {fileID: 3038279602220653846}
   - {fileID: 4947821943889932292}
+  - {fileID: 1535169726905499240}
+  - {fileID: 9070262322741453804}
   m_Father: {fileID: 4013009942932977533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7161807854683021158
