@@ -20,6 +20,7 @@ public partial class Puzzle3_StateMachine
             base.OnStateEnter();
 
             Debug.Log("And Now you get the final piece of the puzzle");
+            Instantiate(Manager.paintingPiece, Manager.paintingSpawnPosition);
         }
 
 

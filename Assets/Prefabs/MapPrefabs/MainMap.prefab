@@ -39898,7 +39898,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5ee32f131e69db74781b9652bcdaa211,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.914574
+      value: 9.097
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ee32f131e69db74781b9652bcdaa211,
         type: 3}
@@ -48813,6 +48813,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FInal_Painting
       objectReference: {fileID: 0}
+    - target: {fileID: 3996552944837342849, guid: e341e722f8ef1494ca4be0335799090f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -49958,7 +49963,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2bac8705923bc4f48bff520fe22085ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.906177
+      value: 7.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2bac8705923bc4f48bff520fe22085ee,
         type: 3}

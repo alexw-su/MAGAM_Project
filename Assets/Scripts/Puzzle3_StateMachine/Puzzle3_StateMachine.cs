@@ -60,6 +60,10 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
 	[SerializeField] List<Puzzle3_BookInteraction_Handler> bookInteractionHandlerList;
 	[SerializeField] List<Puzzle3_BookPhase_Properties> bookPhaseProperties;
 
+    [Header("Painting Piece")]
+    [SerializeField] GameObject paintingPiece;
+    [SerializeField] Transform paintingSpawnPosition;
+
 	private int _currentElementsPlacedCounter = 0;
 
 	private Material _cauldronMaterial;

@@ -60,7 +60,7 @@ public partial class Puzzle4_StateMachine : MarcimanStateMachine {
 
     private void PaintingAssemblyHandler_OnPaintingAssembled()
     {
-        wallDissolveHandler.InitDissapperance(4.0f);
+        //wallDissolveHandler.InitDissapperance(4.0f);
         ChangeState(Puzzle4_State.MazePhase);
     }
 }
