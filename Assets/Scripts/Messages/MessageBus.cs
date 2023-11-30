@@ -135,9 +135,6 @@ public class MessageBus : MonoBehaviour
         // Wait for delay
         yield return new WaitForSeconds(message.delay);
         _displayedMessagesSet.Add(message);
-
-        // Wait for display time
-        yield return new WaitForSeconds(message.displayTime);
         
         // Wait for corresponding button
         bool inputPressed = false;
@@ -146,6 +143,9 @@ public class MessageBus : MonoBehaviour
             inputPressed = GetInputMatch(message.input);
             yield return null;
         }
+
+        // Wait for display time
+        yield return new WaitForSeconds(message.displayTime);
 
         // Remove message
         _displayedMessagesSet.Remove(message);

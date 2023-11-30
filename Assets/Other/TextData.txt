@@ -3,7 +3,7 @@
       "tutorial":{
          "moveAndLook":{
             "text":"Use [W,A,S,D] to MOVE. Use [Mouse] to LOOK.",
-            "displayTime":5,
+            "displayTime":2,
             "delay":10,
             "inputRequired":true,
             "input":"Move"
@@ -17,21 +17,21 @@
          },
          "run":{
             "text":"Press [Left Shift] to RUN.",
-            "displayTime":3,
+            "displayTime":1,
             "delay":0,
             "inputRequired":true,
             "input":"Run"
          },
          "interact":{
             "text":"Click [Left Mouse Button] to INTERACT with highlighted objects.",
-            "displayTime":3,
+            "displayTime":1,
             "delay":0,
             "inputRequired":true,
             "input":"Interact"
          },
          "grab":{
             "text":"Hold [Left Mouse Button] to GRAB moveable objects.",
-            "displayTime":3,
+            "displayTime":1,
             "delay":0,
             "inputRequired":true,
             "input":"Grab"
@@ -44,7 +44,7 @@
             "input":"Clear"
          },
          "log":{
-            "text":"You can read previous messages by opening the LOG with [Y].",
+            "text":"You can read previous messages by opening/closing the LOG with [Y].",
             "displayTime":1,
             "delay":0,
             "inputRequired":true,
