@@ -4,6 +4,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using System.Collections.Generic;
 using TMPro;
+using MoreMountains.Feedbacks;
 
 public enum Puzzle3_State
 {
@@ -63,6 +64,9 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     [Header("Painting Piece")]
     [SerializeField] GameObject paintingPiece;
     [SerializeField] Transform paintingSpawnPosition;
+
+    [Header("FEEL")]
+    [SerializeField] MMF_Player mmfPlayer;
 
     private int _currentElementsPlacedCounter = 0;
 
@@ -157,6 +161,8 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
         if (snappedGameObject.Element == _currentActiveStateProperty.Element)
         {
             UpdatePuzzlePhases(false);
+
+            mmfPlayer.PlayFeedbacks();
         }
         else if ((int)_currentState < 5)
         {
