@@ -8,16 +8,19 @@ public class PaintingScript : MonoBehaviour, IInteractable
 {
     public GameObject teleportToPoint;
     public GameObject teleportPointToMove;
+    public GameObject postProcessingObject;
     public List<StringPair> stringPairs = new List<StringPair>();
 
     private PlayerController _playerController;
     private InputManager inputManager;
+    private bool teleporting;
     public VFXManager vfx;
 
     void Start()
     {
         _playerController = FindObjectOfType<PlayerController>();
         inputManager = InputManager.Instance;
+        teleporting = false;
     }
 
     public void OnInteractionStart(bool isGrabbing)
@@ -25,19 +28,25 @@ public class PaintingScript : MonoBehaviour, IInteractable
         if (isGrabbing)
             return;
 
-        // Update position of teleport point for other painting
-        if(teleportPointToMove != null)
-        {
-            teleportPointToMove.transform.position = _playerController.transform.position;
+        if(!teleporting)
+        {   
+            // Ensures the painting can only be interacted with one at a time
+            teleporting = true;
+
+            // Update position of teleport point for other painting
+            if(teleportPointToMove != null)
+            {
+                teleportPointToMove.transform.position = _playerController.transform.position;
+            }
+
+            // Locks player inputs
+            inputManager.LockInput();
+
+            // Starts vfx transition
+            vfx.EnableFullScreenPassRendererFeature();
+            StartCoroutine(WindUpTeleport());
+            StartCoroutine(vfx.GradualIncreaseDistortion());
         }
-
-        // Locks player inputs
-        inputManager.LockInput();
-
-        // Starts vfx transition
-        vfx.EnableFullScreenPassRendererFeature();
-        StartCoroutine(WindUpTeleport());
-        StartCoroutine(vfx.GradualIncreaseDistortion());
     }
 
     // Coroutine that teleports player after the fade out transition finishes.
@@ -64,7 +73,6 @@ public class PaintingScript : MonoBehaviour, IInteractable
         // Unlocks the player inputs
         inputManager.UnlockInput();
 
-
         foreach (StringPair pair in stringPairs)
         {
             MessageBus messageBus = FindObjectOfType<MessageBus>();
@@ -74,7 +82,17 @@ public class PaintingScript : MonoBehaviour, IInteractable
             }
         }
 
+        // Toggles On/Off post processing, if post processing is necessary
+        if(postProcessingObject != null)
+        {
+            postProcessingObject.SetActive(!postProcessingObject.activeSelf);
+        }
+
+        // Reset VFX to normak
         vfx.TriggerFadeIn();
         StartCoroutine(vfx.GradualDecreaseDistortion());
+
+        // Enable teleportation
+        teleporting = false;
     }
 }
