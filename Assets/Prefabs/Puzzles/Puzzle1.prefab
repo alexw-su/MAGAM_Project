@@ -5442,8 +5442,8 @@ MonoBehaviour:
     Category: puzzle1
     Key: exitPuzzleUnsolved
   messageSolved:
-    Category: 
-    Key: 
+    Category: puzzle1
+    Key: exitPuzzleSolved
 --- !u!1 &3006791626789763792
 GameObject:
   m_ObjectHideFlags: 0
