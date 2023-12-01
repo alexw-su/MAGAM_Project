@@ -12,8 +12,9 @@ public class CanvasMessage
     public float delay;
     public bool addToLog;
     public bool inputRequired;
+    public float deathTimer;
     public Input input;
-    public CanvasMessage(string text, float displayTime, bool repeatable = false, float delay = 0, bool addToLog = true, bool inputRequired = false, string input = "None")
+    public CanvasMessage(string text, float displayTime, bool repeatable = false, float delay = 0, bool addToLog = true, bool inputRequired = false, string input = "None", float deathTimer = 10)
     {   
         this.text = text;
         this.displayTime = displayTime;
@@ -24,6 +25,8 @@ public class CanvasMessage
 
         if(inputRequired)
         {
+            this.deathTimer = deathTimer;
+            
             Input parsedInput;
             if(Enum.TryParse<Input>(input, true, out parsedInput))
             {

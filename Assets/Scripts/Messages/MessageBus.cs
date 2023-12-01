@@ -52,7 +52,7 @@ public class MessageBus : MonoBehaviour
         {
             Debug.Log("textJson is not assigned. Assign a TextAsset with the JSON data.");
         }
-        StartCoroutine(HideInstructions());
+        // StartCoroutine(HideInstructions());
     }
     private void Update()
     {
@@ -138,9 +138,16 @@ public class MessageBus : MonoBehaviour
         
         // Wait for corresponding button
         bool inputPressed = false;
+        float timer = 0;
+
         while(!inputPressed)
         {
+            timer += Time.deltaTime;
             inputPressed = GetInputMatch(message.input);
+
+            // If button hasn't been pressed and message reaches its death timer
+            if(timer >= message.deathTimer) inputPressed = true;
+
             yield return null;
         }
 
