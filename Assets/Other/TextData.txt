@@ -67,7 +67,7 @@
          },
          "spotsHouse": {
             "text": "Ah, here it is!",
-            "displayTime": 5,
+            "displayTime": 3,
             "repeatable": false,
             "delay": 0
          },
@@ -75,13 +75,13 @@
             "text": "I need to find a way in... ",
             "displayTime": 5,
             "repeatable": false,
-            "delay": 0
+            "delay": 8
          },
          "walkingTowardsHouse": {
             "text": "I didn't expect it to look this nice. The barkeeper said it was abandoned several years ago. ",
-            "displayTime": 8,
+            "displayTime": 5,
             "repeatable": false,
-            "delay": 5
+            "delay": 3
          },
          "frontDoorLocked": {
             "text": "It won't budge. I need to find another way.",
