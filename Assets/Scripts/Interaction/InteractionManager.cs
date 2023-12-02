@@ -37,6 +37,7 @@ public class InteractionManager : MonoBehaviour
         _highlightMask = LayerMask.NameToLayer("Highlight");
         _defaultMask = LayerMask.NameToLayer("Default");
     }
+
     void Start()
     {
         // Gets Input Manager from scene
@@ -45,46 +46,63 @@ public class InteractionManager : MonoBehaviour
         _interactableObjects = new List<IInteractable>();
     }
 
-
     void Update()
     {
-
+        // Raycasting
         RaycastPlayerAim();
+
+        // Updating rotation of interaction holder
         InteractionHolderUpdate();
+
+        // Prevents running the loop below
         if (!_isGrabbing || _interactableObjects.Count <= 0)
             return;
+
+        // Loop for grabbable object (interaction) scripts.
         foreach (var obj in _interactableObjects)
         {
             obj.OnInteractionRunning();
         }
-
     }
+
     void RaycastPlayerAim()
     {
         Vector3 rayDirection = cameraReference.transform.forward;
-        if (Physics.Raycast(cameraReference.transform.position, rayDirection, out RaycastHit hitInfo, raycastLength))
+
+        // If player is not holding/grabbing an object already, then use Raycast.
+        if (!_isGrabbing)
         {
-            // debugging
-            Debug.DrawRay(cameraReference.transform.position, rayDirection * hitInfo.distance, Color.red);
-
-            // Check object hit
-            var target = hitInfo.collider.gameObject;
-
-            // Check the tag of the hit object
-            if (target.CompareTag("Grabbable") || target.CompareTag("Interactable"))
+            if (Physics.Raycast(cameraReference.transform.position, rayDirection, out RaycastHit hitInfo, raycastLength))
             {
-                HandleLookingAtObject(hitInfo);
+                // debugging
+                Debug.DrawRay(cameraReference.transform.position, rayDirection * hitInfo.distance, Color.red);
+
+                // Get the object of hitInfo
+                var target = hitInfo.collider.gameObject;
+
+                // Check the tag of the hit object
+                if (target.CompareTag("Grabbable") || target.CompareTag("Interactable"))
+                {
+                    HighlightHitObject(target);
+                    HandleHitObject(target);
+                }
+                else
+                {
+                    ClearLastLookedAt();
+                }
             }
             else
             {
                 ClearLastLookedAt();
+                // debugging
+                Debug.DrawRay(transform.position, rayDirection * raycastLength, Color.red);
             }
         }
         else
         {
-            ClearLastLookedAt();
-            // debugging
-            Debug.DrawRay(transform.position, rayDirection * raycastLength, Color.red);
+            // else, continue handling grabbed/held object.
+            HighlightHitObject(_lastLookedAt);
+            HandleHitObject(_lastLookedAt);
         }
     }
 
@@ -95,35 +113,33 @@ public class InteractionManager : MonoBehaviour
         interactionHolder.transform.rotation = cameraReference.transform.rotation;
     }
 
-
-    void HandleLookingAtObject(RaycastHit hitInfo)
+    // Highlights a given game object.
+    private void HighlightHitObject(GameObject target)
     {
-        // highlight interactive/grabbable object, but dont highlight when grabbed
-        GameObject target = hitInfo.collider.gameObject;
+        // Check whether target is different from previous highlighted object
         if (_lastLookedAt != target)
         {
+            // Remove highlight of previous object
             if (_lastLookedAt != null)
             {
                 SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
             }
-            _lastLookedAt = target;
-            if (_isGrabbing)
-            {
-                SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
-            }
-            else
-            {
-                SetLayerRecursively(_lastLookedAt.transform, _highlightMask);
 
-            }
+            // Set current target as previous object and highlight
+            _lastLookedAt = target;
+            SetLayerRecursively(_lastLookedAt.transform, _highlightMask);
+
         }
-        else if (_isGrabbing && target.CompareTag("Grabbable"))
+        else if (_isGrabbing)
         {
             SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
-
         }
+    }
 
-        // If object is interacted, run Interact() on all interactable scripts
+    // Handles the interaction or grabbing of given object
+    void HandleHitObject(GameObject target)
+    {
+        // If object is interacted, run OnInteractStart() on all interactable scripts
         if (inputManager.GetPlayerInteracted())
         {
             var interactables = target.GetComponents<IInteractable>();
@@ -135,7 +151,9 @@ public class InteractionManager : MonoBehaviour
                 }
             }
         }
-        else if (inputManager.GetPlayerGrabbed())
+        
+        // If object is grabbed, run OnInteractStart() and afterwards InteractRunning() on all interactable scripts
+        if (inputManager.GetPlayerGrabbed())
         {
             var interactables = target.GetComponents<IInteractable>();
 
@@ -150,11 +168,11 @@ public class InteractionManager : MonoBehaviour
                 }
             }
 
-            if (target.CompareTag("Grabbable"))
-            {
-                _isGrabbing = true;
-                controller.PickupObject(hitInfo.transform.gameObject);
-            }
+            // Set grabbing to true
+            _isGrabbing = true;
+
+            // Run Pickup method
+            controller.PickupObject(target);
         }
         else if (!inputManager.GetPlayerGrabbing())
         {
@@ -184,6 +202,7 @@ public class InteractionManager : MonoBehaviour
                 _isGrabbing = false;
             }
         }
+        
     }
 
 
