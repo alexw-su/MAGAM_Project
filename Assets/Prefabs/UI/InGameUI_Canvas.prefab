@@ -573,7 +573,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: C - Close Messages, Y - Open Message Log
+  m_text: "[C] Clear Messages\t\t[Y] Open/Close Log"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 829742c829ecd0041963b082ad5402db, type: 2}
   m_sharedMaterial: {fileID: 921063750592013527, guid: 829742c829ecd0041963b082ad5402db,
