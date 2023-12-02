@@ -59,19 +59,45 @@
          }
       },
       "interactions":{
-         "startMessage":{
-            "text":"My adventure at the Brushwood residence is just about to begin! \nAccording to my sources the residence should be nearby.",
-            "displayTime":8,
-            "repeatable":false,
-            "delay":0
+         "startMessage": {
+            "text": "The house should be nearby.",
+            "displayTime": 5,
+            "repeatable": false,
+            "delay": 0
          },
-         "frontDoorLocked":{
-            "text":"Seems like the front door is locked. I will need to find another way.",
-            "displayTime":4
+         "spotsHouse": {
+            "text": "Ah, here it is!",
+            "displayTime": 5,
+            "repeatable": false,
+            "delay": 0
          },
-        "wrongWay":{
-            "text":"I'm pretty sure this is not the right way, I should turn around.",
-            "displayTime":4
+         "lookingAround": {
+            "text": "I need to find a way in... ",
+            "displayTime": 5,
+            "repeatable": false,
+            "delay": 0
+         },
+         "walkingTowardsHouse": {
+            "text": "I didn't expect it to look this nice. The barkeeper said it was abandoned several years ago. ",
+            "displayTime": 8,
+            "repeatable": false,
+            "delay": 5
+         },
+         "frontDoorLocked": {
+            "text": "It won't budge. I need to find another way.",
+            "displayTime": 4
+         },
+         "wrongWay": {
+            "text": "Hmm... this doesn't look like the right way.",
+            "displayTime": 4
+         },
+         "stillWrongWay": {
+            "text": "This looks wrong. I should try another direction.",
+            "displayTime": 4
+         },
+         "spottingOpenWindow": {
+            "text": "Oh, that window is open. But I cannot reach it.",
+            "displayTime": 4
          }
       },
       "puzzle1":{
