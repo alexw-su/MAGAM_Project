@@ -101,8 +101,11 @@ public class InteractionManager : MonoBehaviour
         else
         {
             // else, continue handling grabbed/held object.
-            HighlightHitObject(_lastLookedAt);
-            HandleHitObject(_lastLookedAt);
+            if (_lastLookedAt != null)
+            {
+                HighlightHitObject(_lastLookedAt);
+                HandleHitObject(_lastLookedAt);
+            }
         }
     }
 
