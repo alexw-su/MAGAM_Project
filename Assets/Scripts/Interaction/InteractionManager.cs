@@ -37,6 +37,7 @@ public class InteractionManager : MonoBehaviour
         _highlightMask = LayerMask.NameToLayer("Highlight");
         _defaultMask = LayerMask.NameToLayer("Default");
     }
+
     void Start()
     {
         // Gets Input Manager from scene
@@ -45,25 +46,30 @@ public class InteractionManager : MonoBehaviour
         _interactableObjects = new List<IInteractable>();
     }
 
-
     void Update()
     {
-
+        // Raycasting
         RaycastPlayerAim();
+
+        // Updating rotation of interaction holder
         InteractionHolderUpdate();
+
+        // Prevents running the loop below
         if (!_isGrabbing || _interactableObjects.Count <= 0)
             return;
+
+        // Loop for grabbable object (interaction) scripts.
         foreach (var obj in _interactableObjects)
         {
             obj.OnInteractionRunning();
         }
-
     }
+
     void RaycastPlayerAim()
     {
         Vector3 rayDirection = cameraReference.transform.forward;
 
-        // If player is not holding/grabbing an object, then use Raycast.
+        // If player is not holding/grabbing an object already, then use Raycast.
         if (!_isGrabbing)
         {
             if (Physics.Raycast(cameraReference.transform.position, rayDirection, out RaycastHit hitInfo, raycastLength))
