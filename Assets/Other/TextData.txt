@@ -85,7 +85,7 @@
             "delay":2
          },
          "exitPuzzleSolved":{
-            "text":"And I'm back. Let's see what happened around the house while I was in the painting.",
+            "text":"Looks like something happened nearby.",
             "displayTime":5,
             "delay":2
          }
