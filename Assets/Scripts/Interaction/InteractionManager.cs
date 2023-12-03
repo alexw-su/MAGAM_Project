@@ -108,7 +108,6 @@ public class InteractionManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("What");
                 ClearLastLookedAt();
             }
         }
