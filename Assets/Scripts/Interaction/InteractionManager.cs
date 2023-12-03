@@ -106,6 +106,11 @@ public class InteractionManager : MonoBehaviour
                 HighlightHitObject(_lastLookedAt);
                 HandleHitObject(_lastLookedAt);
             }
+            else
+            {
+                Debug.Log("What");
+                ClearLastLookedAt();
+            }
         }
     }
 
@@ -215,8 +220,8 @@ public class InteractionManager : MonoBehaviour
         {
             SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
             _lastLookedAt = null;
-            _isGrabbing = false;
         }
+        _isGrabbing = false;
     }
 
     //For Outside access to Raycast hits
