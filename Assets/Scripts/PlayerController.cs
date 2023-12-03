@@ -5,29 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Attribute Values")]
+    [Header("Player Movement Attributes")]
     public float moveSpeed;
     public float acceleration;
     public float sprintMultiplier;
     public float jumpHeight;
     public float gravityValue;
-    public bool grounded;
-    public Transform cameraHolder;
-    private float currentMoveSpeed;
-
-    InputManager inputManager;
-    CharacterController controller;
+    float currentMoveSpeed;
     Vector3 playerVelocity;
     Vector3 moveDirection;
-    Transform cameraTransform;
 
-    // Player Effect variables
+    [Header("Booleans")]
+    public bool grounded;
+    public bool sprinting;
+
+    [Header("Camera Holder Attributes")]
+    public Transform cameraHolder;
     public float bobbingSpeed;
     public float bobbingAmount;
     public float swayAmount;
     float bobbingTime;
     float cameraHolderDefaultY;
     float cameraHolderDefaultX;
+
+    InputManager inputManager;
+    CharacterController controller;
+    Transform cameraTransform;
 
     private Vector3? teleportTo = null;
     // public property to access teleportTo
@@ -36,7 +39,7 @@ public class PlayerController : MonoBehaviour
         get { return teleportTo; }
         set { teleportTo = value; }
     }
-    private bool sprinting;
+    
     void Start()
     {
         // Initializes CharacterController
@@ -60,10 +63,6 @@ public class PlayerController : MonoBehaviour
     {
         // Checks if player is touching mesh.
         grounded = controller.isGrounded;
-        if (grounded && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
 
         // Gets player input
         GetInput();
@@ -105,7 +104,15 @@ public class PlayerController : MonoBehaviour
         }
 
         // Applying gravity
-        playerVelocity.y += gravityValue * Time.deltaTime;
+        if (grounded)
+        {
+            playerVelocity.y = -(gravityValue / 5);
+        }
+        else
+        {
+            playerVelocity.y -= gravityValue * Time.deltaTime;
+        }
+
         controller.Move(playerVelocity * Time.deltaTime);
 
         if(inputManager.GetPlayerQuit())
@@ -158,7 +165,6 @@ public class PlayerController : MonoBehaviour
     // Uses variables based on input to move player.
     private void MovePlayer()
     {
-
         // Gives CharacterController movement input
         if(!sprinting) 
         {
@@ -174,15 +180,14 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.forward = moveDirection;
         }
-
-
     }
 
     // Applies jump
     private void Jump()
-    {
+    {   
+        grounded = false;
         // Adds jump to player's velocity
-        playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * -gravityValue);
     }
 
 }
