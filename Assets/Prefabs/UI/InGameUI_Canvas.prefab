@@ -434,6 +434,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3901139438001110878}
+  - {fileID: 8544535883079074319}
   - {fileID: 364533251311588655}
   - {fileID: 641529868374274630}
   - {fileID: 2321870648107276489}
@@ -538,12 +539,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3901139438001110878}
+  m_Father: {fileID: 3551846689791449543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -180}
-  m_SizeDelta: {x: 0, y: -360}
+  m_AnchoredPosition: {x: 0, y: -496}
+  m_SizeDelta: {x: -40, y: -1040}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!222 &8792061380367905300
 CanvasRenderer:
@@ -573,7 +574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: C - Close Messages, Y - Open Message Log
+  m_text: "[C] Clear Messages\t\t[Y] Open/Close Log"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 829742c829ecd0041963b082ad5402db, type: 2}
   m_sharedMaterial: {fileID: 921063750592013527, guid: 829742c829ecd0041963b082ad5402db,
@@ -878,7 +879,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8544535883079074319}
   - {fileID: 2879831570997347296}
   m_Father: {fileID: 3551846689791449543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

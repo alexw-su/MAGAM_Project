@@ -101,8 +101,15 @@ public class InteractionManager : MonoBehaviour
         else
         {
             // else, continue handling grabbed/held object.
-            HighlightHitObject(_lastLookedAt);
-            HandleHitObject(_lastLookedAt);
+            if (_lastLookedAt != null)
+            {
+                HighlightHitObject(_lastLookedAt);
+                HandleHitObject(_lastLookedAt);
+            }
+            else
+            {
+                ClearLastLookedAt();
+            }
         }
     }
 
@@ -212,8 +219,8 @@ public class InteractionManager : MonoBehaviour
         {
             SetLayerRecursively(_lastLookedAt.transform, _defaultMask);
             _lastLookedAt = null;
-            _isGrabbing = false;
         }
+        _isGrabbing = false;
     }
 
     //For Outside access to Raycast hits

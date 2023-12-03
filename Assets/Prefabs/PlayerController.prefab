@@ -263,7 +263,7 @@ CharacterController:
   m_SlopeLimit: 52
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4208213373566483209
 MonoBehaviour:
@@ -281,7 +281,7 @@ MonoBehaviour:
   acceleration: 15
   sprintMultiplier: 2
   jumpHeight: 1.5
-  gravityValue: -16
+  gravityValue: 16
   grounded: 0
   cameraHolder: {fileID: 6034732934323742679}
   bobbingSpeed: 7
