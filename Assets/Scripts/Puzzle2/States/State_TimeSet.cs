@@ -18,10 +18,8 @@ public partial class Puzzle2
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-            Debug.Log("VERY IMPORTANTA STATE ENTER");
             Manager.crystal.SetActive(true);
             Manager.particles1.gameObject.SetActive(true);
-            Manager.particles2.gameObject.SetActive(true);
 
             RenderSettings.skybox = Manager.skyBoxMaterialNight;
 

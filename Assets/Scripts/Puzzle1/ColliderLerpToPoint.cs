@@ -39,7 +39,10 @@ public class ColliderLerpToPoint : MonoBehaviour
 
             yield return null;
         }
-
-        gameObjectToCollide.GetComponent<WateringAnimationHandler>().PlayAnimation();
+        WateringAnimationHandler animationHandler = gameObjectToCollide.GetComponent<WateringAnimationHandler>();
+        if (animationHandler != null)
+        {
+            animationHandler.PlayAnimation();
+        }
     }
 }

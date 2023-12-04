@@ -16,16 +16,14 @@ public partial class Puzzle2 : MarcimanStateMachine
     [Header("PuzzleElements")]
     [SerializeField] PuzzleLeave puzzle2Leave;
     public GameObject clock1;
-    public GameObject clock2;
     public GameObject crystal;
+    public GameObject button;
     [Space]
     public Material skyBoxMaterialNight;
 
     [Header("Particle Systems")]
     public ParticleSystem particles1;
-    public ParticleSystem particles2;
     public Puzzle2States CurrentState { get => _currentState; }
-    public bool correctTime = false;
     public StringPair messageUnsolved;
     public StringPair messageSolved;
 
@@ -39,7 +37,6 @@ public partial class Puzzle2 : MarcimanStateMachine
 
         crystal.SetActive(false);
         particles1.gameObject.SetActive(false);
-        particles2.gameObject.SetActive(false);
     }
     private void OnEnable()
     {
@@ -67,25 +64,11 @@ public partial class Puzzle2 : MarcimanStateMachine
                 break;
         }
     }
-    private void PointerSnapHandler_OnSnappedToLocation(GameObject gameObject)
-    {
-        var snappedGameObject = gameObject.GetComponent<Puzzle3_Item_Handler>();
-        Debug.Log("PointerSnapHandler_OnSnappedToLocation" + gameObject.name);
-    }
     private void PaintingLeaveHandler()
     {
         MessageBus messageBus = FindObjectOfType<MessageBus>();
-        if (correctTime)
+        if (_currentState != Puzzle2States.TimeSet)
         {
-            ChangeState(Puzzle2States.TimeSet);
-            clock2.tag = "Untagged";
-            if (messageSolved != null && messageBus != null)
-            {
-                Debug.Log("messageSolved"+messageSolved);
-                messageBus.AddMessage(messageSolved.Category, messageSolved.Key);
-                messageSolved = null;
-            }
-        } else {
             if (messageUnsolved != null && messageBus != null)
             {
                 messageBus.AddMessage(messageUnsolved.Category, messageUnsolved.Key);
