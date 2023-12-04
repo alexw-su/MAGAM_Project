@@ -40,7 +40,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
             }
 
             // Locks player inputs
-            inputManager.LockInput();
+            inputManager.LockPlayer();
 
             // Starts vfx transition
             vfx.EnableFullScreenPassRendererFeature();
@@ -71,7 +71,7 @@ public class PaintingScript : MonoBehaviour, IInteractable
         }
 
         // Unlocks the player inputs
-        inputManager.UnlockInput();
+        inputManager.UnlockPlayer();
 
         foreach (StringPair pair in stringPairs)
         {

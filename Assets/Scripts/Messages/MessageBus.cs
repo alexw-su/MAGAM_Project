@@ -17,6 +17,7 @@ public class MessageBus : MonoBehaviour
     public TextMeshProUGUI messageLogText;
     public TextMeshProUGUI instructionsText;
     private bool _isLogOpen = false;
+    public bool IsLogOpen { get => _isLogOpen; }
     // currently displayed messages
     private List<CanvasMessage> _displayedMessagesSet = new List<CanvasMessage>();
     // messages displayed last frame, saved for optitmization
@@ -202,7 +203,7 @@ public class MessageBus : MonoBehaviour
         instructionsText.text = "";
 
     }
-    private void ToggleMessageLog()
+    public void ToggleMessageLog()
     {
         _isLogOpen = !_isLogOpen;
         if (_isLogOpen)
@@ -220,7 +221,6 @@ public class MessageBus : MonoBehaviour
             messageLogText.text = text;
             messagePanel.SetActive(false);
             cip.gameObject.SetActive(false);
-            inputManager.ToggleLookInput(false);
             messageLogPanel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
         }
@@ -230,7 +230,6 @@ public class MessageBus : MonoBehaviour
             messagePanel.SetActive(true);
             messageLogPanel.SetActive(false);
             cip.gameObject.SetActive(true);
-            inputManager.ToggleLookInput(true);
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
