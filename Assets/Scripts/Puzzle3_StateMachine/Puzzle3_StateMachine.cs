@@ -56,6 +56,9 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     [SerializeField] List<Color> solvedPuzzleColorSequence;
     [SerializeField] Puzzle3_Cauldron_ColorSequence_Handler cauldronColorHandler;
     [SerializeField] float solvedPuzzleInterval = 2f;
+    [Space]
+    [SerializeField] VFX_Dissolve_Handler wallDissolve;
+    [SerializeField] float dissolveDuration = 2.5f;
 
     [Header("Books")]
     [SerializeField] List<Puzzle3_BookInteraction_Handler> bookInteractionHandlerList;
@@ -66,7 +69,8 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     [SerializeField] Transform paintingSpawnPosition;
 
     [Header("FEEL")]
-    [SerializeField] MMF_Player mmfPlayer;
+    [SerializeField] MMF_Player smallBoing_mmfPlayer;
+    [SerializeField] MMF_Player bigBoing_mmfPlayer;
 
     private int _currentElementsPlacedCounter = 0;
 
@@ -162,7 +166,7 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
         {
             UpdatePuzzlePhases(false);
 
-            mmfPlayer.PlayFeedbacks();
+            smallBoing_mmfPlayer.PlayFeedbacks();
         }
         else if ((int)_currentState < 5)
         {
