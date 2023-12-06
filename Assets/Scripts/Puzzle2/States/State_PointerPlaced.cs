@@ -40,8 +40,6 @@ public partial class Puzzle2
             Manager.ChangeState(Puzzle2States.TimeSet);
             Manager.clock1.tag = "Untagged";
             Manager.button.tag = "Untagged";
-            Manager.crystal.SetActive(true);
-            Manager.particles1.gameObject.SetActive(true);
         }
     }
 }

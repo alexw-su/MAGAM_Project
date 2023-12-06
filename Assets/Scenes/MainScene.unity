@@ -392,7 +392,7 @@ PrefabInstance:
     - target: {fileID: 5195434902611529911, guid: 870988507d4961d49bad3eaa7c633c26,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 5195434902611529911, guid: 870988507d4961d49bad3eaa7c633c26,
         type: 3}
@@ -542,26 +542,6 @@ PrefabInstance:
       propertyPath: vfx
       value: 
       objectReference: {fileID: 713251377}
-    - target: {fileID: 2312071118150083680, guid: 1e70293ef5bf30b4c8a926cb57372b34,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.08253159
-      objectReference: {fileID: 0}
-    - target: {fileID: 2312071118150083680, guid: 1e70293ef5bf30b4c8a926cb57372b34,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.021461515
-      objectReference: {fileID: 0}
-    - target: {fileID: 2312071118150083680, guid: 1e70293ef5bf30b4c8a926cb57372b34,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.08253159
-      objectReference: {fileID: 0}
-    - target: {fileID: 2312071118150083680, guid: 1e70293ef5bf30b4c8a926cb57372b34,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.0384
-      objectReference: {fileID: 0}
     - target: {fileID: 3006044695174828365, guid: 1e70293ef5bf30b4c8a926cb57372b34,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -617,26 +597,11 @@ PrefabInstance:
       propertyPath: vfx
       value: 
       objectReference: {fileID: 713251377}
-    - target: {fileID: 4067402452670993856, guid: 1e70293ef5bf30b4c8a926cb57372b34,
-        type: 3}
-      propertyPath: brokenClockSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 2ccc398122014b4408b0f2ce24a01b9a, type: 3}
-    - target: {fileID: 4067402452670993856, guid: 1e70293ef5bf30b4c8a926cb57372b34,
-        type: 3}
-      propertyPath: workingClockSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 0ba69ca57102c3d49a10f9207344b343, type: 3}
     - target: {fileID: 5293143098132271751, guid: 1e70293ef5bf30b4c8a926cb57372b34,
         type: 3}
       propertyPath: m_Name
       value: Puzzle2
       objectReference: {fileID: 0}
-    - target: {fileID: 5599697825139677170, guid: 1e70293ef5bf30b4c8a926cb57372b34,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fbec7c647a54d25449f3394ca8d41b46, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -821,7 +786,7 @@ PrefabInstance:
     - target: {fileID: 4764669528267835169, guid: 2eefcde048229bd4f80f27fb78a08449,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -98.96
+      value: -4.3
       objectReference: {fileID: 0}
     - target: {fileID: 4764669528267835169, guid: 2eefcde048229bd4f80f27fb78a08449,
         type: 3}
@@ -916,7 +881,7 @@ PrefabInstance:
     - target: {fileID: 4375388076977803198, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -98.96
+      value: -4.3
       objectReference: {fileID: 0}
     - target: {fileID: 4375388076977803198, guid: b36ca50e36271164895f0863d57a8d03,
         type: 3}
@@ -1063,7 +1028,7 @@ Transform:
   m_GameObject: {fileID: 923819810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.1, y: 3.6699998, z: -98.96}
+  m_LocalPosition: {x: -10.1, y: 3.6699998, z: -4.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

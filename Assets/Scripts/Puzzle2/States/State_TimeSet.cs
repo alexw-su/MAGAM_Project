@@ -18,11 +18,7 @@ public partial class Puzzle2
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-            Manager.crystal.SetActive(true);
-            Manager.particles1.gameObject.SetActive(true);
-
             RenderSettings.skybox = Manager.skyBoxMaterialNight;
-
             Instantiate(Manager.paintingPart, Manager.paintingPartSpawnPoint);
         }
 

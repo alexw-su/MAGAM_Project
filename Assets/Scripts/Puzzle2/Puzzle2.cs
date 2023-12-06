@@ -16,13 +16,10 @@ public partial class Puzzle2 : MarcimanStateMachine
     [Header("PuzzleElements")]
     [SerializeField] PuzzleLeave puzzle2Leave;
     public GameObject clock1;
-    public GameObject crystal;
     public GameObject button;
     [Space]
     public Material skyBoxMaterialNight;
 
-    [Header("Particle Systems")]
-    public ParticleSystem particles1;
     public Puzzle2States CurrentState { get => _currentState; }
     public StringPair messageUnsolved;
     public StringPair messageSolved;
@@ -34,9 +31,6 @@ public partial class Puzzle2 : MarcimanStateMachine
     void Start()
     {
         ChangeState(Puzzle2States.Idle);
-
-        crystal.SetActive(false);
-        particles1.gameObject.SetActive(false);
     }
     private void OnEnable()
     {
