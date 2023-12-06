@@ -1751,11 +1751,21 @@ PrefabInstance:
       propertyPath: vfx
       value: 
       objectReference: {fileID: 713251377}
+    - target: {fileID: 1472070812845840583, guid: c101732907d1cfc4992975389538fdd0,
+        type: 3}
+      propertyPath: realityPostProcessingObject
+      value: 
+      objectReference: {fileID: 164216512}
     - target: {fileID: 2425146912059372871, guid: c101732907d1cfc4992975389538fdd0,
         type: 3}
       propertyPath: vfx
       value: 
       objectReference: {fileID: 713251377}
+    - target: {fileID: 2425146912059372871, guid: c101732907d1cfc4992975389538fdd0,
+        type: 3}
+      propertyPath: realityPostProcessingObject
+      value: 
+      objectReference: {fileID: 164216512}
     - target: {fileID: 2539287605628645572, guid: c101732907d1cfc4992975389538fdd0,
         type: 3}
       propertyPath: m_Name

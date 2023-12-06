@@ -36,10 +36,15 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (!footstepsSource.isPlaying && isPlayingFootsteps)
+        if (footstepsSource.isPlaying)
         {
+            isPlayingFootsteps = true;
+        }
+        else {
             isPlayingFootsteps = false;
         }
+
+        Debug.Log(isPlayingFootsteps);
     }
 
 
@@ -67,25 +72,22 @@ public class AudioManager : MonoBehaviour
     #region Footsteps
     public void StartFootsteps(bool running)
     {
-        if (!isPlayingFootsteps)
-            isPlayingFootsteps = true;
+        if(!footstepsSource.isPlaying)
+        {
+            if(!running)
+                footstepsSource.clip = footStepAudioClip[Random.Range(0, footStepAudioClip.Count)];
+            else
+                footstepsSource.clip = runningAudioClips[Random.Range(0, runningAudioClips.Count)];
 
-        if(!running)
-            footstepsSource.clip = footStepAudioClip[Random.Range(0, footStepAudioClip.Count)];
-        else
-            footstepsSource.clip = runningAudioClips[Random.Range(0, runningAudioClips.Count)];
-
-        Debug.Log(footstepsSource.clip.name);
-        footstepsSource.Play();
+            Debug.Log(footstepsSource.clip.name);
+            footstepsSource.Play();
+        }
     }
 
 
     public void PauseFootsteps()
     {
-        if(isPlayingFootsteps)
-            isPlayingFootsteps = false;
-
-        //footstepsSource.Pause();
+        footstepsSource.Pause();
     }
     #endregion
 }

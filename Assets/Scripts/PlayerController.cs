@@ -86,6 +86,12 @@ public class PlayerController : MonoBehaviour
                 cameraHolderDefaultY + Mathf.Sin(bobbingTime) * bobbingAmount, 
                 cameraHolder.localPosition.z
             );
+
+            // Add Sound Effects
+            if(grounded)
+            {
+                _audioManager.StartFootsteps(sprinting);
+            }
         }
 
         // Moves Player according to input
@@ -105,6 +111,9 @@ public class PlayerController : MonoBehaviour
                 Mathf.Lerp(cameraHolder.localPosition.y, cameraHolderDefaultY, Time.deltaTime * bobbingSpeed), 
                 cameraHolder.localPosition.z
             );
+
+            // Stop Sound effects
+            _audioManager.PauseFootsteps();
         }
 
         // Applying gravity
@@ -114,6 +123,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            _audioManager.PauseFootsteps();
             playerVelocity.y -= gravityValue * Time.deltaTime;
         }
 
@@ -133,27 +143,14 @@ public class PlayerController : MonoBehaviour
     // Gets player inputs from InputManager and updates variables.
     private void GetInput()
     {
-        if(inputManager.IsPlayerMoving())
-        {
-            // Gets directional input from inputManager
-            Vector2 movement = inputManager.GetPlayerMovement();
-            moveDirection = new Vector3(movement.x, 0f, movement.y);
-        
-            // Changes/Rotates directional movement based on Camera's direction
-            moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
-            moveDirection.y = 0f;
-            moveDirection.Normalize();
-
-            if(!_audioManager.isPlayingFootsteps && grounded)
-            {
-                _audioManager.StartFootsteps(sprinting);
-            }
-        }
-        else
-        {
-            if (_audioManager.isPlayingFootsteps)
-                _audioManager.PauseFootsteps();
-        }
+        // Gets directional input from inputManager
+        Vector2 movement = inputManager.GetPlayerMovement();
+        moveDirection = new Vector3(movement.x, 0f, movement.y);
+    
+        // Changes/Rotates directional movement based on Camera's direction
+        moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
+        moveDirection.y = 0f;
+        moveDirection.Normalize();        
 
         // Checks if jump input was triggered during grounded
         if (inputManager.GetPlayerJumped() && grounded)
