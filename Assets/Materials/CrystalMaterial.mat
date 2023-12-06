@@ -39,8 +39,8 @@ Material:
     - _WorkflowMode: 0
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.33490568, g: 0.97441953, b: 1, a: 0.43137255}
-    - _Color: {r: 0.33490565, g: 0.97441953, b: 1, a: 0.43137255}
+    - _BaseColor: {r: 1, g: 1, b: 0.57254905, a: 1}
+    - _Color: {r: 1, g: 1, b: 0.57254905, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4394831549350465368
 MonoBehaviour:

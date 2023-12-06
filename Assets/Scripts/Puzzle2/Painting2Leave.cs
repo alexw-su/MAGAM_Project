@@ -9,7 +9,6 @@ public class Painting2Leave : MonoBehaviour, IInteractable
     public event LeavePainting OnLeavePainting;
     public void OnInteractionStart(bool isGrabbing)
     {
-        Debug.Log("STARTTTT");
         OnLeavePainting?.Invoke();
     }
 }

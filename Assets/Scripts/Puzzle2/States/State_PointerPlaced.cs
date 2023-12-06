@@ -18,11 +18,8 @@ public partial class Puzzle2
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-            Manager.clock1.SetActive(false);
-            Manager.clock2.SetActive(true);
-            Manager.crystal.SetActive(false);
-            Manager.particles1.gameObject.SetActive(false);
-            Manager.particles2.gameObject.SetActive(false);
+
+            Manager.button.GetComponent<ButtonPress>().OnTimeSet += Clock_OnTimeSet;
         }
 
         public override void OnStateRunning()
@@ -35,15 +32,14 @@ public partial class Puzzle2
         {
 
             base.OnStateExit();
+            Manager.button.GetComponent<ButtonPress>().OnTimeSet -= Clock_OnTimeSet;
         }
         #endregion
-
-
-        //This is triggered once the ClockScript fires the OnClockSolved event
-        private void Clock_OnClockSolved()
+        void Clock_OnTimeSet()
         {
-            Debug.Log("Clock_OnClockSolved");
             Manager.ChangeState(Puzzle2States.TimeSet);
+            Manager.clock1.tag = "Untagged";
+            Manager.button.tag = "Untagged";
         }
     }
 }
