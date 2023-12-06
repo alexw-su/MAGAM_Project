@@ -15868,7 +15868,7 @@ PrefabInstance:
     - target: {fileID: 2026805596651817778, guid: e341e722f8ef1494ca4be0335799090f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.95
+      value: -3.8311687
       objectReference: {fileID: 0}
     - target: {fileID: 2026805596651817778, guid: e341e722f8ef1494ca4be0335799090f,
         type: 3}
@@ -15878,7 +15878,7 @@ PrefabInstance:
     - target: {fileID: 2026805596651817778, guid: e341e722f8ef1494ca4be0335799090f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.5201664
+      value: 4.1689863
       objectReference: {fileID: 0}
     - target: {fileID: 2026805596651817778, guid: e341e722f8ef1494ca4be0335799090f,
         type: 3}
@@ -15984,7 +15984,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportToPoint: {fileID: 6040880398161705529}
   teleportPointToMove: {fileID: 1984904946069446770}
-  postProcessingObject: {fileID: 0}
+  puzzlePostProcessingObject: {fileID: 0}
+  realityPostProcessingObject: {fileID: 0}
+  puzzleEnabled: 0
+  realityEnabled: 0
   stringPairs: []
   vfx: {fileID: 0}
 --- !u!114 &343060896386193099
@@ -16487,7 +16490,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportToPoint: {fileID: 1984904946069446770}
   teleportPointToMove: {fileID: 6040880398161705529}
-  postProcessingObject: {fileID: 0}
+  puzzlePostProcessingObject: {fileID: 0}
+  realityPostProcessingObject: {fileID: 0}
+  puzzleEnabled: 0
+  realityEnabled: 0
   stringPairs:
   - Category: puzzle2
     Key: enterPuzzle
