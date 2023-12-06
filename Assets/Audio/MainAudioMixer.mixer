@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-6485367597794586089
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FootSteps
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 73c2ea83d19b98c49bf6d66527881c6f
+  m_Children: []
+  m_Volume: 07cceb7c83158e244a65e51f0d47adde
+  m_Pitch: 15ffe609bd577d441b96e9e6aba6ac9a
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -5336347369852355999}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-5336347369852355999
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: dec00194d6917ed4fbe17c118d7480fb
+  m_EffectName: Attenuation
+  m_MixLevel: c882eda28407854438da2be715bfa08e
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-4275546097067272236
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -54,6 +87,7 @@ AudioMixerController:
     - f4afc2b8b05d143439d47fe9ef83b602
     - 92bedc0e5166c1b4aa3018a8d13ba1e6
     - 6d3d58bf7c0dc0a43b038d5eaec3694f
+    - 73c2ea83d19b98c49bf6d66527881c6f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -69,6 +103,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 8913874874692213816}
   - {fileID: -4275546097067272236}
+  - {fileID: -6485367597794586089}
   m_Volume: b5322bcea13c93744b13b2c9773f94f6
   m_Pitch: 3d6c6aabbbfc79147a38407353fb27dd
   m_Send: 00000000000000000000000000000000
@@ -101,7 +136,9 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: ad4e2f51a6692a94b91b550cf9f417b8
-  m_FloatValues: {}
+  m_FloatValues:
+    50b020d24794c3649a5413d747acd2b6: -24.162655
+    07cceb7c83158e244a65e51f0d47adde: -6.1337132
   m_TransitionOverrides: {}
 --- !u!244 &4032058553137550303
 AudioMixerEffectController:

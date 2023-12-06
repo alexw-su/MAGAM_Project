@@ -19,6 +19,7 @@ public partial class Puzzle1 : MarcimanStateMachine
     public float scaleSize;
     public GameObject tree;
     public ScaleUpTree paintingTree;
+    public AudioClip treeGrowthClip;
     public StringPair messageUnsolved;
     public StringPair messageSolved;
 
@@ -71,6 +72,7 @@ public partial class Puzzle1 : MarcimanStateMachine
         {
             paintingTree.StartScaleToSize(size);
             scaleTriggered = true;
+            FindObjectOfType<AudioManager>().PlaySFX(treeGrowthClip);
         }
     }
     void PaintingLeaveHandler()

@@ -11,9 +11,14 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Source")]
     [SerializeField] AudioSource backgroundSource;
     [SerializeField] AudioSource sfxSource;
+    [SerializeField] AudioSource footstepsSource;
 
     [Header("Audio Clips")]
     [SerializeField] List<AudioClip> backgroundAudioClips;
+    [SerializeField] List<AudioClip> footStepAudioClip;
+    [SerializeField] List<AudioClip> runningAudioClips;
+
+    public bool isPlayingFootsteps = false;
 
 
     private void Start()
@@ -25,6 +30,21 @@ public class AudioManager : MonoBehaviour
         }
 
         PlayBackgroundClip(Random.Range(0, backgroundAudioClips.Count));
+
+        footstepsSource.clip = footStepAudioClip[Random.Range(0, footStepAudioClip.Count)];
+    }
+
+    private void Update()
+    {
+        if (footstepsSource.isPlaying)
+        {
+            isPlayingFootsteps = true;
+        }
+        else {
+            isPlayingFootsteps = false;
+        }
+
+        Debug.Log(isPlayingFootsteps);
     }
 
 
@@ -46,5 +66,28 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(audioClip);
     }
 
+    #endregion
+
+
+    #region Footsteps
+    public void StartFootsteps(bool running)
+    {
+        if(!footstepsSource.isPlaying)
+        {
+            if(!running)
+                footstepsSource.clip = footStepAudioClip[Random.Range(0, footStepAudioClip.Count)];
+            else
+                footstepsSource.clip = runningAudioClips[Random.Range(0, runningAudioClips.Count)];
+
+            Debug.Log(footstepsSource.clip.name);
+            footstepsSource.Play();
+        }
+    }
+
+
+    public void PauseFootsteps()
+    {
+        footstepsSource.Pause();
+    }
     #endregion
 }
