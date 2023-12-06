@@ -6,14 +6,24 @@ using Cinemachine;
 
 public class PaintingScript : MonoBehaviour, IInteractable
 {
+    [Header("Teleport Points")]
     public GameObject teleportToPoint;
     public GameObject teleportPointToMove;
-    public GameObject postProcessingObject;
+
+    [Header("Post Processing")]
+    public GameObject puzzlePostProcessingObject;
+    public GameObject realityPostProcessingObject;
+    public bool puzzleEnabled;
+    public bool realityEnabled;
+
+    [Header("Messages")]
     public List<StringPair> stringPairs = new List<StringPair>();
 
     private PlayerController _playerController;
     private InputManager inputManager;
     private bool teleporting;
+
+    [Header("VFX Manager")]
     public VFXManager vfx;
 
     void Start()
@@ -21,6 +31,19 @@ public class PaintingScript : MonoBehaviour, IInteractable
         _playerController = FindObjectOfType<PlayerController>();
         inputManager = InputManager.Instance;
         teleporting = false;
+    }
+
+    void Update()
+    {
+        if(puzzlePostProcessingObject != null)
+        {
+            puzzleEnabled = puzzlePostProcessingObject.activeSelf;
+        }
+
+        if(realityPostProcessingObject != null)
+        {
+            realityEnabled = realityPostProcessingObject.activeSelf;
+        }
     }
 
     public void OnInteractionStart(bool isGrabbing)
@@ -83,9 +106,16 @@ public class PaintingScript : MonoBehaviour, IInteractable
         }
 
         // Toggles On/Off post processing, if post processing is necessary
-        if(postProcessingObject != null)
+        if(puzzlePostProcessingObject != null)
         {
-            postProcessingObject.SetActive(!postProcessingObject.activeSelf);
+            puzzlePostProcessingObject.SetActive(!puzzlePostProcessingObject.activeSelf);
+            puzzleEnabled = puzzlePostProcessingObject.activeSelf;
+        }
+
+        if(realityPostProcessingObject != null)
+        {
+            realityPostProcessingObject.SetActive(!realityPostProcessingObject.activeSelf);
+            realityEnabled = realityPostProcessingObject.activeSelf;
         }
 
         // Reset VFX to normak
