@@ -11389,7 +11389,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportToPoint: {fileID: 1217159437525656444}
   teleportPointToMove: {fileID: 260679863008226246}
-  postProcessingObject: {fileID: 42282096038098833}
+  puzzlePostProcessingObject: {fileID: 42282096038098833}
+  realityPostProcessingObject: {fileID: 0}
+  puzzleEnabled: 0
+  realityEnabled: 0
   stringPairs: []
   vfx: {fileID: 0}
 --- !u!114 &5094415320792478501
@@ -11832,7 +11835,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportToPoint: {fileID: 260679863008226246}
   teleportPointToMove: {fileID: 1217159437525656444}
-  postProcessingObject: {fileID: 42282096038098833}
+  puzzlePostProcessingObject: {fileID: 42282096038098833}
+  realityPostProcessingObject: {fileID: 0}
+  puzzleEnabled: 0
+  realityEnabled: 0
   stringPairs:
   - Category: puzzle1
     Key: enterPuzzle
