@@ -5438,6 +5438,7 @@ MonoBehaviour:
   scaleSize: 3
   tree: {fileID: 0}
   paintingTree: {fileID: 8806113733798617085}
+  treeGrowthClip: {fileID: 8300000, guid: e51bad2b30f50ac4c8a254a449f6ebba, type: 3}
   messageUnsolved:
     Category: puzzle1
     Key: exitPuzzleUnsolved

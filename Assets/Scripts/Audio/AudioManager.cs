@@ -30,11 +30,13 @@ public class AudioManager : MonoBehaviour
         }
 
         PlayBackgroundClip(Random.Range(0, backgroundAudioClips.Count));
+
+        footstepsSource.clip = footStepAudioClip[Random.Range(0, footStepAudioClip.Count)];
     }
 
     private void Update()
     {
-        if(!footstepsSource.isPlaying && isPlayingFootsteps)
+        if (!footstepsSource.isPlaying && isPlayingFootsteps)
         {
             isPlayingFootsteps = false;
         }
@@ -73,6 +75,7 @@ public class AudioManager : MonoBehaviour
         else
             footstepsSource.clip = runningAudioClips[Random.Range(0, runningAudioClips.Count)];
 
+        Debug.Log(footstepsSource.clip.name);
         footstepsSource.Play();
     }
 
@@ -82,7 +85,7 @@ public class AudioManager : MonoBehaviour
         if(isPlayingFootsteps)
             isPlayingFootsteps = false;
 
-        footstepsSource.Pause();
+        //footstepsSource.Pause();
     }
     #endregion
 }
