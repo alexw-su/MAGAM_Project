@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     CharacterController controller;
     Transform cameraTransform;
 
+    private AudioManager _audioManager;
+
     private Vector3? teleportTo = null;
     // public property to access teleportTo
     public Vector3? TeleportTo
@@ -58,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
         // Fixes jump registering
         controller.minMoveDistance = 0;
+
+        _audioManager = FindObjectOfType<AudioManager>();
     }
     void Update()
     {
@@ -139,12 +143,25 @@ public class PlayerController : MonoBehaviour
             moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
             moveDirection.y = 0f;
             moveDirection.Normalize();
+
+            if(!_audioManager.isPlayingFootsteps && grounded)
+            {
+                _audioManager.StartFootsteps(sprinting);
+            }
+        }
+        else
+        {
+            if (_audioManager.isPlayingFootsteps)
+                _audioManager.PauseFootsteps();
         }
 
         // Checks if jump input was triggered during grounded
         if (inputManager.GetPlayerJumped() && grounded)
         {
             Jump();
+
+            if (_audioManager.isPlayingFootsteps)
+                _audioManager.PauseFootsteps();
         }
 
         // Checks if sprint input is pressed
