@@ -61,6 +61,7 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     [SerializeField] float dissolveDuration = 2.5f;
     [SerializeField] AudioClip successDrop;
     [SerializeField] AudioClip failDrop;
+    [SerializeField] AudioClip puzzleSuccesSound;
 
     [Header("Books")]
     [SerializeField] List<Puzzle3_BookInteraction_Handler> bookInteractionHandlerList;
