@@ -59,6 +59,8 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     [Space]
     [SerializeField] VFX_Dissolve_Handler wallDissolve;
     [SerializeField] float dissolveDuration = 2.5f;
+    [SerializeField] AudioClip successDrop;
+    [SerializeField] AudioClip failDrop;
 
     [Header("Books")]
     [SerializeField] List<Puzzle3_BookInteraction_Handler> bookInteractionHandlerList;
@@ -167,10 +169,14 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
             UpdatePuzzlePhases(false);
 
             smallBoing_mmfPlayer.PlayFeedbacks();
+
+            FindObjectOfType<AudioManager>().PlaySFX(successDrop);
+
         }
         else if ((int)_currentState < 5)
         {
             UpdatePuzzlePhases(true, Puzzle3_State.Potion_Phase1);
+            FindObjectOfType<AudioManager>().PlaySFX(failDrop);
         }
     }
 
