@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public Canvas inGameUIScreen;
     public MessageBus messageBus;
     public CinemachineInputProvider cip;
-    
+
     InputManager inputManager;
     bool paused;
     bool logOpen;
@@ -26,13 +26,13 @@ public class UIManager : MonoBehaviour
     {
         logOpen = messageBus.IsLogOpen;
 
-        if(inputManager.EscKeyPressed())
+        if (inputManager.EscKeyPressed())
         {
-            if(logOpen)
+            if (logOpen)
             {
                 messageBus.ToggleMessageLog();
             }
-            else 
+            else
             {
                 TogglePauseScreen();
             }
@@ -44,9 +44,9 @@ public class UIManager : MonoBehaviour
         // Opens pause screen
         paused = !paused;
         pauseScreen.gameObject.SetActive(paused);
-        
+
         // Input changes
-        if(paused)
+        if (paused)
         {
             inputManager.LockPlayer();
             cip.gameObject.SetActive(false);

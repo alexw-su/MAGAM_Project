@@ -77,10 +77,10 @@ public class MessageBus : MonoBehaviour
                 for (int i = 0; i < _displayedMessagesSet.Count; i++)
                 {
                     text += _displayedMessagesSet[i].text + "\n"; ;
-                    if (i < _displayedMessagesSet.Count - 1)
-                    {
-                        text += "-\n";
-                    }
+                    //if (i < _displayedMessagesSet.Count - 1)
+                    //{
+                    //    text += "-\n";
+                    //}
                 }
                 messageText.text = text;
                 messagePanel.SetActive(true);
@@ -136,18 +136,18 @@ public class MessageBus : MonoBehaviour
         // Wait for delay
         yield return new WaitForSeconds(message.delay);
         _displayedMessagesSet.Add(message);
-        
+
         // Wait for corresponding button
         bool inputPressed = false;
         float timer = 0;
 
-        while(!inputPressed)
+        while (!inputPressed)
         {
             timer += Time.deltaTime;
             inputPressed = GetInputMatch(message.input);
 
             // If button hasn't been pressed and message reaches its death timer
-            if(timer >= message.deathTimer) inputPressed = true;
+            if (timer >= message.deathTimer) inputPressed = true;
 
             yield return null;
         }
@@ -163,23 +163,23 @@ public class MessageBus : MonoBehaviour
     private bool GetInputMatch(Input input)
     {
         // Check if message's required input is not defined
-        if(input == Input.None) 
+        if (input == Input.None)
         {
             Debug.LogWarning($"Input-Required Message has not defined a required input to be pressed");
-            
+
             // To move on without problems -> returns true
             return true;
         }
 
         // Check if message's required input matches with current player input
-        if(inputManager.IsPlayerMoving() && input == Input.Move) return true;
-        if(inputManager.IsPlayerLooking() && input == Input.Look) return true;
-        if(inputManager.GetPlayerJumped() && input == Input.Jump) return true;
-        if(inputManager.GetPlayerSprinting() && input == Input.Run) return true;
-        if(inputManager.GetPlayerInteracted() && input == Input.Interact) return true;
-        if(inputManager.GetPlayerGrabbing() && input == Input.Grab) return true;
-        if(inputManager.CKeyPressed() && input == Input.Clear) return true;
-        if(inputManager.YKeyPressed() && input == Input.Log) return true;
+        if (inputManager.IsPlayerMoving() && input == Input.Move) return true;
+        if (inputManager.IsPlayerLooking() && input == Input.Look) return true;
+        if (inputManager.GetPlayerJumped() && input == Input.Jump) return true;
+        if (inputManager.GetPlayerSprinting() && input == Input.Run) return true;
+        if (inputManager.GetPlayerInteracted() && input == Input.Interact) return true;
+        if (inputManager.GetPlayerGrabbing() && input == Input.Grab) return true;
+        if (inputManager.CKeyPressed() && input == Input.Clear) return true;
+        if (inputManager.YKeyPressed() && input == Input.Log) return true;
 
         // Return false if nothing matches
         return false;
