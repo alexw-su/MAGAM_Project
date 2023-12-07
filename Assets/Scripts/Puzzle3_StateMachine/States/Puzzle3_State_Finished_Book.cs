@@ -21,6 +21,7 @@ public partial class Puzzle3_StateMachine
 
             Debug.Log("And Now you get the final piece of the puzzle");
             Instantiate(Manager.paintingPiece, Manager.paintingSpawnPosition);
+            FindObjectOfType<AudioManager>().PlaySFX(Manager.puzzleSuccesSound);
         }
 
 
