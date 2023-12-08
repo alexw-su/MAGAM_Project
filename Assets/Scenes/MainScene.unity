@@ -1579,8 +1579,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3980738377845709321, guid: 8fa9e2af59a89994b93aa30f367d049a, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fa9e2af59a89994b93aa30f367d049a, type: 3}
@@ -1955,16 +1954,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMap
-      objectReference: {fileID: 0}
-    - target: {fileID: 1787826060922656820, guid: 554c39261b374bc4d89ea1461fde43b5,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 4192502408546503252, guid: 554c39261b374bc4d89ea1461fde43b5,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5013467960922870873, guid: 554c39261b374bc4d89ea1461fde43b5,
         type: 3}
