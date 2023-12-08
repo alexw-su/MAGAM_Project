@@ -14,6 +14,8 @@ public class OnPlayerEnter_Trigger : MonoBehaviour
         if (other.GetComponent<CharacterController>() != null)
         {
             OnPlayerEnterTrigger?.Invoke();
+            Collider collider = gameObject.GetComponent<Collider>();
+            Destroy(collider);
         }
     }
 }

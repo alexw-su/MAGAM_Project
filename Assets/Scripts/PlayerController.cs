@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         get { return teleportTo; }
         set { teleportTo = value; }
     }
-    
+
     void Start()
     {
         // Initializes CharacterController
@@ -82,13 +82,13 @@ public class PlayerController : MonoBehaviour
             bobbingTime += Time.deltaTime * bobbingSpeed;
             if (sprinting) bobbingTime += Time.deltaTime * bobbingSpeed;
             cameraHolder.localPosition = new Vector3(
-                cameraHolderDefaultX + Mathf.Sin(bobbingTime * 0.5f) * swayAmount, 
-                cameraHolderDefaultY + Mathf.Sin(bobbingTime) * bobbingAmount, 
+                cameraHolderDefaultX + Mathf.Sin(bobbingTime * 0.5f) * swayAmount,
+                cameraHolderDefaultY + Mathf.Sin(bobbingTime) * bobbingAmount,
                 cameraHolder.localPosition.z
             );
 
             // Add Sound Effects
-            if(grounded)
+            if (grounded)
             {
                 _audioManager.StartFootsteps(sprinting);
             }
@@ -102,13 +102,13 @@ public class PlayerController : MonoBehaviour
         {
             // Decelerate player movement
             currentMoveSpeed -= acceleration * Time.deltaTime;
-            if(currentMoveSpeed < 0 ) currentMoveSpeed = 0;
+            if (currentMoveSpeed < 0) currentMoveSpeed = 0;
 
             // Stop bobbing and swaying and return to default position
             bobbingTime = 0;
             cameraHolder.localPosition = new Vector3(
-                Mathf.Lerp(cameraHolder.localPosition.x, cameraHolderDefaultX, Time.deltaTime * bobbingSpeed), 
-                Mathf.Lerp(cameraHolder.localPosition.y, cameraHolderDefaultY, Time.deltaTime * bobbingSpeed), 
+                Mathf.Lerp(cameraHolder.localPosition.x, cameraHolderDefaultX, Time.deltaTime * bobbingSpeed),
+                Mathf.Lerp(cameraHolder.localPosition.y, cameraHolderDefaultY, Time.deltaTime * bobbingSpeed),
                 cameraHolder.localPosition.z
             );
 
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(playerVelocity * Time.deltaTime);
     }
-    
+
     private void FixedUpdate()
     {
         if (teleportTo != null)
@@ -146,11 +146,11 @@ public class PlayerController : MonoBehaviour
         // Gets directional input from inputManager
         Vector2 movement = inputManager.GetPlayerMovement();
         moveDirection = new Vector3(movement.x, 0f, movement.y);
-    
+
         // Changes/Rotates directional movement based on Camera's direction
         moveDirection = cameraTransform.forward * moveDirection.z + cameraTransform.right * moveDirection.x;
         moveDirection.y = 0f;
-        moveDirection.Normalize();        
+        moveDirection.Normalize();
 
         // Checks if jump input was triggered during grounded
         if (inputManager.GetPlayerJumped() && grounded)
@@ -176,11 +176,11 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         // Gives CharacterController movement input
-        if(!sprinting) 
+        if (!sprinting)
         {
             controller.Move(moveDirection * Time.deltaTime * currentMoveSpeed);
         }
-        else 
+        else
         {
             controller.Move(moveDirection * Time.deltaTime * currentMoveSpeed * sprintMultiplier);
         }
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
 
     // Applies jump
     private void Jump()
-    {   
+    {
         grounded = false;
         // Adds jump to player's velocity
         playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * -gravityValue);
