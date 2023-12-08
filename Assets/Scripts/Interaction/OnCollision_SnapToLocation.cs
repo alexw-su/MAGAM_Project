@@ -12,6 +12,7 @@ public class OnCollision_SnapToLocation : MonoBehaviour
     private SnapToLocation_Handler _snapToLocation_Handler;
 
     private bool _isInSnapLocation = false;
+    float timeElapsed;
 
     private void Start()
     {
@@ -30,7 +31,6 @@ public class OnCollision_SnapToLocation : MonoBehaviour
         {
             gameObject.tag = "Untagged";
             _snapToLocation_Handler = other.gameObject.GetComponent<SnapToLocation_Handler>();
-
             StartCoroutine(SnapToLocation_Routine(_snapToLocation_Handler));
         }
     }
@@ -48,23 +48,17 @@ public class OnCollision_SnapToLocation : MonoBehaviour
 
     private IEnumerator SnapToLocation_Routine(SnapToLocation_Handler snapHandler)
     {
-        float timer = 0f;
-        float lerp = 0f;
-
-        AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-
         Vector3 startPos = transform.position;
         Quaternion startRot = transform.rotation;
-        while (timer < snapHandler.SnapSpeed)
+        while (timeElapsed < snapHandler.SnapSpeed)
         {
-            lerp = curve.Evaluate(timer / snapHandler.SnapSpeed);
+            float t = timeElapsed / snapHandler.SnapSpeed;
 
-            transform.position = Vector3.Lerp(startPos, snapHandler.SnapToLocation.position, lerp);
+            transform.position = Vector3.Lerp(startPos, snapHandler.SnapToLocation.position, t);
+            transform.rotation = Quaternion.Lerp(startRot, snapHandler.SnapToLocation.rotation, t);
 
-            transform.rotation = Quaternion.Lerp(startRot, snapHandler.SnapToLocation.rotation, lerp);
-
-            timer += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            timeElapsed += Time.deltaTime;
+            yield return null;
         }
 
         transform.position = snapHandler.SnapToLocation.position;
@@ -72,7 +66,7 @@ public class OnCollision_SnapToLocation : MonoBehaviour
 
         snapHandler.TriggerSnappedToLocation(gameObject);
 
-        if(destroyOnSnapFinish)
+        if (destroyOnSnapFinish)
         {
             yield return new WaitForEndOfFrame();
             Destroy(gameObject);

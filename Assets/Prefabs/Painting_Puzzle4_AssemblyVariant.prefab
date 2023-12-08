@@ -169,6 +169,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportToPoint: {fileID: 0}
   teleportPointToMove: {fileID: 0}
+  puzzlePostProcessingObject: {fileID: 0}
+  realityPostProcessingObject: {fileID: 0}
+  puzzleEnabled: 0
+  realityEnabled: 0
   stringPairs:
   - Category: puzzle1
     Key: enterPuzzle
