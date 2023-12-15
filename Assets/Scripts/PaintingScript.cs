@@ -31,6 +31,9 @@ public class PaintingScript : MonoBehaviour, IInteractable
         _playerController = FindObjectOfType<PlayerController>();
         inputManager = InputManager.Instance;
         teleporting = false;
+
+        if(vfx == null)
+            vfx = FindObjectOfType<VFXManager>();
     }
 
     void Update()
