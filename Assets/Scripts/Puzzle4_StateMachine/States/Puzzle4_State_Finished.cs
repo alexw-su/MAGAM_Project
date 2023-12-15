@@ -20,6 +20,7 @@ public partial class Puzzle4_StateMachine
             base.OnStateEnter();
 
             Manager.crystalHandler.InitAppearance(2f);
+            Manager.DelayOpenTitleScene();
         }
 
 
