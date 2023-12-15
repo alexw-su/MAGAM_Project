@@ -67,7 +67,14 @@ public partial class Puzzle4_StateMachine : MarcimanStateMachine {
 
     void DelayOpenTitleScene()
     {
-        Invoke("OpenStartScene", 5f);
+        Invoke("RollCredits", 5f);
+        Invoke("OpenStartScene", 20f);
+    }
+
+
+    void RollCredits()
+    {
+        FindObjectOfType<UIScroller>().InitCredits();
     }
 
 
