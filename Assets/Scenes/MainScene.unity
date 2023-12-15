@@ -193,6 +193,11 @@ PrefabInstance:
       propertyPath: managedReferences[6958914749113303041].AnimatePositionTarget
       value: 
       objectReference: {fileID: 2058199982}
+    - target: {fileID: 7563842723250020785, guid: 07a2726c032b1a24abf0cc85d5e6458b,
+        type: 3}
+      propertyPath: managedReferences[7383880481661779968].AnimatePositionTarget
+      value: 
+      objectReference: {fileID: 2058199982}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
