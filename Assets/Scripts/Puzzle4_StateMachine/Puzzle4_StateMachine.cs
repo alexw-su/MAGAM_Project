@@ -1,15 +1,16 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public enum Puzzle4_State
 {
-	Idle,
-	PaintingAssemble,
-	MazePhase,
-	Finished,
+    Idle,
+    PaintingAssemble,
+    MazePhase,
+    Finished,
 }
 
-public partial class Puzzle4_StateMachine : MarcimanStateMachine {
+public partial class Puzzle4_StateMachine : MarcimanStateMachine
+{
 
     [Header("Painting Assembly")]
     [SerializeField] Puzzle4_PaintingAssembly_Handler paintingAssemblyHandler;
@@ -42,18 +43,18 @@ public partial class Puzzle4_StateMachine : MarcimanStateMachine {
 
         switch (newState)
         {
-		case Puzzle4_State.Idle:
-			SetState(new Puzzle4_State_Idle(this));
-			break;
-		case Puzzle4_State.PaintingAssemble:
-			SetState(new Puzzle4_State_PaintingAssemble(this));
-			break;
-		case Puzzle4_State.MazePhase:
-			SetState(new Puzzle4_State_MazePhase(this));
-			break;
-		case Puzzle4_State.Finished:
-			SetState(new Puzzle4_State_Finished(this));
-			break;
+            case Puzzle4_State.Idle:
+                SetState(new Puzzle4_State_Idle(this));
+                break;
+            case Puzzle4_State.PaintingAssemble:
+                SetState(new Puzzle4_State_PaintingAssemble(this));
+                break;
+            case Puzzle4_State.MazePhase:
+                SetState(new Puzzle4_State_MazePhase(this));
+                break;
+            case Puzzle4_State.Finished:
+                SetState(new Puzzle4_State_Finished(this));
+                break;
         }
     }
 
@@ -62,5 +63,15 @@ public partial class Puzzle4_StateMachine : MarcimanStateMachine {
     {
         //wallDissolveHandler.InitDissapperance(4.0f);
         ChangeState(Puzzle4_State.MazePhase);
+    }
+    void DelayOpenTitleScene()
+    {
+        Invoke("OpenStartScene", 5f);
+    }
+    void OpenStartScene()
+    {
+        Cursor.lockState = CursorLockMode.None;
+
+        SceneManager.LoadScene("TitleScene");
     }
 }

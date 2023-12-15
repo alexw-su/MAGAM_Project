@@ -677,6 +677,9 @@ MonoBehaviour:
   solvedPuzzleInterval: 3
   wallDissolve: {fileID: 6191273320852709013}
   dissolveDuration: 2.5
+  successDrop: {fileID: 8300000, guid: 4571cc28d5f87994e980e22cd8725ece, type: 3}
+  failDrop: {fileID: 8300000, guid: 9c5dd7ff7f811c64fb024a5c0deaed52, type: 3}
+  puzzleSuccesSound: {fileID: 8300000, guid: 4e527c2ac1f04ce4d9a43ca0c5d42346, type: 3}
   bookInteractionHandlerList:
   - {fileID: 3001498894365728006}
   - {fileID: 7150314430979638377}
