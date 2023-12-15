@@ -1520,8 +1520,8 @@ Transform:
   m_GameObject: {fileID: 1845529169546443242}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.805567, y: 1.6618357, z: -0.008015951}
+  m_LocalScale: {x: 2.614, y: 4.575, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6697286238029584542}
@@ -4961,8 +4961,8 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 6958914749113303041
   - rid: 7383880481661779968
+  - rid: 7383880638104862720
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   StopFeedbacksOnDisable: 0
@@ -4970,11 +4970,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6958914749113303041
+    - rid: 7383880481661779968
       type: {class: MMF_Position, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -893302390
+        UniqueID: 99486822
         Label: Position
         ChannelMode: 0
         Channel: 0
@@ -5200,7 +5200,7 @@ MonoBehaviour:
           Initialized: 0
         AllowAdditivePlays: 0
         RelativePosition: 1
-        DeterminePositionsOnPlay: 0
+        DeterminePositionsOnPlay: 1
         InitialPosition: {x: 0, y: 0, z: 0}
         DestinationPosition: {x: 1, y: 1, z: 1}
         InitialPositionTransform: {fileID: 0}
@@ -5229,11 +5229,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 7383880481661779968
+    - rid: 7383880638104862720
       type: {class: MMF_Position, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: 99486822
+        UniqueID: 1484513255
         Label: Position
         ChannelMode: 0
         Channel: 0
@@ -5507,8 +5507,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.828963, y: 4.6423683, z: 4.396118}
-  m_Center: {x: 0.90110254, y: 1.8211842, z: 1.6056519}
+  m_Size: {x: 9.78, y: 5.39, z: 7.29}
+  m_Center: {x: 0.90110254, y: 2.46, z: 0.23}
 --- !u!114 &1438961801607197374
 MonoBehaviour:
   m_ObjectHideFlags: 0
