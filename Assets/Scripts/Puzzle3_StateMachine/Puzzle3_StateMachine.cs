@@ -63,6 +63,7 @@ public partial class Puzzle3_StateMachine : MarcimanStateMachine
     [Header("Books")]
     [SerializeField] List<Puzzle3_BookInteraction_Handler> bookInteractionHandlerList;
     [SerializeField] List<Puzzle3_BookPhase_Properties> bookPhaseProperties;
+    [SerializeField] AudioClip puzzleSuccesSound;
 
     [Header("Painting Piece")]
     [SerializeField] GameObject paintingPiece;
