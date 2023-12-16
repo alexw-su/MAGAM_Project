@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public enum Puzzle4_State
 {
@@ -62,5 +63,25 @@ public partial class Puzzle4_StateMachine : MarcimanStateMachine {
     {
         //wallDissolveHandler.InitDissapperance(4.0f);
         ChangeState(Puzzle4_State.MazePhase);
+    }
+
+    void DelayOpenTitleScene()
+    {
+        Invoke("RollCredits", 5f);
+        Invoke("OpenStartScene", 20f);
+    }
+
+
+    void RollCredits()
+    {
+        FindObjectOfType<UIScroller>().InitCredits();
+    }
+
+
+    void OpenStartScene()
+    {
+        Cursor.lockState = CursorLockMode.None;
+
+        SceneManager.LoadScene("TitleScene");
     }
 }

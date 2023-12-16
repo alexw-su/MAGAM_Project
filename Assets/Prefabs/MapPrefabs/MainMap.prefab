@@ -41767,6 +41767,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: mushroom-magical-amanita-baby
       objectReference: {fileID: 0}
+    - target: {fileID: 3832090617687085814, guid: 33fd26760d9e0744882bcc652ba86ae0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4496143502218414156, guid: 33fd26760d9e0744882bcc652ba86ae0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48071,6 +48076,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mushroom-magical-amanita-baby (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832090617687085814, guid: 33fd26760d9e0744882bcc652ba86ae0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4496143502218414156, guid: 33fd26760d9e0744882bcc652ba86ae0,
         type: 3}

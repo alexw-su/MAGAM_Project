@@ -32,9 +32,7 @@ public class Puzzle4_OnEnter_PlayElevator : MonoBehaviour
     private IEnumerator Elevator_Routine()
     {
         door_ClosePlayer.PlayFeedbacks();
-
         yield return new WaitForSeconds(timeOffset);
-
         _elevatorPlayer.PlayFeedbacks();
     }
 }

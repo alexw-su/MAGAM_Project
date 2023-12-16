@@ -691,6 +691,7 @@ MonoBehaviour:
     bookColor: 2
   - bookState: 8
     bookColor: 3
+  puzzleSuccesSound: {fileID: 8300000, guid: 285a1b3a967d2194897f0bacab044dce, type: 3}
   paintingPiece: {fileID: 7871351566817602886, guid: eff1564a196e4304e9454e8083f4b574,
     type: 3}
   paintingSpawnPosition: {fileID: 8780673541100220217}
