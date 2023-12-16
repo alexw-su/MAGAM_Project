@@ -27,7 +27,8 @@ public partial class Puzzle2 : MarcimanStateMachine
     [Header("PaintingPart")]
     [SerializeField] GameObject paintingPart;
     [SerializeField] Transform paintingPartSpawnPoint;
-
+    public GameObject puzzlePostProcessingObject;
+    public GameObject realityPostProcessingObject;
     void Start()
     {
         ChangeState(Puzzle2States.Idle);

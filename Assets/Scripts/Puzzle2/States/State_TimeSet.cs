@@ -20,6 +20,8 @@ public partial class Puzzle2
             base.OnStateEnter();
             RenderSettings.skybox = Manager.skyBoxMaterialNight;
             Instantiate(Manager.paintingPart, Manager.paintingPartSpawnPoint);
+            Manager.puzzlePostProcessingObject.SetActive(false);
+            Manager.realityPostProcessingObject.SetActive(true);
         }
 
 

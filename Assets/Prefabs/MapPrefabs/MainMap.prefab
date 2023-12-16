@@ -15293,13 +15293,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4235465192977863094}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11682622, y: 0.07897362, z: -0.80527264, w: -0.5758914}
-  m_LocalPosition: {x: 14.4, y: 18.1, z: -41.4}
+  m_LocalRotation: {x: 0.17701507, y: 0.12203062, z: -0.79421544, w: -0.5683275}
+  m_LocalPosition: {x: 14.4, y: 18.1, z: -35.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5013467960922870873}
-  m_LocalEulerAnglesHint: {x: -0.422, y: 343.792, z: 108.919}
+  m_LocalEulerAnglesHint: {x: -0.422, y: 335.172, z: 108.919}
 --- !u!198 &4992105787094293372
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -18886,9 +18886,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -19004,7 +19004,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -19059,9 +19059,9 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 9
     maxCollisionShapes: 256
-    quality: 0
+    quality: 1
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1
@@ -29992,13 +29992,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7908751937016430842}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3639034, y: -0.9269377, z: -0.09093168, w: 0.009613313}
-  m_LocalPosition: {x: -5.1, y: 0.7, z: 18.9}
+  m_LocalRotation: {x: -0.33942205, y: -0.91127, z: -0.15964636, w: -0.16997896}
+  m_LocalPosition: {x: -26.48, y: 0.7, z: 17.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5013467960922870873}
-  m_LocalEulerAnglesHint: {x: -10.112, y: 537.184, z: 43.118}
+  m_LocalEulerAnglesHint: {x: -10.112, y: 514.864, z: 43.118}
 --- !u!198 &1644570603015371184
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -33585,9 +33585,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -33703,7 +33703,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -33758,9 +33758,9 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 9
     maxCollisionShapes: 256
-    quality: 0
+    quality: 1
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1

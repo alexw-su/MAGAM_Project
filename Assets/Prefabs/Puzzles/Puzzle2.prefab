@@ -10572,11 +10572,13 @@ MonoBehaviour:
     Category: puzzle2
     Key: exitPuzzleUnsolved
   messageSolved:
-    Category: 
-    Key: 
+    Category: puzzle2
+    Key: exitPuzzleSolved
   paintingPart: {fileID: 7871351566817602886, guid: eff1564a196e4304e9454e8083f4b574,
     type: 3}
   paintingPartSpawnPoint: {fileID: 205801620771796252}
+  puzzlePostProcessingObject: {fileID: 0}
+  realityPostProcessingObject: {fileID: 0}
 --- !u!1 &5533465439671632493
 GameObject:
   m_ObjectHideFlags: 0
